@@ -43,7 +43,7 @@ const publishedPages = new Map();
 function finalizeHtml(html, relativePath) {
   const url = `${siteOrigin}/${relativePath ? `${relativePath.replaceAll(path.sep, "/")}/` : ""}`;
   html = html.replaceAll("?v=60", "?v=63").replaceAll("?v=59", "?v=63").replaceAll("?v=57", "?v=63").replaceAll("?v=56", "?v=63").replaceAll("?v=54", "?v=63").replaceAll("?v=53", "?v=63").replaceAll("?v=52", "?v=63").replaceAll("?v=51", "?v=63").replaceAll("?v=50", "?v=63").replaceAll("?v=49", "?v=63").replaceAll("?v=48", "?v=63").replaceAll("?v=47", "?v=63").replaceAll("?v=46", "?v=63").replaceAll("?v=45", "?v=63").replaceAll("?v=44", "?v=63").replaceAll("?v=40", "?v=63").replaceAll("?v=34", "?v=63")
-    .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=63"')
+    .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=64"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=64"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
   html = html.replace("制定・最終更新：2026年9月21日", "制定：2026年9月21日・最終更新：2026年10月17日")
     .replace("駅徒歩10分以内・管理費等を除く平均", "HOME’Sの1K参考相場・管理費等を除く")
@@ -171,7 +171,7 @@ writeDirectory("data-status", "条件データの確認状況", `${summary.total
 // The home retains these markers; generated content is replaced, not appended.
 const entryLinks = `<nav class="entry-links" aria-label="他の探し方"><a href="/themes/">暮らし別に探す</a><a href="/routes/">路線別に探す</a><a href="/stations/">駅名から探す</a></nav>`;
 let home = homeTemplate.replace(/<!--ENTRY_START-->[\s\S]*?<!--ENTRY_END-->/, `<!--ENTRY_START-->${entryLinks}<!--ENTRY_END-->`)
-  .replace(/<!--DIRECTORY_START-->[\s\S]*?<!--DIRECTORY_END-->/, `<!--DIRECTORY_START--><section class="theme-static-copy"><h2>掲載駅のガイド</h2><p>駅ごとの写真や暮らしの情報を紹介しています。</p><a href="/stations/">掲載駅の一覧を見る →</a></section><!--DIRECTORY_END-->`);
+  .replace(/<!--DIRECTORY_START-->[\s\S]*?<!--DIRECTORY_END-->/, `<!--DIRECTORY_START--><section class="featured-section" id="guides" aria-labelledby="featured-title"><div class="section-head"><div><p class="section-kicker">駅ガイド</p><h2 id="featured-title">街の様子を確かめる</h2></div><p>写真、交通、買い物、車、散歩、夜の帰宅を駅ごとにまとめています。</p></div><div class="featured-grid" id="featured-grid"></div></section><section class="theme-static-copy"><h2>掲載駅のガイド</h2><p>駅ごとの写真や暮らしの情報を紹介しています。</p><a href="/stations/">掲載駅の一覧を見る →</a></section><!--DIRECTORY_END-->`);
 writePage("", home);
 const notFound = directoryTemplate.replaceAll("{{TITLE}}", "ページが見つかりません").replaceAll("{{DESCRIPTION}}", "URLを確認するか、地図・暮らし別・駅一覧から探してください。").replace("{{CONTENT}}", '<p><a class="button" href="/">地図から探す</a> <a href="/stations/">駅一覧へ</a></p>');
 fs.writeFileSync(path.join(root, "public", "404.html"), finalizeHtml(notFound.replace("</head>", '<meta name="robots" content="noindex,follow"></head>'), "404"));
