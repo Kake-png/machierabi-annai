@@ -1,0 +1,62 @@
+[
+  {
+    "record_id": "mitaka::cycle",
+    "station_name": "三鷹",
+    "judgment": "該当",
+    "target": "多摩湖自転車歩行者道（関前五丁目交差点の起点）",
+    "distance_m": 2263.3,
+    "estimated_minutes": 12,
+    "measurement": "駅参照点→接続地点のOSRM自転車経路2263.3m。200m/分で換算、分単位切上げ約12分。",
+    "reason": "広域行政協議会は約10kmの自転車歩行者専用道、東大和市は直線約11kmと案内。野川公園内の遠い地点への旧計測は採否根拠から外し、別の適格コースへの接続で該当。",
+    "limitations": "距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。",
+    "source_urls": "https://www.tama6.jp/meguri/spot/post_148.html | https://www.city.higashiyamato.lg.jp/kurashi/midokoro/1003873/1007191/1007192.html | https://mapfan.com/spots/SCC,J,VIS5 | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.560833,35.702694;139.5418142,35.713072?overview=full&geometries=geojson&steps=true"
+  },
+  {
+    "record_id": "musashisakai::cycle",
+    "station_name": "武蔵境",
+    "judgment": "該当",
+    "target": "多摩湖自転車歩行者道（関前五丁目交差点の起点）",
+    "distance_m": 1429,
+    "estimated_minutes": 8,
+    "measurement": "駅参照点→接続地点のOSRM自転車経路1429.0m。200m/分で換算、分単位切上げ約8分。",
+    "reason": "広域行政協議会は約10kmの自転車歩行者専用道、東大和市は直線約11kmと案内。野川へのアクセスを無理に15分内とせず、近い別コースで該当。",
+    "limitations": "距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。",
+    "source_urls": "https://www.tama6.jp/meguri/spot/post_148.html | https://www.city.higashiyamato.lg.jp/kurashi/midokoro/1003873/1007191/1007192.html | https://mapfan.com/spots/SCC,J,VIS5 | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.544889,35.702278;139.5418142,35.713072?overview=full&geometries=geojson&steps=true"
+  },
+  {
+    "record_id": "kinshicho::cycle",
+    "station_name": "錦糸町",
+    "judgment": "該当",
+    "target": "旧中川沿い遊歩道（ふれあい橋付近から接続）",
+    "distance_m": 2902.1,
+    "estimated_minutes": 15,
+    "measurement": "駅参照点→接続地点のOSRM自転車経路2902.1m。200m/分で換算、分単位切上げ約15分。橋長56m全体を保守的に押し歩き80m/分として算入しても15分以内。",
+    "reason": "指定管理者がサイクリング利用と最徐行での通行を案内し、ツアー事業者も旧中川サイクリングロードとして採用。2026年1月の実走記録は遊歩道の端から端を約6kmと報告。河川長6.68kmだけを根拠にしない。荒川への直接アクセスの代わりに近隣の旧中川を採用。",
+    "limitations": "距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。",
+    "source_urls": "https://koto-suisaipark.jp/about/ | https://koto-suisaipark.jp/tousers.html | https://www.tokyocycling.jp/ja/route-f/ | https://bronptonrider.blogspot.com/2026/01/blog-post.html | https://www.djq.jp/bridge_liblary/river_arakawa/tokyo_bridge_kyunakagawa007_fureai.php | https://www.city.koto.lg.jp/470208/machizukuri/dorohashi/hashiichiran/kudokyo/14843.html | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.813889,35.696667;139.841163,35.700717?overview=full&geometries=geojson&steps=true"
+  },
+  {
+    "record_id": "shimokitazawa::cycle",
+    "station_name": "下北沢",
+    "judgment": "該当",
+    "target": "神田川沿い自転車歩行者道（方南橋付近）",
+    "distance_m": 2528.5,
+    "estimated_minutes": 13,
+    "measurement": "駅参照点→接続地点のOSRM自転車経路2528.5m。200m/分で換算、分単位切上げ約13分。",
+    "reason": "神田川沿い約9kmのコースを採用。栄泉橋までだと3147.4mで16分だが、より近い方南橋から接続すれば15分以内。北沢川緑道約4kmや代々木公園の短い周回を根拠にはしない。",
+    "limitations": "距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。",
+    "source_urls": "https://www.gotokyo.org/jp/spot/98/index.html | https://www.city.suginami.tokyo.jp/_res/projects/default_project/_page_/001/031/700/keikakuhonpenn.pdf | https://kousch.info/cycling/ | https://www.djq.jp/bridge_liblary/river_kanda/tokyo_bridge_kanda057_hounan.php | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.6675,35.661389;139.657114,35.680244?overview=full&geometries=geojson&steps=true"
+  },
+  {
+    "record_id": "meidaimae::cycle",
+    "station_name": "明大前",
+    "judgment": "該当",
+    "target": "神田川沿い自転車歩行者道（栄泉橋付近）",
+    "distance_m": 1181.6,
+    "estimated_minutes": 6,
+    "measurement": "駅参照点→接続地点のOSRM自転車経路1181.6m。200m/分で換算、分単位切上げ約6分。",
+    "reason": "東京都観光公式が神田川沿いのサイクリングを案内。杉並区自転車ネットワーク計画は神田川沿いの自転車歩行者専用道を記載。コース案内は井の頭公園～中野富士見町付近を約9kmと紹介。河川全長24.6kmを走行区間長として代用していない。",
+    "limitations": "距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。",
+    "source_urls": "https://www.gotokyo.org/jp/spot/98/index.html | https://www.city.suginami.tokyo.jp/_res/projects/default_project/_page_/001/031/700/keikakuhonpenn.pdf | https://kousch.info/cycling/ | https://www.djq.jp/bridge_liblary/river_kanda/tokyo_bridge_kanda049_eisen.php | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.6505,35.668417;139.648035,35.674984?overview=full&geometries=geojson&steps=true"
+  }
+]

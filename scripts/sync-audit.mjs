@@ -34,7 +34,7 @@ export function syncAudit(root) {
   const rows = read("condition_records_merged.csv"), criteria = read("criteria.csv"), rents = read("rent_review.csv");
   const notes = Object.fromEntries(read("public_notes.csv").map((r) => [r.record_id, r.public_text]));
   const stationIds = [...new Set(rows.map((r) => r.station_slug))], conditionIds = criteria.map((r) => r.condition_id);
-  if (stationIds.length !== 15 || conditionIds.length !== 18 || rows.length !== 270 || new Set(rows.map((r) => r.record_id)).size !== 270) throw new Error("Audit must contain exactly 15 × 18 unique records");
+  if (stationIds.length !== 65 || conditionIds.length !== 18 || rows.length !== 1170 || new Set(rows.map((r) => r.record_id)).size !== 1170) throw new Error("Audit must contain exactly 65 × 18 unique records");
   const sources = {}, records = Object.fromEntries(stationIds.map((slug) => [slug, {}]));
   for (const row of rows) {
     if (!conditionIds.includes(row.condition_id) || row.record_id !== `${row.station_slug}::${row.condition_id}`) throw new Error(`Invalid audit record: ${row.record_id}`);
@@ -52,7 +52,7 @@ export function syncAudit(root) {
     records[row.station_slug][row.condition_id] = { value: positive, status: confirmed ? "verified" : "pending", judgment: confirmed ? row.review_judgment : "判断保留", text: notes[row.record_id] || (confirmed ? "調べた候補と経路では、この条件を満たす施設・サービスを確認できませんでした。" : "施設や経路など、判定に必要な情報を確認中です。検索候補には含めていません。"), reviewNote: row.review_reason, sourceIds, checkedAt: row.review_checked_at || null };
   }
   for (const slug of stationIds) if (Object.keys(records[slug]).length !== 18) throw new Error(`Incomplete station: ${slug}`);
-  if (rents.length !== 15 || new Set(rents.map((r) => r.station_slug)).size !== 15) throw new Error("Incomplete rent review");
+  if (rents.length !== 65 || new Set(rents.map((r) => r.station_slug)).size !== 65) throw new Error("Incomplete rent review");
   const rentData = {};
   for (const rent of rents) {
     if (!records[rent.station_slug] || rent.review_status !== "確認済み" || !(Number(rent.rent1k_man_yen) > 0) || !rent.source_url.startsWith("https://") || !rent.checked_at) throw new Error("Invalid rent review");

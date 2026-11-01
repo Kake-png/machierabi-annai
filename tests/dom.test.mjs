@@ -43,12 +43,12 @@ test("home builds every filter, route and station marker", async () => {
   const { dom, document } = await openPage("");
   assert.equal(document.querySelectorAll("[data-tag]").length, 18);
   assert.equal(document.querySelectorAll("[data-route]").length, 20);
-  assert.equal(document.querySelectorAll(".station-row").length, 15);
-  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, 15);
+  assert.equal(document.querySelectorAll(".station-row").length, 65);
+  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, 65);
   document.querySelector('[data-tag="cinema"]').click();
   await tick();
-  assert.equal(document.querySelectorAll(".station-row").length, 4);
-  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, 4);
+  assert.equal(document.querySelectorAll(".station-row").length, 15);
+  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, 15);
   dom.window.close();
 });
 
@@ -148,7 +148,7 @@ test("without Leaflet the fallback and filters still work", async () => {
   const { dom, document } = await openPage("", { map: false });
   assert(document.querySelector("#map-fallback").classList.contains("is-visible"));
   document.querySelector('[data-tag="cinema"]').click();
-  assert.equal(document.querySelectorAll(".station-row").length, 4);
+  assert.equal(document.querySelectorAll(".station-row").length, 15);
   dom.window.close();
 });
 
@@ -166,7 +166,7 @@ test('hobby focus, priorities, URL reload and comparison keep selected condition
  assert.equal(new URL(window.location.href).searchParams.get('wish'),'cinema');
  const round=search.readSearchState(new URL(window.location.href).searchParams,ATLAS_DATA);
  assert.deepEqual(round.preferred,['cinema']);assert.deepEqual(round.tags,['large_bookstore']);
- document.querySelector('#clear-filters').click();assert.equal(document.querySelectorAll('.station-row').length,15);
+ document.querySelector('#clear-filters').click();assert.equal(document.querySelectorAll('.station-row').length,65);
  dom.window.close();
 });
 test('zero matches offers explicit relaxation without changing choices',async()=>{
@@ -220,7 +220,7 @@ test('rent slider and number synchronize and removable selections update candida
  assert.equal(number.value,'13.7');assert.equal(new URL(window.location.href).searchParams.get('rent'),'13.7');
  number.value='9.8';number.dispatchEvent(new window.Event('change',{bubbles:true}));assert.equal(slider.value,'9.8');
  assert.equal(document.querySelectorAll('.station-row').length,ATLAS_DATA.stations.filter(s=>s.rent1k<=9.8).length);
- slider.value='15.1';slider.dispatchEvent(new window.Event('input',{bubbles:true}));assert.equal(number.value,'');assert.equal(slider.getAttribute('aria-valuetext'),'上限なし');assert.equal(new URL(window.location.href).searchParams.has('rent'),false);assert.equal(document.querySelectorAll('.station-row').length,15);
+ slider.value='15.1';slider.dispatchEvent(new window.Event('input',{bubbles:true}));assert.equal(number.value,'');assert.equal(slider.getAttribute('aria-valuetext'),'上限なし');assert.equal(new URL(window.location.href).searchParams.has('rent'),false);assert.equal(document.querySelectorAll('.station-row').length,65);
  document.querySelector('#open-conditions').click();assert(document.querySelector('.mobile-conditions').open);
  document.querySelector('[data-close-mobile]').click();assert(!document.querySelector('.mobile-conditions').open);
  dom.window.close();
@@ -268,9 +268,9 @@ test('favorites tolerate malformed storage and synchronize other tabs',async()=>
    for (const id of ['jr-chuo-rapid', 'jr-chuo-sobu']) {
      const {dom, document} = await openPage(`routes/${id}`);
      assert(document.querySelector('.leaflet-overlay-pane path'), id);
-     assert(document.querySelector('#station-list').textContent.includes('掲載駅は準備中'));
-     assert(document.querySelector('meta[name="robots"]').content.includes('noindex'));
-     assert(!fs.readFileSync(path.join(publicRoot,'sitemap.xml'),'utf8').includes(`/routes/${id}/`));
+     assert(document.querySelectorAll('.station-row').length > 0);
+     assert(!document.querySelector('meta[name="robots"]').content.includes('noindex'));
+     assert(fs.readFileSync(path.join(publicRoot,'sitemap.xml'),'utf8').includes(`/routes/${id}/`));
      dom.window.close();
    }
  });

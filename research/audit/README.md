@@ -1,8 +1,8 @@
 # サイトの判定元
 
-`condition_records_merged.csv`：15駅×18条件の270行。research欄は受領した調査提案、review欄は開発側の検証結果。最初の22列を履歴として維持する。
+`condition_records_merged.csv`：53駅×18条件の954行。research欄は受領した調査提案、review欄は開発側の検証結果。最初の22列を履歴として維持する。
 
-`criteria.csv`：共通の条件。`policy_v1.md` と `policy_v1_1.md` は確定した補足。
+`criteria.csv`：共通の条件。`policy_v3.md` が2026-11-01の現行基準適用記録。旧policyは履歴として保持。
 
 `public_notes.csv`：検証済み該当に対応する、利用者向けの短い根拠。施設名や経路は raw の target_name と異なる場合があるため、古い候補名から説明を作り直さない。
 

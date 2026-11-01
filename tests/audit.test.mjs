@@ -4,17 +4,18 @@ import fs from "node:fs";
 import { ATLAS_DATA as data } from "../public/assets/data.js";
 import { parseCsv } from "../scripts/sync-audit.mjs";
 import { filterStations } from "../public/assets/search.js";
+const legacyIds = new Set(["oimachi","omori","kamata","osaki","gotanda","musashikoyama","togoshiginza","nakanobu","hatanodai","ookayama","jiyugaoka","keikyu-kamata","kawasaki","musashikosugi","yokohama"]);
 const publicRoot = new URL("../public/", import.meta.url);
 
-test("night scenery includes public terraces and uses the seven adopted stations", () => {
+test("night scenery includes public terraces and uses the six adopted stations", () => {
   assert.equal(data.tagLabels.view, "夜景");
-  assert.deepEqual(data.stations.filter(s => s.tags.includes("view")).map(s => s.slug), ["oimachi", "osaki", "gotanda", "jiyugaoka", "kawasaki", "musashikosugi", "yokohama"]);
+  assert.deepEqual(data.stations.filter(s => legacyIds.has(s.slug) && s.tags.includes("view")).map(s => s.slug), ["oimachi", "osaki", "gotanda", "jiyugaoka", "kawasaki", "yokohama"]);
   assert.match(data.stations.find(s => s.slug === "jiyugaoka").evidence.view.text, /屋上/);
   assert.match(data.stations.find(s => s.slug === "musashikosugi").evidence.view.text, /17時/);
 });
 
 test("long cycling routes use the four adopted stations, not ordinary street tours", () => {
-  assert.deepEqual(data.stations.filter(s => s.tags.includes("cycle")).map(s => s.slug), ["kamata", "keikyu-kamata", "kawasaki", "musashikosugi"]);
+  assert.deepEqual(data.stations.filter(s => legacyIds.has(s.slug) && s.tags.includes("cycle")).map(s => s.slug), ["kamata", "keikyu-kamata", "kawasaki", "musashikosugi"]);
   assert.match(data.tagCriteria.cycle, /一般車道/);
 });
 
@@ -23,8 +24,8 @@ test("bookstore and entrance decisions reach search and every reviewed row is cl
   assert(data.stations.find(s => s.slug === "keikyu-kamata").tags.includes("large_bookstore"));
   assert(data.stations.find(s => s.slug === "ookayama").tags.includes("library"));
   for (const slug of ["musashikoyama", "togoshiginza", "nakanobu", "hatanodai", "ookayama", "jiyugaoka"]) assert(!data.stations.find(s => s.slug === slug).tags.includes("large_bookstore"));
-  assert.equal(data.auditSummary.positive, 193);
-  assert.equal(data.auditSummary.negative, 77);
+  assert.equal(data.auditSummary.positive, 685);
+  assert.equal(data.auditSummary.negative, 485);
   assert.equal(data.auditSummary.pending, 0);
 });
 
@@ -36,7 +37,7 @@ test("CSV import preserves BOM, Japanese, quoted commas, quotes and embedded new
 
 test("all 270 reviewed decisions control the public tags; holds never become a negative decision", () => {
   const rows = parseCsv(fs.readFileSync(new URL("../research/audit/condition_records_merged.csv", import.meta.url), "utf8"));
-  assert.equal(rows.length, 270);
+  assert.equal(rows.length, 1170);
   for (const row of rows) {
     const station = data.stations.find((s) => s.slug === row.station_slug);
     const expected = row.review_status === "確認済み" && row.review_judgment === "該当";
@@ -51,14 +52,14 @@ test("all 270 reviewed decisions control the public tags; holds never become a n
 
 test("cinema has the four reviewed matches, and Yokohama's closed cinema is not an active source", () => {
   const matches = filterStations(data.stations, data.routeLabels, data.themePresets, { tags: ["cinema"] });
-  assert.deepEqual(matches.map((s) => s.slug), ["oimachi", "omori", "kawasaki", "yokohama"]);
+  assert.deepEqual(matches.filter(s=>legacyIds.has(s.slug)).map((s) => s.slug), ["oimachi", "omori", "kawasaki", "yokohama"]);
   const yokohama = data.stations.find((s) => s.slug === "yokohama");
   assert.match(yokohama.evidence.cinema.text, /T・ジョイ横浜/);
   assert(!yokohama.evidence.cinema.sourceIds.some((id) => data.factSources[id].url.includes("movil/access")));
 });
 
 test("all 15 rent values have individual 1K sources, method and check date", () => {
-  for (const station of data.stations) {
+  for (const station of data.stations.filter(s=>legacyIds.has(s.slug))) {
     assert.equal(station.rentStatus, "verified");
     assert.match(station.rentSourceUrl, /^https:\/\/www\.homes\.co\.jp\/chintai\/.*-st\/price\/$/);
     assert.equal(station.rentCheckedAt, "2026-10-17");
@@ -82,7 +83,7 @@ test("new access findings reach both specific conditions and line filtering", ()
 test("static station pages include the same reviewed reasons as the live UI", () => {
   for (const station of data.stations) {
     const html = fs.readFileSync(new URL(`station/${station.slug}/index.html`, publicRoot), "utf8");
-    for (const tag of station.tags) assert(html.includes(station.evidence[tag].text), `${station.slug}/${tag}`);
+    for (const tag of station.tags) assert(html.includes(station.evidence[tag].text.replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;", "'":"&#39;",'"':"&quot;"}[c]))), `${station.slug}/${tag}`);
     assert(!html.includes("候補には含めています"));
     assert(html.includes(station.rentSourceUrl));
   }

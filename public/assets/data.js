@@ -1,3 +1,5 @@
+import {BATCH6_STATIONS,BATCH6_PHOTOS,BATCH6_ROUTE_LABELS} from "./imported-batch6.js";
+import {IMPORTED_STATIONS,IMPORTED_PHOTOS,IMPORTED_ROUTE_LABELS} from "./imported-stations.js";
 import {PHOTO_ADDITIONS,STATION_PHOTO_ADDITIONS} from "./photo-additions.js?v=54";
 import { applyEvidence, FACT_SOURCES, AUDIT_CRITERIA, AUDIT_SUMMARY } from "./evidence.js?v=40";
 
@@ -564,8 +566,8 @@ const ATLAS_DATA = (() => {
       id: "jr", label: "JR東日本", routes: [
         { id: "jr-keihin-tohoku", label: "京浜東北線", color: "#00a7db" },
         { id: "jr-yamanote", label: "山手線", color: "#80c241" },
-        { id: "jr-chuo-rapid", label: "中央線（快速）", color: "#f15a22", mapOnly: true },
-        { id: "jr-chuo-sobu", label: "中央・総武線", color: "#f7d100", mapOnly: true },
+        { id: "jr-chuo-rapid", label: "中央線（快速）", color: "#f15a22" },
+        { id: "jr-chuo-sobu", label: "中央・総武線", color: "#f7d100" },
         { id: "jr-saikyo", label: "埼京線", color: "#00ac9a" },
         { id: "jr-shonan-shinjuku", label: "湘南新宿ライン", color: "#e87524" },
         { id: "jr-tokaido", label: "東海道線", color: "#f68b1e" },
@@ -643,17 +645,17 @@ const ATLAS_DATA = (() => {
       description: "羽田・新幹線・高速道路へのアクセスから、旅行へ出る時の起点になる駅を探します。",
       tags: ["airport", "shinkansen", "expressway"],
       matchMode: "any",
-      criteria: ["羽田への直通", "新幹線駅への直通", "高速入口まで車15分以内"]
+      criteria: ["羽田への直通", "新幹線駅への直通", "高速入口まで車15分が目安"]
     },
     {
       id: "car-life",
       navLabel: "車を使う",
       label: "車を持つ、またはカーシェアを使いたい",
       title: "車を使う人の街探し",
-      description: "渋滞を含まない車の経路推計で高速道路入口まで15分以内の駅を探します。",
+      description: "高速道路入口まで車15分を目安に探します。掲載所要は渋滞を含まない経路推計で、交通状況により変わります。",
       tags: ["expressway"],
       matchMode: "any",
-      criteria: ["高速入口まで経路推計15分以内", "駅前道路の混雑は駅ページで確認"]
+      criteria: ["高速入口まで経路推計15分が目安", "駅前道路の混雑は駅ページで確認"]
     },
     {
       id: "strolling",
@@ -663,7 +665,7 @@ const ATLAS_DATA = (() => {
       description: "公園、川・河原、海・港など、日常の散歩先を見つけやすい駅を探します。",
       tags: ["park", "river", "sea", "street"],
       matchMode: "any",
-      criteria: ["3ha以上の公園", "歩ける川・河原", "海・港", "300m以上の商店街"]
+      criteria: ["3ha以上の公園", "歩ける川・河原", "海・港", "買い物を楽しめる商店街"]
     },
     {
       id: "cycling",
@@ -673,7 +675,7 @@ const ATLAS_DATA = (() => {
       description: "一般車道の観光周遊や短い公園周回を除き、長く続く整備道へ自転車で出やすい駅を探します。",
       tags: ["cycle"],
       matchMode: "any",
-      criteria: ["5km以上続く整備されたコース", "ルート入口まで自転車15分以内"]
+      criteria: ["5km程度以上続く整備されたコース", "ルート入口まで自転車15分が目安"]
     },
     {
       id: "books",
@@ -697,7 +699,8 @@ const ATLAS_DATA = (() => {
     }
   ];
 
-  Object.assign(sources, PHOTO_ADDITIONS);
+  Object.assign(sources, PHOTO_ADDITIONS, IMPORTED_PHOTOS, BATCH6_PHOTOS);
+  Object.assign(routeLabels, IMPORTED_ROUTE_LABELS, BATCH6_ROUTE_LABELS);
 
   const enrichedStations = stations.map((station) => applyEvidence({
     ...station,
@@ -709,6 +712,7 @@ const ATLAS_DATA = (() => {
     editorialStatus: "本文は編集要約。条件ごとの確認状況は根拠欄に表示"
   }, tagLabels));
 
+  enrichedStations.push(...[...IMPORTED_STATIONS,...BATCH6_STATIONS].map(s => applyEvidence(s, tagLabels)));
   for (const station of enrichedStations) {
     station.images = [...new Set([...(station.images || []), ...(STATION_PHOTO_ADDITIONS[station.slug] || [])])];
     const features=['large_bookstore','library','cinema','cycle','view','park','drinks'].filter(t=>station.tags.includes(t)).slice(0,3).map(t=>tagLabels[t]);

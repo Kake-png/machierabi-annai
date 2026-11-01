@@ -1,0 +1,92 @@
+[
+  {
+    "record_id": "nakano::view",
+    "judgment": "非該当",
+    "source_urls": "https://yakei.jp/japan/city.php?c=131148 | https://www.city.tokyo-nakano.lg.jp/kanko/machiaruki/nakanochillspot-night.html",
+    "note": "中野区の夜景一覧と区公式の夜の散策案内を確認。駅近の街灯・飲食街・季節イルミネーションのみでは採用しない。おかのうえ公園や広町みらい公園は別駅側の候補で、中野駅徒歩20分以内の適格地点を今回確認できず。限定探索での不採用。全候補の最短経路は未計測。"
+  },
+  {
+    "record_id": "mitaka::cycle",
+    "judgment": "該当",
+    "source_urls": "https://www.tama6.jp/meguri/spot/post_148.html | https://www.city.higashiyamato.lg.jp/kurashi/midokoro/1003873/1007191/1007192.html | https://mapfan.com/spots/SCC,J,VIS5 | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.560833,35.702694;139.5418142,35.713072?overview=full&geometries=geojson&steps=true",
+    "note": "広域行政協議会は約10kmの自転車歩行者専用道、東大和市は直線約11kmと案内。野川公園内の遠い地点への旧計測は採否根拠から外し、別の適格コースへの接続で該当。 駅参照点→接続地点のOSRM自転車経路2263.3m。200m/分で換算、分単位切上げ約12分。 距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。"
+  },
+  {
+    "record_id": "musashisakai::cycle",
+    "judgment": "該当",
+    "source_urls": "https://www.tama6.jp/meguri/spot/post_148.html | https://www.city.higashiyamato.lg.jp/kurashi/midokoro/1003873/1007191/1007192.html | https://mapfan.com/spots/SCC,J,VIS5 | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.544889,35.702278;139.5418142,35.713072?overview=full&geometries=geojson&steps=true",
+    "note": "広域行政協議会は約10kmの自転車歩行者専用道、東大和市は直線約11kmと案内。野川へのアクセスを無理に15分内とせず、近い別コースで該当。 駅参照点→接続地点のOSRM自転車経路1429.0m。200m/分で換算、分単位切上げ約8分。 距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。"
+  },
+  {
+    "record_id": "kinshicho::cycle",
+    "judgment": "該当",
+    "source_urls": "https://koto-suisaipark.jp/about/ | https://koto-suisaipark.jp/tousers.html | https://www.tokyocycling.jp/ja/route-f/ | https://bronptonrider.blogspot.com/2026/01/blog-post.html | https://www.djq.jp/bridge_liblary/river_arakawa/tokyo_bridge_kyunakagawa007_fureai.php | https://www.city.koto.lg.jp/470208/machizukuri/dorohashi/hashiichiran/kudokyo/14843.html | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.813889,35.696667;139.841163,35.700717?overview=full&geometries=geojson&steps=true",
+    "note": "指定管理者がサイクリング利用と最徐行での通行を案内し、ツアー事業者も旧中川サイクリングロードとして採用。2026年1月の実走記録は遊歩道の端から端を約6kmと報告。河川長6.68kmだけを根拠にしない。荒川への直接アクセスの代わりに近隣の旧中川を採用。 駅参照点→接続地点のOSRM自転車経路2902.1m。200m/分で換算、分単位切上げ約15分。橋長56m全体を保守的に押し歩き80m/分として算入しても15分以内。 距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。"
+  },
+  {
+    "record_id": "kinshicho::sea",
+    "judgment": "非該当",
+    "source_urls": "https://www.kouwan.metro.tokyo.lg.jp/business/273/shiteijyokyotop/chuokotokaiganhozenkuiki | https://www.kensetsu.metro.tokyo.lg.jp/river/keihatsu/walkingmap | https://www.gotokyo.org/jp/spot/1095/index.html",
+    "note": "東京港の海岸・港湾隣接地域の案内、江東内部河川の散策資料、荒川河口側の砂町水辺公園を照合。駅近の隅田川・荒川・江東内部河川は川・河原の対象とし、海に接する河口・臨海運河の遊歩道と区別。今回の港湾沿岸候補は当駅の徒歩20分／自転車15分内として確認できず、掲載範囲で非該当。各候補の最短経路は未計測で、全水辺の不存在を示すものではない。"
+  },
+  {
+    "record_id": "shinkoiwa::cinema",
+    "judgment": "非該当",
+    "source_urls": "https://tokubai.co.jp/transit/rail_lines/station_groups/1401/movie_theater | https://x-house.co.jp/column/usefulinfo/xross-1634/",
+    "note": "駅別のトクバイ映画館一覧は0店舗。地域案内でも映画館は錦糸町方面と案内。掲載範囲で徒歩15分以内の常設館を確認できず。掲載漏れを含む不存在の保証ではない。"
+  },
+  {
+    "record_id": "shinkoiwa::sea",
+    "judgment": "非該当",
+    "source_urls": "https://www.kouwan.metro.tokyo.lg.jp/business/273/shiteijyokyotop/chuokotokaiganhozenkuiki | https://www.kensetsu.metro.tokyo.lg.jp/river/keihatsu/walkingmap | https://www.gotokyo.org/jp/spot/1095/index.html",
+    "note": "東京港の海岸・港湾隣接地域の案内、江東内部河川の散策資料、荒川河口側の砂町水辺公園を照合。駅近の隅田川・荒川・江東内部河川は川・河原の対象とし、海に接する河口・臨海運河の遊歩道と区別。今回の港湾沿岸候補は当駅の徒歩20分／自転車15分内として確認できず、掲載範囲で非該当。各候補の最短経路は未計測で、全水辺の不存在を示すものではない。"
+  },
+  {
+    "record_id": "shinkoiwa::view",
+    "judgment": "非該当",
+    "source_urls": "https://www.nightview.info/station/1131405/",
+    "note": "夜景INFO駅別一覧の候補は中川右岸緑道公園徒歩約24分、小松川大橋付近徒歩約30分。どちらも徒歩20分を超える。掲載範囲で非該当。"
+  },
+  {
+    "record_id": "kitasenju::sea",
+    "judgment": "非該当",
+    "source_urls": "https://www.kouwan.metro.tokyo.lg.jp/business/273/shiteijyokyotop/chuokotokaiganhozenkuiki | https://www.kensetsu.metro.tokyo.lg.jp/river/keihatsu/walkingmap | https://www.gotokyo.org/jp/spot/1095/index.html",
+    "note": "東京港の海岸・港湾隣接地域の案内、江東内部河川の散策資料、荒川河口側の砂町水辺公園を照合。駅近の隅田川・荒川・江東内部河川は川・河原の対象とし、海に接する河口・臨海運河の遊歩道と区別。今回の港湾沿岸候補は当駅の徒歩20分／自転車15分内として確認できず、掲載範囲で非該当。各候補の最短経路は未計測で、全水辺の不存在を示すものではない。"
+  },
+  {
+    "record_id": "kitasenju::view",
+    "judgment": "該当",
+    "source_urls": "https://tokyonightfall.com/japan/tokyo/3570/ | https://www.art-center.jp/tokyo/hall/plan.html",
+    "note": "東京芸術センター20階エレベーターホール。訪問取材記事は北千住駅徒歩5分、無料・22時まで、レストラン利用と別にホールから眺望可能と案内。記事更新2023年1月。公式資料でも20階の施設構成を照合。現在の自由入場を公式が保証する資料ではなく、催事や施設運用により変更され得る。"
+  },
+  {
+    "record_id": "akabane::view",
+    "judgment": "非該当",
+    "source_urls": "https://yakei-world.com/spot_view.php?spot=4222 | https://rurubu.jp/andmore/spot/80119708",
+    "note": "赤羽八幡神社は徒歩8分、自由参拝と夜景取材あり。ただし掲載写真・説明は鉄道の明かりと小規模な住宅街の眺望が中心。小規模な眺めだけは採用しない利用者方針に沿い、編集判断で夜景条件には不採用。夜景が全く存在しないという意味ではない。"
+  },
+  {
+    "record_id": "shimokitazawa::cycle",
+    "judgment": "該当",
+    "source_urls": "https://www.gotokyo.org/jp/spot/98/index.html | https://www.city.suginami.tokyo.jp/_res/projects/default_project/_page_/001/031/700/keikakuhonpenn.pdf | https://kousch.info/cycling/ | https://www.djq.jp/bridge_liblary/river_kanda/tokyo_bridge_kanda057_hounan.php | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.6675,35.661389;139.657114,35.680244?overview=full&geometries=geojson&steps=true",
+    "note": "神田川沿い約9kmのコースを採用。栄泉橋までだと3147.4mで16分だが、より近い方南橋から接続すれば15分以内。北沢川緑道約4kmや代々木公園の短い周回を根拠にはしない。 駅参照点→接続地点のOSRM自転車経路2528.5m。200m/分で換算、分単位切上げ約13分。 距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。"
+  },
+  {
+    "record_id": "shimokitazawa::view",
+    "judgment": "非該当",
+    "source_urls": "https://www.kanko-setagaya.jp/activity/view/379 | https://www.kanko-setagaya.jp/course/11",
+    "note": "世田谷観光の展望候補キャロットタワーと羽根木公園～北沢の散策案内、駅名による候補検索を確認。駅徒歩20分以内として採用できる常設の眺望地点を今回確認できず。散歩道や夜の街灯だけでは対象としない。探索範囲での非該当。全経路は未計測。"
+  },
+  {
+    "record_id": "meidaimae::cycle",
+    "judgment": "該当",
+    "source_urls": "https://www.gotokyo.org/jp/spot/98/index.html | https://www.city.suginami.tokyo.jp/_res/projects/default_project/_page_/001/031/700/keikakuhonpenn.pdf | https://kousch.info/cycling/ | https://www.djq.jp/bridge_liblary/river_kanda/tokyo_bridge_kanda049_eisen.php | https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.6505,35.668417;139.648035,35.674984?overview=full&geometries=geojson&steps=true",
+    "note": "東京都観光公式が神田川沿いのサイクリングを案内。杉並区自転車ネットワーク計画は神田川沿いの自転車歩行者専用道を記載。コース案内は井の頭公園～中野富士見町付近を約9kmと紹介。河川全長24.6kmを走行区間長として代用していない。 駅参照点→接続地点のOSRM自転車経路1181.6m。200m/分で換算、分単位切上げ約6分。 距離換算の目安で、信号待ち・休憩は含まない。現地の標識・工事規制に従い、歩行者優先・必要箇所は押し歩き。高速走行やトレーニング向けの専用コースとは表示しない。"
+  },
+  {
+    "record_id": "meidaimae::view",
+    "judgment": "該当",
+    "source_urls": "https://www.nightview.info/detail/fukuniwa/ | https://routing.openstreetmap.de/routed-foot/route/v1/foot/139.6505,35.668417;139.6426795,35.6762073?overview=false",
+    "note": "京王リトナード永福町の屋上庭園ふくにわ。明大前駅参照点→永福町駅参照点のOSRM徒歩経路1451.4m、80m/分で切上げ19分。駅直結建物までの目安で屋上への館内移動は含まない。取材資料では8〜19時開放。秋〜春の日没が早い季節向け。"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "url": "https://routing.openstreetmap.de/routed-foot/route/v1/foot/139.6505,35.668417;139.6426795,35.6762073?overview=false",
+  "response": {
+    "code": "Ok",
+    "routes": [
+      {
+        "legs": [
+          {
+            "steps": [],
+            "weight": 128.45,
+            "summary": "",
+            "duration": 1160.9,
+            "distance": 1451.4
+          }
+        ],
+        "weight_name": "routability",
+        "weight": 128.45,
+        "duration": 1160.9,
+        "distance": 1451.4
+      }
+    ],
+    "waypoints": [
+      {
+        "hint": "2R5rizUiwYtUAQAA1AAAAIMKAAAAAAAACX0IQlXdqEF4jIZDAAAAABABAACqAAAAaQgAAAAAAABxAgAAu-VSCNVBIALE5VIIwUEgAgoArw8AAAAA",
+        "location": [
+          139.650491,
+          35.668437
+        ],
+        "name": "",
+        "distance": 2.363917999
+      },
+      {
+        "hint": "0aYqgMEMK4CuAQAAOwAAAAAAAAAAAAAAmCssQlXtu0AAAAAAAAAAAFgBAAAvAAAAAAAAAAAAAABxAgAA-sZSCMFfIAI4x1IIL2AgAgAAbxIAAAAA",
+        "location": [
+          139.642618,
+          35.676097
+        ],
+        "name": "",
+        "distance": 13.4336725
+      }
+    ]
+  }
+}

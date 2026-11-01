@@ -32,7 +32,7 @@ export function themeContent(theme, data, escape) {
     }
     if(tag === 'large_bookstore' && /取材|運営者資料|現行|候補を/.test(text.slice(0,35))) return '大型本屋の条件に該当。店舗・アクセスは駅の詳細へ';
     if(tag === 'street' && /対象を|現行|公式店舗|組合の/.test(text.slice(0,30))) return '駅周辺に条件を満たす商店街';
-    if(tag === 'drinks' && !text.startsWith('大森') && !text.startsWith('五反田') && !text.startsWith('野毛')) return '駅周辺の酒場街を確認。店舗・アクセスは駅の詳細へ';
+    if(tag === 'drinks') return text;
     if(tag === 'river' && /現に|対象を/.test(text.slice(0,20))) return '川沿いの散歩先あり。経路と所要の目安は駅の詳細へ';
     if(tag === 'sea' && text.length > 160) return '海・運河沿いの散歩先あり。経路と所要の目安は駅の詳細へ';
     if(tag === 'park' && /市の面積|調査/.test(text.slice(0,20))) return '3ha以上の公園へ徒歩15分以内の距離換算';
@@ -45,5 +45,5 @@ export function themeContent(theme, data, escape) {
     return `<li class="theme-station"><div class="theme-station-heading"><h3><a href="/station/${escape(s.slug)}/">${escape(s.name)}駅</a></h3><span>${escape(s.area)}</span></div><ul class="theme-facts">${facts.slice(0,2).map(t=>`<li><span>${escape(data.tagLabels[t])}</span>${escape(brief(s,t))}</li>`).join('')}</ul><p class="theme-station-meta">1K参考家賃 ${Number.isFinite(s.rent1k)?escape(s.rent1k.toFixed(2))+'万円':'未確認'} · ${escape(s.lines.slice(0,3).join('・'))}${s.lines.length>3?' ほか':''}</p><a class="theme-detail" href="/station/${escape(s.slug)}/">駅の詳細・出典を見る →</a></li>`;
   }).join('');
   const section=(tags,title)=>{const cards=rows(tags);return `<section class="theme-results"><div class="theme-results-heading"><h2>${escape(title)}</h2><span>${data.stations.filter(s=>tags.some(t=>selected(s,t))).length}駅</span></div>${cards?`<ul class="theme-stations">${cards}</ul>`:'<p>この条件の掲載駅は現在ありません。</p>'}<a class="theme-map-link" href="${escape(mapLink(tags))}">この条件で地図から探す →</a></section>`;};
-  return `${overallLink}<p class="theme-scope">南東京〜横浜の掲載駅から紹介。${escape(theme.criteria.join('／'))}。 <a href="/criteria/">判定基準</a></p>${theme.id==='weekend-mobility'?trip.map(([tag,title])=>section([tag],title)).join(''):section(theme.tags,'候補駅')}<p class="theme-footnote">家賃は1Kの参考相場。出典・確認日、施設や経路の注意点は各駅の詳細へ。</p><p><a href="/themes/">← 暮らし別の一覧</a></p>`;
+  return `${overallLink}<p class="theme-scope">東京・神奈川・千葉の掲載駅から紹介。${escape(theme.criteria.join('／'))}。 <a href="/criteria/">判定基準</a></p>${theme.id==='weekend-mobility'?trip.map(([tag,title])=>section([tag],title)).join(''):section(theme.tags,'候補駅')}<p class="theme-footnote">家賃は1Kの参考相場。出典・確認日、施設や経路の注意点は各駅の詳細へ。</p><p><a href="/themes/">← 暮らし別の一覧</a></p>`;
 }

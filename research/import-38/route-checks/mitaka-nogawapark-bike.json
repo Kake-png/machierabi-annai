@@ -1,0 +1,43 @@
+{
+  "url": "https://routing.openstreetmap.de/routed-bike/route/v1/bike/139.560833,35.702694;139.52326508928,35.688589906154?overview=false",
+  "response": {
+    "code": "Ok",
+    "routes": [
+      {
+        "legs": [
+          {
+            "steps": [],
+            "weight": 1372.3,
+            "summary": "",
+            "duration": 1372.3,
+            "distance": 4862.7
+          }
+        ],
+        "weight_name": "duration",
+        "weight": 1372.3,
+        "duration": 1372.3,
+        "distance": 4862.7
+      }
+    ],
+    "waypoints": [
+      {
+        "hint": "ZogNhzrkmYgmAAAAAAAAAOIAAACJAAAAd3bKQAAAAAAY-RZCuRG2QSYAAAAAAAAA4gAAAIkAAACmCQAA14dRCMHIIAKBh1EIpscgAggALwsAAAAA",
+        "location": [
+          139.560919,
+          35.702977
+        ],
+        "name": "",
+        "distance": 32.34964953
+      },
+      {
+        "hint": "UBojgOxgioFlAAAAIAAAAFcAAAAAAAAA5VCHQfIqqUAJ1GhBAAAAAGUAAAAgAAAAVwAAAAAAAACmCQAAe_RQCBWQIALB9FAIjpAgAgIAfxIAAAAA",
+        "location": [
+          139.523195,
+          35.688469
+        ],
+        "name": "",
+        "distance": 14.84586675
+      }
+    ]
+  }
+}
