@@ -274,3 +274,23 @@ test('favorites tolerate malformed storage and synchronize other tabs',async()=>
      dom.window.close();
    }
  });
+
+test('color scheme follows device by default and manual choice can return to auto', async () => {
+  const {dom, document, window} = await openPage('', {map:false});
+  const button = document.querySelector('.night-shift-toggle');
+  assert.equal(button.textContent, '表示：自動');
+  assert(document.documentElement.classList.contains('night-shift'));
+  button.click();
+  assert.equal(window.localStorage.getItem('machierabi-color-scheme-v2'), 'dark');
+  button.click();
+  assert.equal(button.textContent, '表示：明るい');
+  assert(!document.documentElement.classList.contains('night-shift'));
+  button.click();
+  assert.equal(button.textContent, '表示：自動');
+  assert(document.documentElement.classList.contains('night-shift'));
+  dom.window.close();
+  const restored = await openPage('', {map:false, storage:{'machierabi-color-scheme-v2':'light'}});
+  assert(!restored.document.documentElement.classList.contains('night-shift'));
+  assert.equal(restored.document.querySelector('.night-shift-toggle').textContent,'表示：明るい');
+  restored.dom.window.close();
+});

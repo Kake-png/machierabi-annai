@@ -701,9 +701,20 @@ body,
 #contact-submit { padding: .65rem 1.4rem; font: inherit; }
 
 /* Warm, dimmer display for night use. The overlay never captures pointer or scroll events. */
-.night-shift body::after { content: ""; position: fixed; inset: 0; z-index: 99999; pointer-events: none; background: rgba(40, 24, 8, .20); }
+
 .night-shift-toggle { align-self: center; margin: 8px; padding: 6px 10px; border: 1px solid #51635c; border-radius: 4px; background: #fff; color: #213d36; font-size: 13px; cursor: pointer; white-space: nowrap; }
 .night-shift-toggle[aria-pressed="true"] { background: #284b41; color: #fff; }
 @media (min-width: 901px) {
   .search-first .atlas-layout { border-left: 32px solid #fff; }
 }
+
+/* Dark palette changes the page surfaces while leaving photographs and map imagery intact. */
+:root.night-shift { --paper:#141b19; --paper-2:#222d29; --white:#1c2522; --ink:#edf3ef; --muted:#b6c5bd; --rule:#4d6058; --green:#9fceb9; --green-2:#a8d2c2; --red:#efaa98; --orange:#efaa98; --blue:#a1cbd5; --violet:#c2bed4; }
+.night-shift body,.night-shift .compare-page,.night-shift .featured-section {background:#141b19;color:var(--ink)}
+.night-shift :is(.site-header,.search-first .atlas-panel,.search-first .panel-head,.search-first .perspectives,.search-first .route-drawer,.search-first .condition-drawer,.search-first .route-drawer>summary,.search-first .condition-drawer>summary,.search-first .condition-match,.search-first .result-summary,.search-first .station-row,.breadcrumb,.station-hero-copy,.station-content,.station-lenses,.compare-title,.compare-table,.compare-table thead th,.compare-table thead th:first-child,.theme-static-copy,.static-seo-content,.quick-note,.site-footer,.site-nav,.life-note,.split-note,.related-item,.feature-link,.feature-copy,.audit-table th,.search-first .filter-chip,.filter-mode select,.compare-controls select,.night-shift-toggle,input,select,textarea) {background:#1c2522;color:#edf3ef;border-color:#4d6058}
+.night-shift :is(.compare-controls,.compare-table th:first-child,.compare-table td:first-child,.station-facts,.compare-table tbody tr:nth-child(even) td,.compare-table tbody tr:nth-child(even) td:first-child) {background:#27332e;color:#edf3ef}
+.night-shift :is(.search-first .filter-group-head h4,.search-first .filter-group:nth-child(n) .filter-group-head h4,.search-first .route-drawer>summary span,.search-first .condition-drawer>summary span,.search-first .result-summary strong,.search-first .row-facts,.condition-status.is-positive,.audit-state.is-positive,.compare-legend,.station-facts small,.station-lenses a) {color:#c6dfd3}
+.night-shift :is(.search-first .filter-chip[aria-pressed="true"],.perspective-chip[aria-pressed="true"],.site-nav a[aria-current="page"]) {background:#376655;color:#fff;border-color:#8fbca7}
+.night-shift :is(.site-nav a:hover,.search-first .station-row:hover,.search-first .filter-chip:hover) {background:#34463e;color:#fff}
+.night-shift .atlas-layout {border-left-color:#141b19}
+@media(max-width:720px){.night-shift .site-header>.site-nav{background:#1c2522}}

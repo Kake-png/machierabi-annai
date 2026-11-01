@@ -10,26 +10,30 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
   const stationBySlug = new Map(stations.map((station) => [station.slug, station]));
   const themeById = new Map(themePresets.map((theme) => [theme.id, theme]));
   const routeById = new Map(routeGroups.flatMap((group) => group.routes.map((route) => [route.id, route])));
-  // Display preference is stored in this browser and applies across pages.
-  const nightKey = "machierabi-night-shift-v1";
-  const nightButton = document.createElement("button");
-  nightButton.type = "button";
-  nightButton.className = "night-shift-toggle";
-  function setNightShift(enabled) {
-    document.documentElement.classList.toggle("night-shift", enabled);
-    nightButton.setAttribute("aria-pressed", String(enabled));
-    nightButton.textContent = enabled ? "夜間表示：オン" : "夜間表示：オフ";
+  // Follow the device by default; a manual choice is kept until reset to auto.
+  const themeKey = "machierabi-color-scheme-v2";
+  const systemTheme = window.matchMedia?.("(prefers-color-scheme: dark)");
+  const themeButton = document.createElement("button");
+  themeButton.type = "button";
+  themeButton.className = "night-shift-toggle";
+  let themeChoice = "auto";
+  try { const saved = localStorage.getItem(themeKey); if (["auto", "dark", "light"].includes(saved)) themeChoice = saved; } catch {}
+  function applyTheme() {
+    const dark = themeChoice === "dark" || (themeChoice === "auto" && !!systemTheme?.matches);
+    document.documentElement.classList.toggle("night-shift", dark);
+    document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    themeButton.textContent = `表示：${{auto:"自動",dark:"暗い",light:"明るい"}[themeChoice]}`;
+    themeButton.setAttribute("aria-label", `画面表示：${{auto:"端末に合わせる",dark:"暗い表示",light:"明るい表示"}[themeChoice]}。押すと切り替えます`);
   }
-  let nightEnabled = false;
-  try { nightEnabled = localStorage.getItem(nightKey) === "on"; } catch {}
-  setNightShift(nightEnabled);
-  nightButton.addEventListener("click", () => {
-    nightEnabled = !document.documentElement.classList.contains("night-shift");
-    setNightShift(nightEnabled);
-    try { localStorage.setItem(nightKey, nightEnabled ? "on" : "off"); } catch {}
+  applyTheme();
+  themeButton.addEventListener("click", () => {
+    themeChoice = ({auto:"dark",dark:"light",light:"auto"})[themeChoice];
+    try { localStorage.setItem(themeKey, themeChoice); } catch {}
+    applyTheme();
   });
-  document.querySelector(".site-nav")?.append(nightButton);
-  window.addEventListener("storage", event => { if (event.key === nightKey) setNightShift(event.newValue === "on"); });
+  document.querySelector(".site-nav")?.append(themeButton);
+  systemTheme?.addEventListener?.("change", applyTheme);
+  window.addEventListener("storage", event => { if (event.key === themeKey) { themeChoice = ["dark", "light"].includes(event.newValue) ? event.newValue : "auto"; applyTheme(); } });
 
   const compareKey = "ekimachi-compare-v1";
   const leaflet = window.L || null;
