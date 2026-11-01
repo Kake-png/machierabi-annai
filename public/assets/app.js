@@ -199,7 +199,7 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
     const themePathMatch = location.pathname.match(/\/themes\/([^/]+)/);
     const themeId = document.body.dataset.themeId || (themePathMatch && decodeURIComponent(themePathMatch[1])) || new URLSearchParams(location.search).get("theme");
     const activeTheme = themeById.get(themeId) || null;
-    if (!filterList || !searchInput || !stationList || !atlasPanel || !resultCount || !featuredGrid || !matchMode || !clearFilters || !themeContext || !perspectiveList || !rentMax || !routeList || !routeMatchMode || !clearRoutes) return;
+    if (!filterList || !searchInput || !stationList || !atlasPanel || !resultCount || !matchMode || !clearFilters || !themeContext || !perspectiveList || !rentMax || !routeList || !routeMatchMode || !clearRoutes) return;
 
     const initialState = readSearchState(new URLSearchParams(location.search), ATLAS_DATA, {
       themes: activeTheme ? [activeTheme.id] : [],
@@ -599,7 +599,7 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
       ? stations.filter((station) => matchesTheme(station, activeTheme)).slice(0, 6)
       : stations.slice(0, 6);
     if (activeTheme && featuredTitle) featuredTitle.textContent = `${activeTheme.navLabel}で探す候補駅`;
-    featuredGrid.innerHTML = featuredStations.map((station) => {
+    if (featuredGrid) featuredGrid.innerHTML = featuredStations.map((station) => {
       const photo = sources[station.images[0]];
       return `<a class="feature-link" href="${stationUrl(station)}">
         ${photo ? `<div class="feature-image"><img src="${escapeHtml(imageUrl(photo))}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="1200" height="900"></div>` : ""}

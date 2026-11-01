@@ -294,3 +294,12 @@ test('color scheme follows device by default and manual choice can return to aut
   assert.equal(restored.document.querySelector('.night-shift-toggle').textContent,'表示：明るい');
   restored.dom.window.close();
 });
+
+test('station guide links to the directory without duplicating all stations on the home page', async () => {
+ const {dom, document} = await openPage('', {map:false});
+ const guide = [...document.querySelectorAll('.theme-static-copy')].find(x => x.querySelector('h2')?.textContent === '掲載駅のガイド');
+ assert(guide?.querySelector('a[href="/stations/"]'));
+ assert.equal(guide.querySelectorAll('a[href^="/station/"]').length, 0);
+ assert.equal(document.querySelectorAll('.station-row').length, ATLAS_DATA.stations.length);
+ dom.window.close();
+});

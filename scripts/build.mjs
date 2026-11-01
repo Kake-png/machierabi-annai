@@ -171,7 +171,7 @@ writeDirectory("data-status", "条件データの確認状況", `${summary.total
 // The home retains these markers; generated content is replaced, not appended.
 const entryLinks = `<nav class="entry-links" aria-label="他の探し方"><a href="/themes/">暮らし別に探す</a><a href="/routes/">路線別に探す</a><a href="/stations/">駅名から探す</a></nav>`;
 let home = homeTemplate.replace(/<!--ENTRY_START-->[\s\S]*?<!--ENTRY_END-->/, `<!--ENTRY_START-->${entryLinks}<!--ENTRY_END-->`)
-  .replace(/<!--DIRECTORY_START-->[\s\S]*?<!--DIRECTORY_END-->/, `<!--DIRECTORY_START--><section class="theme-static-copy"><h2>掲載駅のガイド</h2><ul class="directory-list">${stationLinks(ATLAS_DATA.stations)}</ul></section><!--DIRECTORY_END-->`);
+  .replace(/<!--DIRECTORY_START-->[\s\S]*?<!--DIRECTORY_END-->/, `<!--DIRECTORY_START--><section class="theme-static-copy"><h2>掲載駅のガイド</h2><p>駅ごとの写真や暮らしの情報を紹介しています。</p><a href="/stations/">掲載駅の一覧を見る →</a></section><!--DIRECTORY_END-->`);
 writePage("", home);
 const notFound = directoryTemplate.replaceAll("{{TITLE}}", "ページが見つかりません").replaceAll("{{DESCRIPTION}}", "URLを確認するか、地図・暮らし別・駅一覧から探してください。").replace("{{CONTENT}}", '<p><a class="button" href="/">地図から探す</a> <a href="/stations/">駅一覧へ</a></p>');
 fs.writeFileSync(path.join(root, "public", "404.html"), finalizeHtml(notFound.replace("</head>", '<meta name="robots" content="noindex,follow"></head>'), "404"));
@@ -193,9 +193,9 @@ const sitemapPaths = [
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPaths.map((url) => `  <url><loc>${siteOrigin}${url}</loc></url>`).join("\n")}\n</urlset>\n`;
 fs.writeFileSync(path.join(root, "public", "sitemap.xml"), sitemap);
 fs.writeFileSync(path.join(root, "public", "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${siteOrigin}/sitemap.xml\n`);
-fs.writeFileSync(path.join(root, "public", "deployment-version.txt"), "machierabi-annai-v74\n2026-10-31\n");
+fs.writeFileSync(path.join(root, "public", "deployment-version.txt"), "machierabi-annai-v75\n2026-10-31\n");
 
 const fingerprints = Object.fromEntries(["assets/app.js", "assets/route-layout.js", "assets/data.js", "assets/evidence.js", "assets/audit-data.js", "assets/evidence-view.js", "assets/search.js", "assets/style.css", "assets/interface-v34.css", "index.html"].map((file) => [file, createHash("sha256").update(fs.readFileSync(path.join(root, "public", file))).digest("hex")]));
-fs.writeFileSync(path.join(root, "public", "release.json"), JSON.stringify({ version: "machierabi-annai-v74", date: "2026-11-02", stationCount: ATLAS_DATA.stations.length, audit: ATLAS_DATA.auditSummary, fingerprints }, null, 2) + "\n");
+fs.writeFileSync(path.join(root, "public", "release.json"), JSON.stringify({ version: "machierabi-annai-v75", date: "2026-11-02", stationCount: ATLAS_DATA.stations.length, audit: ATLAS_DATA.auditSummary, fingerprints }, null, 2) + "\n");
 
 console.log(`Built ${ATLAS_DATA.stations.length} station pages, ${ATLAS_DATA.themePresets.length} theme pages, and copied Leaflet browser assets.`);

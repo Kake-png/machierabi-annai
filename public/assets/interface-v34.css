@@ -718,3 +718,15 @@ body,
 .night-shift :is(.site-nav a:hover,.search-first .station-row:hover,.search-first .filter-chip:hover) {background:#34463e;color:#fff}
 .night-shift .atlas-layout {border-left-color:#141b19}
 @media(max-width:720px){.night-shift .site-header>.site-nav{background:#1c2522}}
+
+/* Dark mode: unify the entire result card and keep controls readable. */
+.night-shift .leaflet-tile-pane { filter: grayscale(1) invert(1) brightness(.72) contrast(.88) !important; opacity:1 !important; }
+.night-shift .search-first .station-result { background:#1c2522; border-color:#42534b; }
+.night-shift :is(.favorite-button,#favorites-only,#hobby-list button,.route-chip,.perspective-chip,.relax-condition) { background:#27352f; color:#e8f0eb; border-color:#72887a; }
+.night-shift :is(.favorite-button[aria-pressed=true],#favorites-only[aria-pressed=true],#hobby-list button[aria-pressed=true],.route-chip[aria-pressed=true],.perspective-chip[aria-pressed=true]) { background:#396452; color:#fff; border-color:#98c3ad; }
+.night-shift :is(.hobby-entry p,.priority-guide,.service-description,.search-first .result-evidence>summary,.rent-scale,.selected-evidence small,.search-first .row-facts,.search-first .selected-evidence .condition-badge) { color:#c2d1c8; }
+.night-shift .search-first .selected-evidence .condition-badge { background:#293b32; border-color:#718a7a; }
+.night-shift :is(.map-toolbar,.map-popup,.station-map-note,.leaflet-control-attribution) { background:rgba(27,38,33,.96) !important; color:#e1ece5 !important; border-color:#718579; }
+.night-shift :is(.map-toolbar a,.map-popup a,.leaflet-control-attribution a) { color:#b5dbc5 !important; }
+.night-shift .leaflet-control-zoom a { background:#293b32; color:#e3eee7; border-color:#718579; }
+@media(min-width:901px) { .search-first .atlas-panel { border-left:1px solid #a4b0a9; } .night-shift .search-first .atlas-panel { border-left-color:#687d71; } }
