@@ -699,3 +699,11 @@ body,
 #contact-form input:not([type="hidden"]),#contact-form textarea { width: min(100%, 42rem); padding: .6rem; font: inherit; border: 1px solid #667974; border-radius: 3px; }
 #contact-form label { font-weight: 700; }
 #contact-submit { padding: .65rem 1.4rem; font: inherit; }
+
+/* Warm, dimmer display for night use. The overlay never captures pointer or scroll events. */
+.night-shift body::after { content: ""; position: fixed; inset: 0; z-index: 99999; pointer-events: none; background: rgba(40, 24, 8, .20); }
+.night-shift-toggle { align-self: center; margin: 8px; padding: 6px 10px; border: 1px solid #51635c; border-radius: 4px; background: #fff; color: #213d36; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.night-shift-toggle[aria-pressed="true"] { background: #284b41; color: #fff; }
+@media (min-width: 901px) {
+  .search-first .atlas-layout { border-left: 32px solid #fff; }
+}

@@ -10,6 +10,27 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
   const stationBySlug = new Map(stations.map((station) => [station.slug, station]));
   const themeById = new Map(themePresets.map((theme) => [theme.id, theme]));
   const routeById = new Map(routeGroups.flatMap((group) => group.routes.map((route) => [route.id, route])));
+  // Display preference is stored in this browser and applies across pages.
+  const nightKey = "machierabi-night-shift-v1";
+  const nightButton = document.createElement("button");
+  nightButton.type = "button";
+  nightButton.className = "night-shift-toggle";
+  function setNightShift(enabled) {
+    document.documentElement.classList.toggle("night-shift", enabled);
+    nightButton.setAttribute("aria-pressed", String(enabled));
+    nightButton.textContent = enabled ? "夜間表示：オン" : "夜間表示：オフ";
+  }
+  let nightEnabled = false;
+  try { nightEnabled = localStorage.getItem(nightKey) === "on"; } catch {}
+  setNightShift(nightEnabled);
+  nightButton.addEventListener("click", () => {
+    nightEnabled = !document.documentElement.classList.contains("night-shift");
+    setNightShift(nightEnabled);
+    try { localStorage.setItem(nightKey, nightEnabled ? "on" : "off"); } catch {}
+  });
+  document.querySelector(".site-nav")?.append(nightButton);
+  window.addEventListener("storage", event => { if (event.key === nightKey) setNightShift(event.newValue === "on"); });
+
   const compareKey = "ekimachi-compare-v1";
   const leaflet = window.L || null;
 
@@ -598,12 +619,12 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
         ["3–7分", "生活の通り", "日常の買い物と、幹線道路・線路を越える経路を見る。"],
         ["7–12分", "住宅地", "道幅、坂、夜の明るさ、駅までの戻りやすさを確かめる。"]
       ],
-      notes: station.notes || {
+      notes: Object.assign({
         transport: `${station.lines.join("、")}を利用できる。路線名だけでなく、改札・ホームまでの移動も現地で確認したい。`,
         daily: `「${station.descriptor}」という街の骨格を、普段使う店と帰宅経路から確かめる。`,
         atmosphere: station.summary,
         weekend: "平日夜と休日昼に歩き、店の開き方や人通りの違いを見ると生活を想像しやすい。"
-      }
+      }, Object.fromEntries(Object.entries(station.notes || {}).filter(([, value]) => typeof value === "string" && value.trim())))
     };
   }
 

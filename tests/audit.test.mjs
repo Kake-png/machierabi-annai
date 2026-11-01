@@ -99,3 +99,13 @@ test("empty theme pages stay usable but are excluded from search indexing and si
     assert(!sitemap.includes(`/themes/${theme.id}/`));
   }
 });
+
+test("all station profiles provide the four daily-life notes", () => {
+  for (const station of data.stations) {
+    for (const key of ["transport", "daily", "atmosphere", "weekend"]) {
+      assert(station.notes?.[key]?.trim(), `${station.name}: ${key} is empty`);
+    }
+  }
+  assert.match(data.stations.find(s => s.slug === 'itabashi').notes.transport, /徒歩圏/);
+  assert.match(data.stations.find(s => s.slug === 'nishifunabashi').notes.atmosphere, /中山橋/);
+});
