@@ -747,3 +747,12 @@ body,
 .night-shift #selected-conditions { background:#202c27; border-color:#4d6058; }
 .night-shift #selected-conditions button { background:#30443a; color:#edf3ef; border-color:#718a7a; }
 .night-shift #selected-conditions button:hover, .night-shift #selected-conditions button:focus-visible { background:#40594b; color:#fff; }
+
+/* 地図タイルの読み込み中に見える背景色 */
+.leaflet-container {
+  background: #e2e7e0;
+}
+
+.night-shift .leaflet-container {
+  background: #222624;
+}
