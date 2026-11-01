@@ -42,8 +42,11 @@ const templates = path.join(root, "templates");
 const publishedPages = new Map();
 function finalizeHtml(html, relativePath) {
   const url = `${siteOrigin}/${relativePath ? `${relativePath.replaceAll(path.sep, "/")}/` : ""}`;
+  // Apply the saved or system color scheme before stylesheets and page content paint.
+  const earlyTheme = `<!--EARLY_THEME_START--><script>(function(){var choice='auto';try{var saved=localStorage.getItem('machierabi-color-scheme-v2');if(['auto','dark','light'].includes(saved))choice=saved}catch(e){}var dark=choice==='dark'||(choice==='auto'&&!!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches));document.documentElement.classList.toggle('night-shift',dark);document.documentElement.style.colorScheme=dark?'dark':'light'})()</script><style>html.night-shift{background:#141b19}</style><!--EARLY_THEME_END-->`;
+  html = html.replace(/<!--EARLY_THEME_START-->[\s\S]*?<!--EARLY_THEME_END-->/g, "").replace(/<head>/i, `<head>${earlyTheme}`);
   html = html.replaceAll("?v=60", "?v=63").replaceAll("?v=59", "?v=63").replaceAll("?v=57", "?v=63").replaceAll("?v=56", "?v=63").replaceAll("?v=54", "?v=63").replaceAll("?v=53", "?v=63").replaceAll("?v=52", "?v=63").replaceAll("?v=51", "?v=63").replaceAll("?v=50", "?v=63").replaceAll("?v=49", "?v=63").replaceAll("?v=48", "?v=63").replaceAll("?v=47", "?v=63").replaceAll("?v=46", "?v=63").replaceAll("?v=45", "?v=63").replaceAll("?v=44", "?v=63").replaceAll("?v=40", "?v=63").replaceAll("?v=34", "?v=63")
-    .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=64"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=64"')
+    .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=65"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=65"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=65"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
   html = html.replace("制定・最終更新：2026年9月21日", "制定：2026年9月21日・最終更新：2026年10月17日")
     .replace("駅徒歩10分以内・管理費等を除く平均", "HOME’Sの1K参考相場・管理費等を除く")
