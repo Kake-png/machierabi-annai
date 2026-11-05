@@ -11,7 +11,7 @@ import { createHash } from "node:crypto";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 syncAudit(root);
 const { ATLAS_DATA } = await import("../public/assets/data.js");
-const siteOrigin = (process.env.SITE_ORIGIN || "https://machierabi-annai.kake-web.workers.dev").replace(/\/$/, "");
+const siteOrigin = (process.env.SITE_ORIGIN || "https://machierabi.3f7735.org").replace(/\/$/, "");
 const originUrl = new URL(siteOrigin);
 if (originUrl.protocol !== "https:" || originUrl.pathname !== "/" || originUrl.search || originUrl.hash) throw new Error("SITE_ORIGIN must be a plain HTTPS origin");
 const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({
