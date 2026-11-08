@@ -313,3 +313,14 @@ test('station guide links to the directory without duplicating all stations on t
  assert.equal(document.querySelectorAll('.station-row').length, ATLAS_DATA.stations.length);
  dom.window.close();
 });
+
+test('route search filters company groups and keeps selected counts', async () => {
+  const {dom,document,window}=await openPage('');
+  const input=document.querySelector('.route-name-search');
+  input.value='東西';input.dispatchEvent(new window.Event('input',{bubbles:true}));
+  const button=[...document.querySelectorAll('[data-route]')].find(b=>b.textContent.includes('東西線'));
+  assert(button && !button.hidden);assert(button.closest('details').open);button.click();
+  assert.match(button.closest('details').querySelector('summary').textContent,/1路線選択中/);
+  input.value='';input.dispatchEvent(new window.Event('input',{bubbles:true}));
+  assert.equal(button.getAttribute('aria-pressed'),'true');dom.window.close();
+});

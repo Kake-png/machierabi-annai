@@ -806,3 +806,7 @@ body,
 .night-shift #selected-conditions { background:#202c27; border-color:#4d6058; }
 .night-shift #selected-conditions button { background:#30443a; color:#edf3ef; border-color:#718a7a; }
 .night-shift #selected-conditions button:hover, .night-shift #selected-conditions button:focus-visible { background:#40594b; color:#fff; }
+
+.route-name-search{width:100%;box-sizing:border-box;padding:.65rem;margin-bottom:.6rem;font:inherit;color:inherit;background:transparent;border:1px solid #82958e;border-radius:4px}.route-group>summary{cursor:pointer;display:flex;justify-content:space-between;gap:.5rem;padding:.65rem 0;font-weight:700}.route-selected-count{font-size:.8rem;font-weight:400}.route-group-options{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 0 .75rem}.route-chip[hidden],.route-group[hidden]{display:none!important}
+
+.theme-feature-grid{display:grid;grid-template-columns:1fr;gap:2rem}.theme-feature{display:grid;grid-template-columns:minmax(200px,32%) 1fr;gap:1.5rem}.theme-feature p{line-height:1.85}@media(max-width:700px){.theme-feature{grid-template-columns:1fr;gap:.5rem}}

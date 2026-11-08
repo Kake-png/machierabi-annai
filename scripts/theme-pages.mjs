@@ -55,10 +55,20 @@ export function themeContent(theme, data, escape) {
     'car-life': {
       lead: '休日に車で出かけたい人へ、高速入口へのアクセスから駅を探します。',
       heading: '入口が近くても、実際の運転時間は変わる',
-      paragraphs: ['このページは駅近くの車道から高速入口までの経路推計15分以内を目安にした掲載駅です。駅の出口から歩く時間や自宅からの運転時間ではありません。入口の方向やETC専用などの条件は駅ページの根拠で確認してください。', '掲載した推計には渋滞や信号待ちの実績が含まれません。休日のドライブに使うなら、出発時刻を指定した地図サービスでもう一度確認するのが実用的です。駐車場の確保や幹線道路への出やすさは物件の場所で変わります。'],
+      paragraphs: ['このページは駅近くの車道から高速入口までの経路推計15分以内を目安にした掲載駅です。駅の出口から歩く時間や自宅からの運転時間ではありません。入口の方向やETC専用などの条件は駅ページの根拠で確認してください。', '所要時間には、渋滞を含まない経路推計と日時を指定した地図の予測が混在します。確認した日時や方法は駅ごとの根拠をご覧ください。休日に使うなら、出発時刻を指定した地図サービスでもう一度確認するのが実用的です。駐車場の確保や幹線道路への出やすさは物件の場所で変わります。'],
       points: ['向かいたい方向の入口か確認する', '使う日時の交通状況で所要時間を見直す', '物件からの出発経路と駐車場を別に確認する'],
       picks: [['oimachi','五反田入口方面'],['ogikubo','高井戸入口方面'],['kawasaki','川崎周辺の入口']]
     }
+  };
+  const introductions = {
+    books:'駅の近くに本屋や図書館があると、読みたい本が決まっていない日も、帰り道に棚を眺められます。品ぞろえを比べたい人と、気軽に借りたい人では、選びたい街も変わります。',
+    movies:'仕事帰りに一本観て帰る日も、休日に気になる作品を選ぶ日も。映画館が生活圏にあると、映画に行くためだけに遠出する必要がなくなります。',
+    drinking:'飲み歩く街を選ぶとき、店の数だけでは雰囲気はわかりません。駅を降りてどんな通りを歩き、どんな店に立ち寄れそうか。街のまとまりから考えてみます。',
+    strolling:'休日の散歩先は、公園の緑、水辺の開放感、店先を眺める商店街とさまざまです。毎日歩く街だからこそ、気分に合う景色を探してみましょう。',
+    cycling:'自転車を出してからコースにたどり着くまでの道も、休日の走りやすさを左右します。多摩川、鶴見川、荒川を例に、川沿いへ出やすい駅を見てみましょう。',
+    'night-walk':'水辺の灯りを歩きながら眺めるか、展望施設から街を見渡すか。夜景の楽しみ方は場所によって違います。帰り道に寄れる景色から、暮らす街を探します。',
+    'weekend-mobility':'金曜の夜に旅へ出る、朝から車で遠出する。よく使う移動手段から考えると、休日の行き先と普段の住まい選びがつながります。',
+    'car-life':'休日に車を出すなら、高速入口までのアクセスは住む場所を考える材料の一つ。方向の違う入口や駅周辺の道路にも目を向けながら候補を比べます。'
   };
   const article = articles[theme.id];
   if (!article) throw Error(`Missing theme article: ${theme.id}`);
@@ -88,7 +98,7 @@ export function themeContent(theme, data, escape) {
     if(tag === 'view' && s.slug === 'musashikosugi') return '東急スクエア4F展望デッキは駅直結。通常21時まで、12月〜3月は17時までのため夜景目的では季節に注意';
     if(tag === 'expressway') {
       const entry = text.match(/([\p{Script=Han}\p{Script=Katakana}ー]+入口)（([^）]+)）/u);
-      return `${entry ? entry[1]+'（'+entry[2]+'）' : '高速道路入口'}へ、渋滞を含まない経路推計で15分以内`;
+      return text;
     }
     if(tag === 'large_bookstore' && /取材|運営者資料|現行|候補を/.test(text.slice(0,35))) return '大型本屋の条件に該当。店舗・アクセスは駅の詳細へ';
     if(tag === 'street' && /対象を|現行|公式店舗|組合の/.test(text.slice(0,30))) return '駅周辺に条件を満たす商店街';
@@ -100,15 +110,25 @@ export function themeContent(theme, data, escape) {
     const result = sentences.slice(0,tag === 'view' ? 3 : 1).join('');
     return result.length > 160 ? `${data.tagLabels[tag]}の条件に該当。施設・アクセスは駅の詳細へ` : result;
   };
-  const featured = article.picks.map(([slug, label]) => {
+  const editorialAngles = {
+    books:['図書館も本屋も生活の動線に入れたい人なら、両方の場所を比べたい駅です。','駅直結の本屋に立ち寄りやすく、移動や買い物と読書を組み合わせやすい駅です。','本を探す時間と街歩きを一緒に楽しみたい人は、本屋と図書館の位置を見てみてください。'],
+    movies:['駅から映画館へ立ち寄りやすい場所を選びたい人向けです。','映画を見る前後の食事や買い物も含めて、駅の東西を見比べられます。','駅周辺で映画と街歩きを組み合わせたい人は、劇場までの道を確認してみてください。'],
+    drinking:['蒲田を目的地にするなら、駅周辺の通りを歩きながら店を選ぶ楽しみがあります。','駅近くにまとまった酒場街を歩きたい人は、通りの雰囲気を比べたいところです。','細い通りを巡りながら、気になる店を探したい人に向いた街です。'],
+    strolling:['買い物の通りと公園の両方を散歩先にしたい人は、それぞれの位置を比べられます。','公園の緑と川沿いの景色を、休日の過ごし方に取り入れたい人向けです。','駅周辺の商店街と緑のある道を、目的に合わせて歩き分けられます。'],
+    cycling:['多摩川沿いを走りたい人は、駅から河川敷へ出る道を確認したい駅です。','鶴見川沿いを目的にするなら、コースに接続する場所から住まいまでの道も見ておきたいところです。','荒川方面へ走りに行く人は、河川敷までの接続地点を確認して比べられます。'],
+    'night-walk':['水辺を歩きながら街の明かりを楽しみたい人は、夜の帰り道も含めて考えたい街です。','屋内の展望場所を利用したい場合は、開いている時間を先に確認しておきましょう。','川の向こうに広がる街の灯りを、散歩と一緒に楽しみたい人向けです。'],
+    'weekend-mobility':['空港、新幹線駅、車のそれぞれの条件を比較したいときの候補です。','羽田方面や新幹線への乗り継ぎを考えながら、普段の移動も比べたい駅です。','空港や新幹線駅へ出る経路に加えて、車を使う休日の動線も比べられます。'],
+    'car-life':['都心方面から高速へ出る経路を調べる際に、入口の方向を確認したい駅です。','中央道方面を利用したい人は、高井戸周辺までの経路を見てみましょう。','川崎周辺の入口を使う場合も、向かう方向と入口の条件を確認したいところです。']
+  };
+  const featured = article.picks.map(([slug, label], index) => {
     const station = data.stations.find(s => s.slug === slug);
     if (!station || !theme.tags.some(tag => selected(station, tag))) throw Error(`Unverified theme example: ${theme.id}/${slug}`);
     const facts = theme.tags.filter(tag => selected(station, tag));
     const photo = data.sources[station.images?.[0]];
     const photoHtml = photo ? `<figure><img src="/${escape(photo.file)}" alt="${escape(photo.alt)}" loading="lazy" width="640" height="480"><figcaption>${escape(photo.date)}撮影 · ${escape(photo.author)} · <a href="${escape(photo.licenseUrl)}">${escape(photo.license)}</a> · <a href="${escape(photo.sourceUrl)}">写真の出典</a></figcaption></figure>` : '';
-    return `<article class="theme-feature">${photoHtml}<div class="theme-feature-body"><p class="theme-feature-label">${escape(label)}</p><h3><a href="/station/${escape(slug)}/">${escape(station.name)}駅</a></h3><p>${escape(brief(station,facts[0]))}</p><p class="theme-feature-meta">${facts.map(tag => escape(data.tagLabels[tag])).join(' · ')} · 1K参考家賃 ${Number.isFinite(station.rent1k) ? escape(station.rent1k.toFixed(2))+'万円' : '未確認'}</p><a class="theme-detail" href="/station/${escape(slug)}/#evidence">この駅の理由・出典を見る →</a></div></article>`;
+    return `<article class="theme-feature">${photoHtml}<div class="theme-feature-body"><p class="theme-feature-label">${escape(label)}</p><h3><a href="/station/${escape(slug)}/">${escape(station.name)}駅</a></h3><p>${escape(editorialAngles[theme.id][index])}</p><p>${escape(brief(station,facts[0]))}</p>${facts.slice(1,3).map(tag=>`<p>${escape(brief(station,tag))}</p>`).join('')}<p>${escape((station.strengths || []).slice(0,2).join('。'))}</p><p class="theme-feature-meta">${facts.map(tag => escape(data.tagLabels[tag])).join(' · ')} · 1K参考家賃 ${Number.isFinite(station.rent1k) ? escape(station.rent1k.toFixed(2))+'万円' : '未確認'}</p><a class="theme-detail" href="/station/${escape(slug)}/#evidence">この駅の理由・出典を見る →</a></div></article>`;
   }).join('');
-  const articleHtml = `<div class="theme-article-lead"><p>${escape(article.lead)}</p><nav aria-label="この記事の内容"><a href="#theme-guide">選び方</a><a href="#theme-examples">駅の例</a><a href="#theme-all">全候補</a></nav></div><section class="theme-article-section" id="theme-guide"><h2>${escape(article.heading)}</h2>${article.paragraphs.map(p => `<p>${escape(p)}</p>`).join('')}<div class="theme-checklist"><h3>比べるときの確認点</h3><ul>${article.points.map(p => `<li>${escape(p)}</li>`).join('')}</ul></div></section><section class="theme-article-section" id="theme-examples"><div class="theme-article-heading"><div><p class="theme-overline">駅の例</p><h2>まず比べたい3駅</h2></div><p>掲載条件が確認できた駅から、違いが見える例を挙げています。順位付けではありません。</p></div><div class="theme-feature-grid">${featured}</div></section>`;
+  const articleHtml = `<div class="theme-article-lead"><p>${escape(article.lead)}</p><p>${escape(introductions[theme.id])}</p><nav aria-label="この記事の内容"><a href="#theme-guide">選び方</a><a href="#theme-examples">駅の例</a><a href="#theme-all">全候補</a></nav></div><section class="theme-article-section" id="theme-guide"><h2>${escape(article.heading)}</h2>${article.paragraphs.map(p => `<p>${escape(p)}</p>`).join('')}<div class="theme-checklist"><h3>比べるときの確認点</h3><ul>${article.points.map(p => `<li>${escape(p)}</li>`).join('')}</ul></div></section><section class="theme-article-section" id="theme-examples"><div class="theme-article-heading"><div><p class="theme-overline">駅の例</p><h2>それぞれの街で、どんな暮らしができる？</h2></div><p>掲載条件が確認できた駅から、違いが見える例を挙げています。順位付けではありません。</p></div><div class="theme-feature-grid">${featured}</div></section>`;
   const rows = tags => data.stations.filter(s=>tags.some(t=>selected(s,t))).map(s=> {
     const facts=tags.filter(t=>selected(s,t));
     return `<li class="theme-station"><div class="theme-station-heading"><h3><a href="/station/${escape(s.slug)}/">${escape(s.name)}駅</a></h3><span>${escape(s.area)}</span></div><ul class="theme-facts">${facts.slice(0,2).map(t=>`<li><span>${escape(data.tagLabels[t])}</span>${escape(brief(s,t))}</li>`).join('')}</ul><p class="theme-station-meta">1K参考家賃 ${Number.isFinite(s.rent1k)?escape(s.rent1k.toFixed(2))+'万円':'未確認'} · ${escape(s.lines.slice(0,3).join('・'))}${s.lines.length>3?' ほか':''}</p><a class="theme-detail" href="/station/${escape(s.slug)}/">駅の詳細・出典を見る →</a></li>`;

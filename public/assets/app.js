@@ -1,5 +1,5 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
-import { ATLAS_DATA } from "/assets/data.js?v=59";
+import { ATLAS_DATA } from "/assets/data.js?v=70";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
 import { evidenceHtml } from "/assets/evidence-view.js?v=59";
 
@@ -304,35 +304,41 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
     syncTagButtons();
     if (criteriaList) criteriaList.innerHTML = filterGroups.flatMap((group) => group.tags).map((key) => `<div><dt>${escapeHtml(tagLabels[key])}</dt><dd>${escapeHtml(tagCriteria[key])}</dd></div>`).join("");
 
-    routeGroups.forEach((group) => {
-      const section = document.createElement("section");
-      section.className = "route-group";
-      section.innerHTML = `<h4>${escapeHtml(group.label)}</h4><div class="route-group-options"></div>`;
-      const options = section.querySelector(".route-group-options");
-      group.routes.forEach((route) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "route-chip";
-        button.textContent = route.label;
-        if (route.filterOnly) button.title = "駅の絞り込みに対応。地図の路線線形は未収録です";
-        if (route.mapOnly) button.title = "路線表示に対応。掲載駅は準備中です";
-        button.dataset.route = route.id;
-        button.style.setProperty("--route-color", route.color);
-        button.setAttribute("aria-pressed", String(activeRoutes.has(route.id)));
-        if (route.available === false) {
-          button.disabled = true;
-          button.title = "掲載駅の追加後に選べます";
-        }
-        button.addEventListener("click", () => {
-          if (activeRoutes.has(route.id)) activeRoutes.delete(route.id); else activeRoutes.add(route.id);
-          button.setAttribute("aria-pressed", String(activeRoutes.has(route.id)));
-          applyFilters();
-        });
-        options.append(button);
-        chipByRoute.set(route.id, button);
-      });
-      routeList.append(section);
-    });
+    const routeSearch = document.createElement("input");
+    routeSearch.type = "search"; routeSearch.placeholder = "路線名で検索"; routeSearch.setAttribute("aria-label", "路線名で検索"); routeSearch.className = "route-name-search";
+    routeList.before(routeSearch);
+    const groupNames = {jr:'JR東日本',tokyu:'東急電鉄'};
+    const allRoutes = routeGroups.flatMap(group => group.routes.map(route => ({route, original:group.id})));
+    const groups = new Map();
+    for (const {route, original} of allRoutes) {
+      const label = route.label;
+      const group = groupNames[original] || (label.startsWith('JR') ? 'JR東日本' : label.startsWith('東京メトロ') ? '東京メトロ' : label.startsWith('都営') || label.startsWith('都電') || label.startsWith('日暮里・舎人') ? '都営交通' : label.startsWith('東急') ? '東急電鉄' : label.startsWith('京急') ? '京急電鉄' : label.startsWith('京王') ? '京王電鉄' : label.startsWith('小田急') ? '小田急電鉄' : label.startsWith('西武') ? '西武鉄道' : label.startsWith('東武') ? '東武鉄道' : label.startsWith('京成') ? '京成電鉄' : 'その他の鉄道');
+      if(!groups.has(group)) groups.set(group, []); groups.get(group).push(route);
+    }
+    for(const [label, routes] of groups) {
+      const section=document.createElement('details'); section.className='route-group';
+      const heading=document.createElement('summary'); heading.textContent=label; const count=document.createElement('span');count.className='route-selected-count';heading.append(count);section.append(heading);
+      const options=document.createElement('div');options.className='route-group-options';section.append(options);
+      for(const route of routes) {
+        const button=document.createElement('button');button.type='button';button.className='route-chip';button.textContent=route.label;button.dataset.route=route.id;
+        if(route.filterOnly)button.title='駅の絞り込みに対応。地図の路線線形は未収録です';
+        if(route.mapOnly)button.title='路線表示に対応。掲載駅は準備中です';
+        button.style.setProperty('--route-color',route.color);button.setAttribute('aria-pressed',String(activeRoutes.has(route.id)));
+        if(route.available===false){button.disabled=true;button.title='掲載駅の追加後に選べます';}
+        button.addEventListener('click',()=>{if(activeRoutes.has(route.id))activeRoutes.delete(route.id);else activeRoutes.add(route.id);button.setAttribute('aria-pressed',String(activeRoutes.has(route.id)));applyFilters();});
+        options.append(button);chipByRoute.set(route.id,button);
+      }
+      section._routes=routes; section._count=count;routeList.append(section);
+    }
+    function updateRouteGroups(){
+      const query=routeSearch.value.trim().normalize('NFKC').toLowerCase();
+      for(const section of routeList.children){
+        const n=section._routes.filter(r=>activeRoutes.has(r.id)).length;section._count.textContent=n?` ${n}路線選択中`:'';
+        let matches=0;for(const button of section.querySelectorAll('[data-route]')){const show=!query||button.textContent.normalize('NFKC').toLowerCase().includes(query);button.hidden=!show;if(show)matches++;}
+        section.hidden=!!query&&!matches;if(query&&matches)section.open=true;
+      }
+    }
+    routeSearch.addEventListener('input',updateRouteGroups); updateRouteGroups();
 
     searchInput.value = initialState.query;
     rentMax.value = initialState.rentMax == null ? "" : String(initialState.rentMax);
@@ -482,6 +488,7 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
     }
 
     function applyFilters() {
+      updateRouteGroups();
       const previousPanelScroll = atlasPanel.scrollTop;
       const previousPageScroll = window.scrollY;
       const matches = currentMatches();
