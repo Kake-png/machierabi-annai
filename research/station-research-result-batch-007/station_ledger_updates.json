@@ -1,0 +1,347 @@
+{
+ "batchId": "batch-007",
+ "updatedAt": "2026-11-02",
+ "scope": "依頼者が選んだ山手線の北側・東側（中央・総武線、都営浅草線沿線）の12駅のみ。batch-001〜006の調査済み駅は再判定していない。",
+ "statusRule": "調査終了時点で確認待ち。収録済みにはしていない。",
+ "slugNote": "台帳IDは tokyo-n02-xxxxxx。proposedSlug は今回付けた英字slug（公開用slugは開発側で確定）。",
+ "stations": [
+  {
+   "id": "tokyo-n02-003606",
+   "proposedSlug": "kokubunji",
+   "name": "国分寺",
+   "area": "東京都国分寺市",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 8,
+     "非該当": 10
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003634",
+   "proposedSlug": "tachikawa",
+   "name": "立川",
+   "area": "東京都立川市",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 14,
+     "非該当": 4
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003360",
+   "proposedSlug": "koiwa",
+   "name": "小岩",
+   "area": "東京都江戸川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 9,
+     "該当": 9
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003561",
+   "proposedSlug": "hirai",
+   "name": "平井",
+   "area": "東京都江戸川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 10,
+     "該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003522",
+   "proposedSlug": "asakusa",
+   "name": "浅草",
+   "area": "東京都台東区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 12,
+     "非該当": 6
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003526",
+   "proposedSlug": "oshiage",
+   "name": "押上",
+   "area": "東京都墨田区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 11,
+     "非該当": 7
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003571",
+   "proposedSlug": "kuramae",
+   "name": "蔵前",
+   "area": "東京都台東区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 11,
+     "非該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003636",
+   "proposedSlug": "asakusabashi",
+   "name": "浅草橋",
+   "area": "東京都台東区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 10,
+     "非該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003721",
+   "proposedSlug": "ningyocho",
+   "name": "人形町",
+   "area": "東京都中央区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 11,
+     "非該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003538",
+   "proposedSlug": "honjoazumabashi",
+   "name": "本所吾妻橋",
+   "area": "東京都墨田区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 9,
+     "非該当": 9
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": null,
+   "proposedSlug": "ichikawa",
+   "name": "市川",
+   "area": "千葉県市川市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 12,
+     "非該当": 6
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない千葉県の駅。台帳への追加可否は開発側で判断。"
+  },
+  {
+   "id": null,
+   "proposedSlug": "funabashi",
+   "name": "船橋",
+   "area": "千葉県船橋市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 12,
+     "非該当": 6
+    },
+    "photoCount": 4,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない千葉県の駅。台帳への追加可否は開発側で判断。"
+  }
+ ]
+}

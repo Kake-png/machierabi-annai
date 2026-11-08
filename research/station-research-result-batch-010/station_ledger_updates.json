@@ -1,0 +1,349 @@
+{
+ "batchId": "batch-010",
+ "updatedAt": "2026-11-08",
+ "scope": "依頼者の方針（家賃が安めの駅を増やす、都心への通勤を重視）で選んだ京浜東北線・埼京線・三田線・東武東上線・西武池袋線・西武新宿線・つくばエクスプレス・東武伊勢崎線・京成押上線・都営新宿線・南武線・東西線沿線の1K参考相場9.12万円以下の12駅のみ。batch-001〜009の調査済み駅は再判定していない。",
+ "statusRule": "調査終了時点で確認待ち。収録済みにはしていない。",
+ "slugNote": "台帳IDは tokyo-n02-xxxxxx。proposedSlug は今回付けた英字slug（公開用slugは開発側で確定）。",
+ "stations": [
+  {
+   "id": null,
+   "proposedSlug": "warabi",
+   "name": "蕨",
+   "area": "埼玉県蕨市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 10,
+     "該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない埼玉県の駅。台帳への追加可否は開発側で判断。"
+  },
+  {
+   "id": null,
+   "proposedSlug": "todakoen",
+   "name": "戸田公園",
+   "area": "埼玉県戸田市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 12,
+     "該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない埼玉県の駅。台帳への追加可否は開発側で判断。"
+  },
+  {
+   "id": "tokyo-n02-003165",
+   "proposedSlug": "shimurasakaue",
+   "name": "志村坂上",
+   "area": "東京都板橋区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003212",
+   "proposedSlug": "kamiitabashi",
+   "name": "上板橋",
+   "area": "東京都板橋区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 10,
+     "該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003242",
+   "proposedSlug": "hibarigaoka",
+   "name": "ひばりヶ丘",
+   "area": "東京都西東京市",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 12,
+     "該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003427",
+   "proposedSlug": "kamishakujii",
+   "name": "上石神井",
+   "area": "東京都練馬区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 16,
+     "該当": 2
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003133",
+   "proposedSlug": "rokucho",
+   "name": "六町",
+   "area": "東京都足立区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 15,
+     "該当": 3
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003200",
+   "proposedSlug": "gotanno",
+   "name": "五反野",
+   "area": "東京都足立区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 10,
+     "該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003323",
+   "proposedSlug": "keiseitateishi",
+   "name": "京成立石",
+   "area": "東京都葛飾区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 9,
+     "該当": 9
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003745",
+   "proposedSlug": "funabori",
+   "name": "船堀",
+   "area": "東京都江戸川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": null,
+   "proposedSlug": "musashishinjo",
+   "name": "武蔵新城",
+   "area": "神奈川県川崎市中原区",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない神奈川県の駅。台帳への追加可否は開発側で判断。"
+  },
+  {
+   "id": null,
+   "proposedSlug": "barakinakayama",
+   "name": "原木中山",
+   "area": "千葉県船橋市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 14,
+     "該当": 4
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない千葉県の駅。台帳への追加可否は開発側で判断。"
+  }
+ ]
+}

@@ -1,0 +1,347 @@
+{
+ "batchId": "batch-009",
+ "updatedAt": "2026-11-03",
+ "scope": "依頼者の方針（家賃が安めの駅を増やす、都心への通勤を重視）で選んだ小田急線・京王線・西武新宿線・常磐線・京成線・東武線・都営新宿線・東西線沿線の1K参考相場8.85万円以下の12駅のみ。batch-001〜008の調査済み駅は再判定していない。",
+ "statusRule": "調査終了時点で確認待ち。収録済みにはしていない。",
+ "slugNote": "台帳IDは tokyo-n02-xxxxxx。proposedSlug は今回付けた英字slug（公開用slugは開発側で確定）。",
+ "stations": [
+  {
+   "id": "tokyo-n02-004076",
+   "proposedSlug": "komae",
+   "name": "狛江",
+   "area": "東京都狛江市",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 13,
+     "該当": 5
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-004036",
+   "proposedSlug": "seijogakuenmae",
+   "name": "成城学園前",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 12,
+     "該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003966",
+   "proposedSlug": "chofu",
+   "name": "調布",
+   "area": "東京都調布市",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 13,
+     "非該当": 5
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003821",
+   "proposedSlug": "fuchu",
+   "name": "府中",
+   "area": "東京都府中市",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 10,
+     "該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003451",
+   "proposedSlug": "saginomiya",
+   "name": "鷺ノ宮",
+   "area": "東京都中野区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 15,
+     "該当": 3
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003191",
+   "proposedSlug": "kanamachi",
+   "name": "金町",
+   "area": "東京都葛飾区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 11,
+     "非該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003273",
+   "proposedSlug": "horikirishobuen",
+   "name": "堀切菖蒲園",
+   "area": "東京都葛飾区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 15,
+     "該当": 3
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003159",
+   "proposedSlug": "nishiarai",
+   "name": "西新井",
+   "area": "東京都足立区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 7,
+     "非該当": 11
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003724",
+   "proposedSlug": "ichinoe",
+   "name": "一之江",
+   "area": "東京都江戸川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 13,
+     "該当": 5
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": "tokyo-n02-003667",
+   "proposedSlug": "mizue",
+   "name": "瑞江",
+   "area": "東京都江戸川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03"
+  },
+  {
+   "id": null,
+   "proposedSlug": "myoden",
+   "name": "妙典",
+   "area": "千葉県市川市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 12,
+     "該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない千葉県の駅。台帳への追加可否は開発側で判断。"
+  },
+  {
+   "id": null,
+   "proposedSlug": "minamigyotoku",
+   "name": "南行徳",
+   "area": "千葉県市川市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 14,
+     "該当": 4
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-03",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない千葉県の駅。台帳への追加可否は開発側で判断。"
+  }
+ ]
+}

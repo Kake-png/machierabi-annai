@@ -314,6 +314,7 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
         button.type = "button";
         button.className = "route-chip";
         button.textContent = route.label;
+        if (route.filterOnly) button.title = "駅の絞り込みに対応。地図の路線線形は未収録です";
         if (route.mapOnly) button.title = "路線表示に対応。掲載駅は準備中です";
         button.dataset.route = route.id;
         button.style.setProperty("--route-color", route.color);

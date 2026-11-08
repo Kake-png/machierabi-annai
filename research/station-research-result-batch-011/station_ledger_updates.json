@@ -1,0 +1,345 @@
+{
+ "batchId": "batch-011",
+ "updatedAt": "2026-11-08",
+ "scope": "依頼者の方針（「これ！」という特徴のある街を優先する）で選んだ、古書店街・商店街・飲み屋街・水辺などの個性が知られる都内の12駅のみ（家賃水準は不問）。batch-001〜010の調査済み駅は再判定していない。",
+ "statusRule": "調査終了時点で確認待ち。収録済みにはしていない。",
+ "slugNote": "台帳IDは tokyo-n02-xxxxxx。proposedSlug は今回付けた英字slug（公開用slugは開発側で確定）。",
+ "stations": [
+  {
+   "id": "tokyo-n02-003508",
+   "proposedSlug": "takadanobaba",
+   "name": "高田馬場",
+   "area": "東京都新宿区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 12,
+     "非該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003578",
+   "proposedSlug": "kagurazaka",
+   "name": "神楽坂",
+   "area": "東京都新宿区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 6,
+     "非該当": 12
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003651",
+   "proposedSlug": "jimbocho",
+   "name": "神保町",
+   "area": "東京都千代田区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 10,
+     "非該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003390",
+   "proposedSlug": "ikebukuro",
+   "name": "池袋",
+   "area": "東京都豊島区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 12,
+     "非該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003354",
+   "proposedSlug": "sugamo",
+   "name": "巣鴨",
+   "area": "東京都豊島区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 8,
+     "非該当": 10
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003218",
+   "proposedSlug": "jujo",
+   "name": "十条",
+   "area": "東京都北区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003434",
+   "proposedSlug": "sendagi",
+   "name": "千駄木",
+   "area": "東京都文京区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 13,
+     "該当": 5
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003754",
+   "proposedSlug": "kiyosumishirakawa",
+   "name": "清澄白河",
+   "area": "東京都江東区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 8,
+     "非該当": 10
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003889",
+   "proposedSlug": "tsukishima",
+   "name": "月島",
+   "area": "東京都中央区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 8,
+     "非該当": 10
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-004014",
+   "proposedSlug": "nakameguro",
+   "name": "中目黒",
+   "area": "東京都目黒区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 10,
+     "非該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003874",
+   "proposedSlug": "shimotakaido",
+   "name": "下高井戸",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 8,
+     "非該当": 10
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003622",
+   "proposedSlug": "kunitachi",
+   "name": "国立",
+   "area": "東京都国立市",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  }
+ ]
+}

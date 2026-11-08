@@ -42,13 +42,13 @@ async function openPage(route, { map = true, storage = {}, query = "" } = {}) {
 test("home builds every filter, route and station marker", async () => {
   const { dom, document } = await openPage("");
   assert.equal(document.querySelectorAll("[data-tag]").length, 18);
-  assert.equal(document.querySelectorAll("[data-route]").length, 20);
-  assert.equal(document.querySelectorAll(".station-row").length, 65);
-  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, 65);
+  assert.equal(document.querySelectorAll("[data-route]").length, ATLAS_DATA.routeGroups.flatMap(g=>g.routes).length);
+  assert.equal(document.querySelectorAll(".station-row").length, 137);
+  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, 137);
   document.querySelector('[data-tag="cinema"]').click();
   await tick();
-  assert.equal(document.querySelectorAll(".station-row").length, 15);
-  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, 15);
+  assert.equal(document.querySelectorAll(".station-row").length, ATLAS_DATA.stations.filter(s=>s.tags.includes("cinema")).length);
+  assert.equal(document.querySelectorAll(".leaflet-marker-icon").length, ATLAS_DATA.stations.filter(s=>s.tags.includes("cinema")).length);
   dom.window.close();
 });
 
@@ -56,7 +56,8 @@ test("all available railway buttons render paths; paired JR routes remain drawn"
   const { dom, document } = await openPage("");
   for (const button of document.querySelectorAll("[data-route]:not(:disabled)")) {
     button.click();
-    assert(document.querySelectorAll(".leaflet-overlay-pane path").length > 0, button.dataset.route);
+    if(ATLAS_DATA.routeGeometry[button.dataset.route]) assert(document.querySelectorAll(".leaflet-overlay-pane path").length > 0, button.dataset.route);
+    assert.equal(document.querySelectorAll(".station-row").length,ATLAS_DATA.stations.filter(s=>s.routes.includes(button.dataset.route)).length);
     button.click();
   }
   document.querySelector('[data-route="jr-keihin-tohoku"]').click();
@@ -157,7 +158,7 @@ test("without Leaflet the fallback and filters still work", async () => {
   const { dom, document } = await openPage("", { map: false });
   assert(document.querySelector("#map-fallback").classList.contains("is-visible"));
   document.querySelector('[data-tag="cinema"]').click();
-  assert.equal(document.querySelectorAll(".station-row").length, 15);
+  assert.equal(document.querySelectorAll(".station-row").length, ATLAS_DATA.stations.filter(s=>s.tags.includes("cinema")).length);
   dom.window.close();
 });
 
@@ -175,7 +176,7 @@ test('hobby focus, priorities, URL reload and comparison keep selected condition
  assert.equal(new URL(window.location.href).searchParams.get('wish'),'cinema');
  const round=search.readSearchState(new URL(window.location.href).searchParams,ATLAS_DATA);
  assert.deepEqual(round.preferred,['cinema']);assert.deepEqual(round.tags,['large_bookstore']);
- document.querySelector('#clear-filters').click();assert.equal(document.querySelectorAll('.station-row').length,65);
+ document.querySelector('#clear-filters').click();assert.equal(document.querySelectorAll('.station-row').length, 137);
  dom.window.close();
 });
 test('zero matches offers explicit relaxation without changing choices',async()=>{
@@ -229,7 +230,7 @@ test('rent slider and number synchronize and removable selections update candida
  assert.equal(number.value,'13.7');assert.equal(new URL(window.location.href).searchParams.get('rent'),'13.7');
  number.value='9.8';number.dispatchEvent(new window.Event('change',{bubbles:true}));assert.equal(slider.value,'9.8');
  assert.equal(document.querySelectorAll('.station-row').length,ATLAS_DATA.stations.filter(s=>s.rent1k<=9.8).length);
- slider.value='15.1';slider.dispatchEvent(new window.Event('input',{bubbles:true}));assert.equal(number.value,'');assert.equal(slider.getAttribute('aria-valuetext'),'上限なし');assert.equal(new URL(window.location.href).searchParams.has('rent'),false);assert.equal(document.querySelectorAll('.station-row').length,65);
+ slider.value='15.1';slider.dispatchEvent(new window.Event('input',{bubbles:true}));assert.equal(number.value,'');assert.equal(slider.getAttribute('aria-valuetext'),'上限なし');assert.equal(new URL(window.location.href).searchParams.has('rent'),false);assert.equal(document.querySelectorAll('.station-row').length, 137);
  document.querySelector('#open-conditions').click();assert(document.querySelector('.mobile-conditions').open);
  document.querySelector('[data-close-mobile]').click();assert(!document.querySelector('.mobile-conditions').open);
  dom.window.close();

@@ -63,8 +63,8 @@ for (const group of routeGroups) {
     routeIds.add(route.id);
     if (!route.label || !route.color) errors.push(`${route.id}: missing route label or color`);
     if (route.available !== false && !route.mapOnly && !stations.some((station) => station.routes.includes(route.id))) errors.push(`${route.id}: route has no matching station`);
-    if (route.available !== false && !routeGeometry[route.id]?.features?.length) errors.push(`${route.id}: missing embedded route geometry`);
-    if (route.available !== false && routeGeometry[route.id]?.features?.length !== routeGeometrySource[route.id]?.features?.length) errors.push(`${route.id}: embedded route geometry is stale`);
+    if (route.available !== false && !route.filterOnly && !routeGeometry[route.id]?.features?.length) errors.push(`${route.id}: missing embedded route geometry`);
+    if (route.available !== false && !route.filterOnly && routeGeometry[route.id]?.features?.length !== routeGeometrySource[route.id]?.features?.length) errors.push(`${route.id}: embedded route geometry is stale`);
   }
 }
 

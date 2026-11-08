@@ -24,8 +24,8 @@ test("bookstore and entrance decisions reach search and every reviewed row is cl
   assert(data.stations.find(s => s.slug === "keikyu-kamata").tags.includes("large_bookstore"));
   assert(data.stations.find(s => s.slug === "ookayama").tags.includes("library"));
   for (const slug of ["musashikoyama", "togoshiginza", "nakanobu", "hatanodai", "ookayama", "jiyugaoka"]) assert(!data.stations.find(s => s.slug === slug).tags.includes("large_bookstore"));
-  assert.equal(data.auditSummary.positive, 685);
-  assert.equal(data.auditSummary.negative, 485);
+  assert.equal(data.auditSummary.positive, 1256);
+  assert.equal(data.auditSummary.negative, 1210);
   assert.equal(data.auditSummary.pending, 0);
 });
 
@@ -37,7 +37,7 @@ test("CSV import preserves BOM, Japanese, quoted commas, quotes and embedded new
 
 test("all 270 reviewed decisions control the public tags; holds never become a negative decision", () => {
   const rows = parseCsv(fs.readFileSync(new URL("../research/audit/condition_records_merged.csv", import.meta.url), "utf8"));
-  assert.equal(rows.length, 1170);
+  assert.equal(rows.length, 2466);
   for (const row of rows) {
     const station = data.stations.find((s) => s.slug === row.station_slug);
     const expected = row.review_status === "確認済み" && row.review_judgment === "該当";

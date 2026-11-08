@@ -1,0 +1,850 @@
+{
+ "generatedAt": "2026-11-02",
+ "batchId": "batch-008",
+ "status": "提案（確認待ち）。サイトへの収録済みではない。",
+ "syncNote": "applicableConditions は station_research_result.csv の「該当」行から自動生成。strengths/cautions の各文はCSVの判定・計測値に対応。",
+ "stations": [
+  {
+   "slug": "monzennakacho",
+   "ledgerId": "tokyo-n02-003818",
+   "name": "門前仲町",
+   "kana": "もんぜんなかちょう",
+   "area": "東京都江東区",
+   "lat": 35.67197222,
+   "lng": 139.79577778,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "東京メトロ東西線",
+    "都営大江戸線"
+   ],
+   "descriptor": "東京メトロ東西線と都営大江戸線の門前仲町駅（江東区）。深川不動堂・富岡八幡宮の門前町で、参道と飲み屋の路地、隅田川が近い。",
+   "applicableConditions": [
+    "複数路線",
+    "駅前で買い物が完結",
+    "まとまった商店街",
+    "図書館",
+    "リユース店",
+    "大きな公園",
+    "川・河原",
+    "夜景",
+    "高速入口が近い",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "東西線で大手町まで6分（各停の実例）",
+    "深川不動堂の参道（約150m・約40店）と辰巳新道の飲み屋街（30軒以上）",
+    "赤札堂深川店が駅直結（食品・衣料・100円ショップ）、BOOKOFFも徒歩圏"
+   ],
+   "cautions": [
+    "1K参考相場12.85万円（12駅で最も高い）",
+    "0時以降の食品スーパーなし",
+    "映画館（109シネマズ木場）は徒歩16分"
+   ],
+   "rent": {
+    "valueManYen": 12.85,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/monzennakacho_06353-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://koto.goguynet.jp/2025/03/30/shihou_tatsumishindo/",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5152/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5152/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5152/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5152/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://transfer.tokyometro.jp/website/stop?operation=024700a8&numbering=T16&datetime=2026-11-02T16:05:00%2B09:00&lang=ja",
+    "https://www.gltjp.com/ja/directory/item/19302/",
+    "https://www.google.com/maps/dir/35.67197222,139.79577778/35.6719615,139.8063846/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.mec-h.com/town/mh-monzennakacho/185",
+    "https://www.mec-h.com/town/mh-monzennakacho/74",
+    "https://www.openstreetmap.org/#map=11/35.67197222/139.79577778",
+    "https://www.openstreetmap.org/#map=13/35.672/139.7958",
+    "https://www.openstreetmap.org/node/1420787701",
+    "https://www.openstreetmap.org/node/5930600788",
+    "https://www.openstreetmap.org/relation/19323631",
+    "https://www.openstreetmap.org/way/1060000228",
+    "https://www.openstreetmap.org/way/228076717",
+    "https://www.openstreetmap.org/way/368085647",
+    "https://www.openstreetmap.org/way/617968396",
+    "https://www.timeout.jp/tokyo/ja/nightlife/monzennakacho-nightlife-guide"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "nishikasai",
+   "ledgerId": "tokyo-n02-003890",
+   "name": "西葛西",
+   "kana": "にしかさい",
+   "area": "東京都江戸川区",
+   "lat": 35.66458333,
+   "lng": 139.85936111,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "東京メトロ東西線"
+   ],
+   "descriptor": "東京メトロ東西線の西葛西駅（江戸川区）。高架下の西葛西メトロとサニーモール、荒川の河川敷が近い。",
+   "applicableConditions": [
+    "駅前で買い物が完結",
+    "まとまった商店街",
+    "図書館",
+    "リユース店",
+    "大きな公園",
+    "川・河原",
+    "サイクリングコース",
+    "高速入口が近い",
+    "深夜の食品買い物"
+   ],
+   "strengths": [
+    "東西線で大手町まで17分（各停の実例）、1K参考相場9.54万円",
+    "サニーモール西葛西（GU・しまむら）、ワイズマートが24時間",
+    "図書館まで徒歩6分、荒川の河川敷へ自転車5分、首都高入口まで車4分（日曜予測）"
+   ],
+   "cautions": [
+    "東西線のみ（東京・品川・羽田へ直通なし）",
+    "飲み屋街の資料なし",
+    "大型書店・映画館なし"
+   ],
+   "rent": {
+    "valueManYen": 9.54,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/nishikasai_06357-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://ieagent.jp/blog/eria/kasainosumiyasusa-26165",
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.8394,35.6808,139.8793,35.6484&amenity=cinema",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5156/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5156/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5156/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5156/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5156/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://transfer.tokyometro.jp/website/stop?operation=024700a8&numbering=T16&datetime=2026-11-02T16:05:00%2B09:00&lang=ja",
+    "https://www.google.com/maps/dir/35.66458333,139.85936111/35.663245,139.8561524/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.ktr.mlit.go.jp/kisha/kisha_00764.pdf",
+    "https://www.openstreetmap.org/#map=11/35.66458333/139.85936111",
+    "https://www.openstreetmap.org/#map=15/35.66458333/139.85936111",
+    "https://www.openstreetmap.org/#map=17/35.663245/139.8561524",
+    "https://www.openstreetmap.org/relation/9645089",
+    "https://www.openstreetmap.org/way/257863847",
+    "https://www.openstreetmap.org/way/258039003",
+    "https://www.openstreetmap.org/way/510335818",
+    "https://www.openstreetmap.org/way/680252598",
+    "https://www.openstreetmap.org/way/689336469",
+    "https://www.rehouse.co.jp/relifemode/column/burarehouse/nishikasai/"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "kasai",
+   "ledgerId": "tokyo-n02-003894",
+   "name": "葛西",
+   "kana": "かさい",
+   "area": "東京都江戸川区",
+   "lat": 35.66361111,
+   "lng": 139.87269444,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "東京メトロ東西線"
+   ],
+   "descriptor": "東京メトロ東西線の葛西駅（江戸川区）。駅前に24時間スーパーが複数あり、左近川・新左近川の親水公園が近い。",
+   "applicableConditions": [
+    "羽田へ直通",
+    "リユース店",
+    "川・河原",
+    "サイクリングコース",
+    "高速入口が近い",
+    "深夜の食品買い物",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "24時間営業のスーパーが駅徒歩5分圏に3店",
+    "羽田空港への直行バス、1K参考相場9.15万円",
+    "新左近川親水公園へ自転車8分、BOOKOFF・トレファクスタイルが駅前"
+   ],
+   "cautions": [
+    "東西線のみ",
+    "衣料を含む大型店はアリオ葛西（徒歩20分以上）",
+    "図書館は徒歩18分以上、3ha以上の公園は徒歩22分以上"
+   ],
+   "rent": {
+    "valueManYen": 9.15,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/kasai_06358-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://ieagent.jp/blog/eria/kasainosumiyasusa-26165",
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.8527,35.6798,139.8927,35.6474&amenity=cinema",
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.8527,35.6798,139.8927,35.6474&amenity=library",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5157/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5157/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5157/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5157/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5157/shopping_mall?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5157/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://transfer.tokyometro.jp/website/stop?operation=024700a8&numbering=T16&datetime=2026-11-02T16:05:00%2B09:00&lang=ja",
+    "https://www.google.com/maps/dir/35.66361111,139.87269444/35.6431849,139.8677238/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.google.com/maps/dir/35.66361111,139.87269444/35.663245,139.8561524/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.ktr.mlit.go.jp/kisha/kisha_00764.pdf",
+    "https://www.openstreetmap.org/#map=11/35.66361111/139.87269444",
+    "https://www.openstreetmap.org/#map=14/35.66361111/139.87269444",
+    "https://www.openstreetmap.org/#map=15/35.66361111/139.87269444",
+    "https://www.openstreetmap.org/relation/9645089",
+    "https://www.openstreetmap.org/way/257863847",
+    "https://www.openstreetmap.org/way/46876342",
+    "https://www.openstreetmap.org/way/680252598",
+    "https://www.openstreetmap.org/way/689336469"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "gyotoku",
+   "ledgerId": null,
+   "name": "行徳",
+   "kana": "ぎょうとく",
+   "area": "千葉県市川市",
+   "lat": 35.68263889,
+   "lng": 139.91416667,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "東京メトロ東西線"
+   ],
+   "descriptor": "東京メトロ東西線の行徳駅（千葉県市川市）。駅前に24時間スーパーが3店あり、旧江戸川が近い。",
+   "applicableConditions": [
+    "羽田へ直通",
+    "図書館",
+    "リユース店",
+    "川・河原",
+    "高速入口が近い",
+    "深夜の食品買い物"
+   ],
+   "strengths": [
+    "ワイズマート・マルエツ・西友が24時間、1K参考相場8.94万円",
+    "市川市行徳図書館まで徒歩6分",
+    "羽田空港への直行バス（約40分）"
+   ],
+   "cautions": [
+    "東西線のみ（快速は通過）、大手町まで各停で約29分",
+    "衣料を含む大型店・商店街・飲み屋街の資料なし",
+    "3ha以上の公園は徒歩20分圏外"
+   ],
+   "rent": {
+    "valueManYen": 8.94,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/chiba/gyotoku_06361-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.8942,35.6989,139.9341,35.6664&amenity=cinema",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5160/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5160/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5160/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5160/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5160/shopping_mall?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/5160/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://transfer.tokyometro.jp/website/stop?operation=024700a8&numbering=T16&datetime=2026-11-02T16:05:00%2B09:00&lang=ja",
+    "https://www.city.ichikawa.lg.jp/common/000249943.pdf",
+    "https://www.google.com/maps/dir/35.68263889,139.91416667/35.6522738,139.9048229/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.google.com/maps/dir/35.68263889,139.91416667/35.7031922,139.9519909/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.openstreetmap.org/#map=11/35.68263889/139.91416667",
+    "https://www.openstreetmap.org/#map=12/35.68263889/139.91416667",
+    "https://www.openstreetmap.org/#map=13/35.6826/139.9142",
+    "https://www.openstreetmap.org/#map=14/35.68263889/139.91416667",
+    "https://www.openstreetmap.org/#map=15/35.68263889/139.91416667",
+    "https://www.openstreetmap.org/#map=16/35.6826/139.9142",
+    "https://www.openstreetmap.org/node/1420733940",
+    "https://www.openstreetmap.org/relation/18722406",
+    "https://www.openstreetmap.org/way/46913088"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "kameari",
+   "ledgerId": "tokyo-n02-003199",
+   "name": "亀有",
+   "kana": "かめあり",
+   "area": "東京都葛飾区",
+   "lat": 35.76666667,
+   "lng": 139.84777778,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "JR常磐線各駅停車（東京メトロ千代田線直通）"
+   ],
+   "descriptor": "JR常磐線各駅停車（千代田線直通）の亀有駅（葛飾区）。アリオ亀有と商店街ゆうろーど、中川が近い。",
+   "applicableConditions": [
+    "羽田へ直通",
+    "駅前で買い物が完結",
+    "まとまった商店街",
+    "図書館",
+    "映画館",
+    "リユース店",
+    "川・河原",
+    "高速入口が近い",
+    "深夜の食品買い物",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "千代田線直通で大手町まで23分、北千住まで7分",
+    "アリオ亀有（ユニクロ・H&M・映画館MOVIX）が徒歩圏",
+    "ハナマサが24時間、1K参考相場9.33万円"
+   ],
+   "cautions": [
+    "常磐線各停のみ（東京・品川へ直通なし）",
+    "3ha以上の公園は徒歩21分",
+    "大型書店なし"
+   ],
+   "rent": {
+    "valueManYen": 9.33,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/kameari_01038-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://timetables.jreast.co.jp/2611/train/125/126701.html",
+    "https://timetables.jreast.co.jp/timetable/list0507.html",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1525/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1525/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1525/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1525/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://www.gltjp.com/ja/directory/item/10622/",
+    "https://www.google.com/maps/dir/35.76666667,139.84777778/35.7779813,139.8230337/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.gotokyo.org/jp/destinations/northern-tokyo/kita-senju/index.html",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.lib.city.katsushika.lg.jp/images/upload/R4jigyounennpouPDF.pdf",
+    "https://www.mlit.go.jp/river/kankyo/main/kankyou/machizukuri/map/kanto/832570.html",
+    "https://www.openstreetmap.org/#map=11/35.76666667/139.84777778",
+    "https://www.openstreetmap.org/#map=12/35.76666667/139.84777778",
+    "https://www.openstreetmap.org/#map=13/35.7667/139.8478",
+    "https://www.openstreetmap.org/#map=14/35.76666667/139.84777778",
+    "https://www.openstreetmap.org/#map=15/35.76666667/139.84777778",
+    "https://www.openstreetmap.org/#map=16/35.764/139.856",
+    "https://www.openstreetmap.org/node/1420797168",
+    "https://www.openstreetmap.org/way/141028342",
+    "https://www.openstreetmap.org/way/250490209",
+    "https://www.tv-tokyo.co.jp/adomachi/backnumber/20250419/"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "ayase",
+   "ledgerId": "tokyo-n02-003214",
+   "name": "綾瀬",
+   "kana": "あやせ",
+   "area": "東京都足立区",
+   "lat": 35.762222,
+   "lng": 139.825,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "東京メトロ千代田線（JR常磐線各駅停車と直通）",
+    "東京メトロ千代田線 北綾瀬支線"
+   ],
+   "descriptor": "東京メトロ千代田線とJR常磐線各駅停車の綾瀬駅（足立区）。東口に大きな東綾瀬公園。",
+   "applicableConditions": [
+    "複数路線",
+    "駅前で買い物が完結",
+    "リユース店",
+    "大きな公園",
+    "サイクリングコース",
+    "高速入口が近い",
+    "深夜の食品買い物",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "東綾瀬公園（約16万㎡）まで徒歩約2〜3分",
+    "千代田線で大手町19分・北千住3分、イトーヨーカドーが駅前",
+    "ビッグ・エーが24時間、荒川の河川敷へ自転車13分"
+   ],
+   "cautions": [
+    "図書館は徒歩25分",
+    "商店街の資料は高架下脇のアーケード通りのみ",
+    "1K参考相場9.80万円"
+   ],
+   "rent": {
+    "valueManYen": 9.8,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/ayase_01037-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.8050,35.7784,139.8450,35.7460&amenity=cinema",
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.8050,35.7784,139.8450,35.7460&amenity=library",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://timetables.jreast.co.jp/2611/train/125/126701.html",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1524/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1524/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1524/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1524/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1524/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://www.google.com/maps/dir/35.762222,139.825/35.7779813,139.8230337/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.gotokyo.org/jp/destinations/northern-tokyo/kita-senju/index.html",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.ktr.mlit.go.jp/kisha/kisha_00764.pdf",
+    "https://www.openstreetmap.org/#map=11/35.762222/139.825",
+    "https://www.openstreetmap.org/#map=12/35.762222/139.825",
+    "https://www.openstreetmap.org/#map=15/35.762222/139.825",
+    "https://www.openstreetmap.org/relation/18529180",
+    "https://www.openstreetmap.org/way/1058308408",
+    "https://www.openstreetmap.org/way/250490209",
+    "https://www.rehouse.co.jp/relifemode/column/burarehouse/ayase"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "matsudo",
+   "ledgerId": null,
+   "name": "松戸",
+   "kana": "まつど",
+   "area": "千葉県松戸市",
+   "lat": 35.78433333,
+   "lng": 139.90063889,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "JR常磐線快速（上野東京ライン）",
+    "JR常磐線各駅停車（千代田線直通）",
+    "京成松戸線"
+   ],
+   "descriptor": "JR常磐線（快速・各停）と京成松戸線の松戸駅（千葉県松戸市）。駅ビルのアトレ松戸と江戸川の河川敷。",
+   "applicableConditions": [
+    "複数路線",
+    "新幹線駅へ直通",
+    "駅前で買い物が完結",
+    "まとまった商店街",
+    "図書館",
+    "大型本屋",
+    "リユース店",
+    "川・河原",
+    "サイクリングコース",
+    "高速入口が近い",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "常磐線快速で東京・品川へ乗換なし、北千住まで8分",
+    "アトレ松戸・イトーヨーカドーで買い物、くまざわ書店松戸店が駅直結",
+    "1K参考相場8.20万円（12駅で最も安い）、江戸川沿いの遊歩道へ自転車6分"
+   ],
+   "cautions": [
+    "0時以降の食品スーパーなし",
+    "3ha以上の公園は徒歩圏になし",
+    "羽田空港への直行バスなし"
+   ],
+   "rent": {
+    "valueManYen": 8.2,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/chiba/matsudo_01040-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://allabout.co.jp/gm/gc/412818/",
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.8806,35.8005,139.9206,35.7681&amenity=cinema",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/collects/389364/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://timetables.jreast.co.jp/2611/train/075/078071.html",
+    "https://timetables.jreast.co.jp/timetable/list1441.html",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1527/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1527/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1527/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1527/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1527/shopping_mall?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/1527/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://www.google.com/maps/dir/35.78433333,139.90063889/35.8006818,139.8777734/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.gotokyo.org/jp/destinations/northern-tokyo/kita-senju/index.html",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.ktr.mlit.go.jp/edogawa/edogawa00309.html",
+    "https://www.openstreetmap.org/#map=11/35.78433333/139.90063889",
+    "https://www.openstreetmap.org/#map=12/35.78433333/139.90063889",
+    "https://www.openstreetmap.org/#map=14/35.78433333/139.90063889",
+    "https://www.openstreetmap.org/#map=15/35.78433333/139.90063889",
+    "https://www.openstreetmap.org/#map=16/35.788/139.8926",
+    "https://www.openstreetmap.org/node/3455524831",
+    "https://www.openstreetmap.org/way/593046492"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "nerima",
+   "ledgerId": "tokyo-n02-003328",
+   "name": "練馬",
+   "kana": "ねりま",
+   "area": "東京都練馬区",
+   "lat": 35.73780556,
+   "lng": 139.65355556,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "西武池袋線",
+    "西武有楽町線",
+    "西武豊島線",
+    "都営大江戸線"
+   ],
+   "descriptor": "西武池袋線・有楽町線・豊島線と都営大江戸線の練馬駅（練馬区）。区役所の展望ロビーと南口の飲み屋街。",
+   "applicableConditions": [
+    "複数路線",
+    "羽田へ直通",
+    "駅前で買い物が完結",
+    "まとまった商店街",
+    "図書館",
+    "大型本屋",
+    "映画館",
+    "大きな公園",
+    "川・河原",
+    "夜景",
+    "高速入口が近い",
+    "深夜の食品買い物",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "4路線、西友が深夜1時まで",
+    "練馬区役所20階の展望ロビー（無料、21時30分まで）",
+    "ブックファースト練馬店（2フロア）、ユナイテッド・シネマとしまえんまで徒歩11分"
+   ],
+   "cautions": [
+    "1K参考相場10.37万円",
+    "リユース店は徒歩10分圏外",
+    "高速入口（練馬IC）は日曜予測で車12〜26分"
+   ],
+   "rent": {
+    "valueManYen": 10.37,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/nerima_04788-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://movie.jorudan.co.jp/theater/1001744/",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/collects/317934/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4695/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4695/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4695/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4695/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://trafficnews.jp/post/123383",
+    "https://www.city.nerima.tokyo.jp/kusei/sangyo/n_shotengai/nerimaginzahondouri.html",
+    "https://www.city.nerima.tokyo.jp/shisetsu/ku/ku/tenbo.html",
+    "https://www.google.com/maps/dir/35.73780556,139.65355556/35.754342,139.6079367/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.nomu.com/machikara/434/",
+    "https://www.openstreetmap.org/#map=11/35.73780556/139.65355556",
+    "https://www.openstreetmap.org/#map=12/35.73780556/139.65355556",
+    "https://www.openstreetmap.org/#map=13/35.7378/139.6536",
+    "https://www.openstreetmap.org/#map=17/35.754342/139.6079367",
+    "https://www.openstreetmap.org/node/1420796041",
+    "https://www.openstreetmap.org/node/2195624859",
+    "https://www.openstreetmap.org/relation/3874628",
+    "https://www.openstreetmap.org/way/1058118415",
+    "https://www.rehouse.co.jp/mansionlibrary/ABM0000965/",
+    "https://www.walkerplus.com/spot/ar0313s308510/"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "shakujiikoen",
+   "ledgerId": "tokyo-n02-003292",
+   "name": "石神井公園",
+   "kana": "しゃくじいこうえん",
+   "area": "東京都練馬区",
+   "lat": 35.74355556,
+   "lng": 139.60702778,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "西武池袋線"
+   ],
+   "descriptor": "西武池袋線の石神井公園駅（練馬区）。都立石神井公園と石神井川が駅から近い。",
+   "applicableConditions": [
+    "羽田へ直通",
+    "まとまった商店街",
+    "図書館",
+    "大きな公園",
+    "川・河原",
+    "高速入口が近い",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "都立石神井公園（OSM約20ha）まで徒歩6分",
+    "関越道 練馬ICまで車6〜9分（日曜予測）",
+    "羽田空港への直行バス、1K参考相場9.19万円",
+    "快速・準急で練馬まで4分（南口に飲み屋街）"
+   ],
+   "cautions": [
+    "西武池袋線のみ",
+    "0時以降の食品スーパー・リユース店なし",
+    "衣料の店はエミオ内の一部のみ、飲み屋街の資料なし"
+   ],
+   "rent": {
+    "valueManYen": 9.19,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/shakujiikoen_04791-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://news.allabout.co.jp/articles/o/84930/",
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.5870,35.7598,139.6270,35.7273&amenity=cinema",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4699/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4699/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4699/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4699/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4699/shopping_mall?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4699/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://trafficnews.jp/post/123383",
+    "https://www.google.com/maps/dir/35.74355556,139.60702778/35.754342,139.6079367/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.navitime.co.jp/transfer/searchlist?orvStationName=%E7%9F%B3%E7%A5%9E%E4%BA%95%E5%85%AC%E5%9C%92&dnvStationName=%E7%B7%B4%E9%A6%AC&month=2026%2F11&day=11&hour=17&minute=0&basis=1",
+    "https://www.nikkan-gendai.com/articles/view/life/259996",
+    "https://www.nomu.com/machikara/434/",
+    "https://www.openstreetmap.org/#map=11/35.74355556/139.60702778",
+    "https://www.openstreetmap.org/#map=12/35.74355556/139.60702778",
+    "https://www.openstreetmap.org/#map=13/35.7436/139.607",
+    "https://www.openstreetmap.org/#map=15/35.74355556/139.60702778",
+    "https://www.openstreetmap.org/#map=17/35.754342/139.6079367",
+    "https://www.openstreetmap.org/node/6514898796",
+    "https://www.openstreetmap.org/relation/2658286",
+    "https://www.openstreetmap.org/relation/3874628",
+    "https://www.rehouse.co.jp/mansionlibrary/ABM0000965/"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "ekoda",
+   "ledgerId": "tokyo-n02-003337",
+   "name": "江古田",
+   "kana": "えこだ",
+   "area": "東京都練馬区",
+   "lat": 35.73738889,
+   "lng": 139.67275,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "西武池袋線",
+    "（徒歩）西武有楽町線 新桜台"
+   ],
+   "descriptor": "西武池袋線の江古田駅（練馬区）。学生の多い街で、江古田銀座など複数の商店街と居酒屋。",
+   "applicableConditions": [
+    "複数路線",
+    "まとまった商店街",
+    "図書館",
+    "リユース店",
+    "大きな公園",
+    "高速入口が近い",
+    "深夜の食品買い物",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "江古田銀座（会員85）・ゆうゆうロードなど商店街と居酒屋が駅前に集まる",
+    "ビッグ・エーが深夜2時まで、TRIAL GOが24時間",
+    "BOOKOFF・トレファクスタイル・セカンドストリートが駅前、新桜台駅（西武有楽町線）へ徒歩9分"
+   ],
+   "cautions": [
+    "大型商業施設・大型書店なし",
+    "1K参考相場9.77万円",
+    "高速入口（北池袋）は日曜予測で車10〜26分"
+   ],
+   "rent": {
+    "valueManYen": 9.77,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/ekoda_04786-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://ieagent.jp/blog/eria/ekodahitorigurashi-37726",
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.6528,35.7536,139.6927,35.7212&amenity=cinema",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4693/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4693/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4693/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4693/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4693/shopping_mall?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4693/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://www.city.nerima.tokyo.jp/kusei/sangyo/n_shotengai/ekoda-ginza.html",
+    "https://www.google.com/maps/dir/35.73738889,139.67275/35.7409848,139.7072572/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.openstreetmap.org/#map=11/35.73738889/139.67275",
+    "https://www.openstreetmap.org/#map=12/35.73738889/139.67275",
+    "https://www.openstreetmap.org/#map=13/35.7374/139.6728",
+    "https://www.openstreetmap.org/#map=15/35.73738889/139.67275",
+    "https://www.openstreetmap.org/node/1420796019",
+    "https://www.openstreetmap.org/node/7382935074",
+    "https://www.openstreetmap.org/relation/19166585",
+    "https://www.openstreetmap.org/way/23681223",
+    "https://www.openstreetmap.org/way/62284147"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "narimasu",
+   "ledgerId": "tokyo-n02-003156",
+   "name": "成増",
+   "kana": "なります",
+   "area": "東京都板橋区",
+   "lat": 35.77763889,
+   "lng": 139.63288889,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "東武東上線",
+    "（隣接）東京メトロ有楽町線・副都心線 地下鉄成増"
+   ],
+   "descriptor": "東武東上線の成増駅と東京メトロ有楽町線・副都心線の地下鉄成増駅（板橋区）。南口の商店街と駅ビルのエキア成増。",
+   "applicableConditions": [
+    "複数路線",
+    "新幹線駅へ直通",
+    "駅前で買い物が完結",
+    "まとまった商店街",
+    "図書館",
+    "リユース店",
+    "大きな公園",
+    "高速入口が近い",
+    "深夜の食品買い物",
+    "飲み歩き"
+   ],
+   "strengths": [
+    "東武と地下鉄の2駅が隣接、副都心線経由で新横浜への直通列車",
+    "西友・ハナマサPLUSが24時間、駅周辺に居酒屋約70軒",
+    "成増図書館まで徒歩3分、外環 和光ICまで車6〜14分（日曜予測）"
+   ],
+   "cautions": [
+    "羽田空港への直行バスなし",
+    "大型書店・映画館なし",
+    "1K参考相場9.35万円"
+   ],
+   "rent": {
+    "valueManYen": 9.35,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/narimasu_04754-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.6129,35.7939,139.6529,35.7614&amenity=cinema",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4513/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4513/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4513/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4513/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4513/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://trafficnews.jp/post/123383",
+    "https://www.city.itabashi.tokyo.jp/library/toshokan/2000018.html",
+    "https://www.correc.co.jp/hikkoshi-best/narimasu-sumiyasusa",
+    "https://www.google.com/maps/dir/35.77763889,139.63288889/35.7822293,139.6108766/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.openstreetmap.org/#map=11/35.77763889/139.63288889",
+    "https://www.openstreetmap.org/#map=12/35.7776/139.6329",
+    "https://www.openstreetmap.org/#map=12/35.77763889/139.63288889",
+    "https://www.openstreetmap.org/#map=15/35.77763889/139.63288889",
+    "https://www.openstreetmap.org/node/1420786095",
+    "https://www.openstreetmap.org/relation/4805218",
+    "https://www.openstreetmap.org/way/158455241",
+    "https://www.openstreetmap.org/way/32305435",
+    "https://www.openstreetmap.org/way/50879140"
+   ],
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "slug": "chitosekarasuyama",
+   "ledgerId": "tokyo-n02-003861",
+   "name": "千歳烏山",
+   "kana": "ちとせからすやま",
+   "area": "東京都世田谷区",
+   "lat": 35.66819444,
+   "lng": 139.60111111,
+   "coordinateNote": "Wikipedia/Wikidataの駅座標。改札・出口ではなく徒歩推計の起点に用いた参考点。",
+   "lines": [
+    "京王線"
+   ],
+   "descriptor": "京王線の千歳烏山駅（世田谷区）。駅前の商店街えるもーる烏山と烏山図書館。",
+   "applicableConditions": [
+    "まとまった商店街",
+    "図書館",
+    "リユース店",
+    "高速入口が近い"
+   ],
+   "strengths": [
+    "えるもーる烏山（京王線有数の商店街）",
+    "世田谷区立烏山図書館まで徒歩2分",
+    "1K参考相場8.89万円、首都高 高井戸入口まで車7〜14分（日曜予測）"
+   ],
+   "cautions": [
+    "京王線のみ",
+    "0時以降の食品スーパー・飲み屋街・大きな公園（徒歩15分圏）なし",
+    "衣料を含む大型店なし"
+   ],
+   "rent": {
+    "valueManYen": 8.89,
+    "layout": "1K",
+    "sourceUrl": "https://www.homes.co.jp/chintai/tokyo/chitosekarasuyama_04935-st/price/",
+    "checkedAt": "2026-11-02",
+    "method": "LIFULL HOME'Sの駅別家賃相場ページの間取り別表で1Kの値を転記（管理費等を除く）。同社の算出条件は同ページの説明に従い、確認日時点の値。"
+   },
+   "sources": [
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&bounded=1&viewbox=139.5812,35.6844,139.6211,35.6520&amenity=cinema",
+    "https://report.iko-yo.net/articles/14597",
+    "https://routing.openstreetmap.de/",
+    "https://san-tatsu.jp/spots/7809/",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4842/book_store?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4842/fashion_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4842/movie_theater?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4842/reuse_shop?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4842/shopping_mall?order=near_by_station",
+    "https://tokubai.co.jp/transit/rail_lines/station_groups/4842/supermarket?order=near_by_station",
+    "https://tokyo-haneda.com/text/access/bus/index.html",
+    "https://www.google.com/maps/dir/35.66819444,139.60111111/35.6756295,139.6183334/data=!4m6!4m5!2m3!6e0!7e2!8j1794736800!3e0?hl=ja",
+    "https://www.kawasaki-keiba.jp/access/",
+    "https://www.nomu.com/machikara/393/",
+    "https://www.openstreetmap.org/#map=11/35.66819444/139.60111111",
+    "https://www.openstreetmap.org/#map=12/35.66819444/139.60111111",
+    "https://www.openstreetmap.org/#map=12/35.6682/139.6011",
+    "https://www.openstreetmap.org/#map=14/35.66819444/139.60111111",
+    "https://www.openstreetmap.org/#map=14/35.6682/139.6011",
+    "https://www.openstreetmap.org/#map=15/35.66819444/139.60111111",
+    "https://www.openstreetmap.org/node/1420766055",
+    "https://www.openstreetmap.org/way/316240494"
+   ],
+   "updatedAt": "2026-11-02"
+  }
+ ]
+}

@@ -1,3 +1,4 @@
+import {NEW_STATIONS,NEW_PHOTOS,NEW_ROUTE_LABELS} from "./imported-batches7-12.js";
 import {BATCH6_STATIONS,BATCH6_PHOTOS,BATCH6_ROUTE_LABELS} from "./imported-batch6.js";
 import {IMPORTED_STATIONS,IMPORTED_PHOTOS,IMPORTED_ROUTE_LABELS} from "./imported-stations.js";
 import {PHOTO_ADDITIONS,STATION_PHOTO_ADDITIONS} from "./photo-additions.js?v=54";
@@ -699,9 +700,12 @@ const ATLAS_DATA = (() => {
     }
   ];
 
-  Object.assign(sources, PHOTO_ADDITIONS, IMPORTED_PHOTOS, BATCH6_PHOTOS);
-  Object.assign(routeLabels, IMPORTED_ROUTE_LABELS, BATCH6_ROUTE_LABELS);
+  Object.assign(sources, PHOTO_ADDITIONS, IMPORTED_PHOTOS, BATCH6_PHOTOS, NEW_PHOTOS);
+  Object.assign(routeLabels, IMPORTED_ROUTE_LABELS, BATCH6_ROUTE_LABELS, NEW_ROUTE_LABELS);
 
+  const existingRouteIds = new Set(routeGroups.flatMap(g => g.routes.map(r => r.id)));
+  const usedRoutes = new Set(NEW_STATIONS.flatMap(s => s.routes));
+  routeGroups.push({id:'additional-lines',label:'その他の掲載路線（絞り込み）',routes:[...usedRoutes].filter(id=>!existingRouteIds.has(id)).map(id=>({id,label:routeLabels[id],color:'#608777',filterOnly:true}))});
   const enrichedStations = stations.map((station) => applyEvidence({
     ...station,
     ...(stationProfiles[station.slug] || {}),
@@ -712,7 +716,7 @@ const ATLAS_DATA = (() => {
     editorialStatus: "本文は編集要約。条件ごとの確認状況は根拠欄に表示"
   }, tagLabels));
 
-  enrichedStations.push(...[...IMPORTED_STATIONS,...BATCH6_STATIONS].map(s => applyEvidence(s, tagLabels)));
+  enrichedStations.push(...[...IMPORTED_STATIONS,...BATCH6_STATIONS,...NEW_STATIONS].map(s => applyEvidence(s, tagLabels)));
   for (const station of enrichedStations) {
     station.images = [...new Set([...(station.images || []), ...(STATION_PHOTO_ADDITIONS[station.slug] || [])])];
     const features=['large_bookstore','library','cinema','cycle','view','park','drinks'].filter(t=>station.tags.includes(t)).slice(0,3).map(t=>tagLabels[t]);

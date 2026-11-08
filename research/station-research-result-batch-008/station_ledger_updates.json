@@ -1,0 +1,347 @@
+{
+ "batchId": "batch-008",
+ "updatedAt": "2026-11-02",
+ "scope": "依頼者の方針（家賃が安めの駅を増やす、東京駅・大手町方面への通勤を重視）で選んだ東西線・常磐線・西武池袋線・東上線・京王線沿線の12駅のみ。batch-001〜007の調査済み駅は再判定していない。",
+ "statusRule": "調査終了時点で確認待ち。収録済みにはしていない。",
+ "slugNote": "台帳IDは tokyo-n02-xxxxxx。proposedSlug は今回付けた英字slug（公開用slugは開発側で確定）。",
+ "stations": [
+  {
+   "id": "tokyo-n02-003818",
+   "proposedSlug": "monzennakacho",
+   "name": "門前仲町",
+   "area": "東京都江東区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 10,
+     "非該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003890",
+   "proposedSlug": "nishikasai",
+   "name": "西葛西",
+   "area": "東京都江戸川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 9,
+     "該当": 9
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003894",
+   "proposedSlug": "kasai",
+   "name": "葛西",
+   "area": "東京都江戸川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": null,
+   "proposedSlug": "gyotoku",
+   "name": "行徳",
+   "area": "千葉県市川市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 12,
+     "該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない千葉県の駅。台帳への追加可否は開発側で判断。"
+  },
+  {
+   "id": "tokyo-n02-003199",
+   "proposedSlug": "kameari",
+   "name": "亀有",
+   "area": "東京都葛飾区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 8,
+     "該当": 10
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003214",
+   "proposedSlug": "ayase",
+   "name": "綾瀬",
+   "area": "東京都足立区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 8,
+     "非該当": 10
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": null,
+   "proposedSlug": "matsudo",
+   "name": "松戸",
+   "area": "千葉県松戸市",
+   "before": {
+    "status": "台帳外",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 11,
+     "非該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02",
+   "ledgerNote": "キット台帳（東京都内の駅）に含まれない千葉県の駅。台帳への追加可否は開発側で判断。"
+  },
+  {
+   "id": "tokyo-n02-003328",
+   "proposedSlug": "nerima",
+   "name": "練馬",
+   "area": "東京都練馬区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 13,
+     "非該当": 5
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003292",
+   "proposedSlug": "shakujiikoen",
+   "name": "石神井公園",
+   "area": "東京都練馬区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003337",
+   "proposedSlug": "ekoda",
+   "name": "江古田",
+   "area": "東京都練馬区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 8,
+     "非該当": 10
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003156",
+   "proposedSlug": "narimasu",
+   "name": "成増",
+   "area": "東京都板橋区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 10,
+     "非該当": 8
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  },
+  {
+   "id": "tokyo-n02-003861",
+   "proposedSlug": "chitosekarasuyama",
+   "name": "千歳烏山",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 14,
+     "該当": 4
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-02"
+  }
+ ]
+}

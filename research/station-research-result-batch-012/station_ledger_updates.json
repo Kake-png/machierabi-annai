@@ -1,0 +1,345 @@
+{
+ "batchId": "batch-012",
+ "updatedAt": "2026-11-08",
+ "scope": "batch-011に続き依頼者の方針（「これ！」という特徴のある街を優先する）で選んだ、電気街・相撲・参道・繊維街・商店街・横丁・渓谷・コリアンタウンなど個性が知られる都内の12駅のみ（家賃水準は不問）。batch-001〜011の調査済み駅は再判定していない。",
+ "statusRule": "調査終了時点で確認待ち。収録済みにはしていない。",
+ "slugNote": "台帳IDは tokyo-n02-xxxxxx。proposedSlug は今回付けた英字slug（公開用slugは開発側で確定）。",
+ "stations": [
+  {
+   "id": "tokyo-n02-003624",
+   "proposedSlug": "akihabara",
+   "name": "秋葉原",
+   "area": "東京都千代田区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 9,
+     "非該当": 9
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003654",
+   "proposedSlug": "ryogoku",
+   "name": "両国",
+   "area": "東京都墨田区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 7,
+     "非該当": 11
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003232",
+   "proposedSlug": "shibamata",
+   "name": "柴又",
+   "area": "東京都葛飾区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 7,
+     "非該当": 11
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003302",
+   "proposedSlug": "machiya",
+   "name": "町屋",
+   "area": "東京都荒川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003417",
+   "proposedSlug": "nippori",
+   "name": "日暮里",
+   "area": "東京都荒川区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 7,
+     "非該当": 11
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003970",
+   "proposedSlug": "kyodo",
+   "name": "経堂",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 14,
+     "該当": 4
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-004024",
+   "proposedSlug": "soshigayaokura",
+   "name": "祖師ヶ谷大蔵",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 12,
+     "該当": 6
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003830",
+   "proposedSlug": "daitabashi",
+   "name": "代田橋",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 14,
+     "該当": 4
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-004177",
+   "proposedSlug": "futakotamagawa",
+   "name": "二子玉川",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 11,
+     "非該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-004191",
+   "proposedSlug": "todoroki",
+   "name": "等々力",
+   "area": "東京都世田谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "非該当": 11,
+     "該当": 7
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003991",
+   "proposedSlug": "ebisu",
+   "name": "恵比寿",
+   "area": "東京都渋谷区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 9,
+     "非該当": 9
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  },
+  {
+   "id": "tokyo-n02-003601",
+   "proposedSlug": "shinokubo",
+   "name": "新大久保",
+   "area": "東京都新宿区",
+   "before": {
+    "status": "候補",
+    "conditionCount": 0,
+    "photoCount": 0
+   },
+   "after": {
+    "status": "確認待ち",
+    "conditionCount": 18,
+    "conditionJudgments": {
+     "該当": 9,
+     "非該当": 9
+    },
+    "photoCount": 3,
+    "missing": [],
+    "resultFiles": [
+     "station_research_result.csv",
+     "station_profiles.json",
+     "photos.json",
+     "REPORT.md"
+    ]
+   },
+   "updatedAt": "2026-11-08"
+  }
+ ]
+}

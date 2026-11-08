@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { ATLAS_DATA as data } from "../public/assets/data.js";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "../public/assets/search.js";
 const filter = (state) => filterStations(data.stations, data.routeLabels, data.themePresets, state);
-test("unfiltered search includes all stations", () => assert.equal(filter({}).length, 65));
+test("unfiltered search includes all stations", () => assert.equal(filter({}).length, 137));
 test("every individual condition returns precisely its tagged stations", () => {
   for (const tag of Object.keys(data.tagLabels)) assert.deepEqual(filter({ tags: [tag] }), data.stations.filter((s) => s.tags.includes(tag)));
 });

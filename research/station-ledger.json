@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-08",
   "coverageClaim": "国土数値情報2025年度の東京所在駅656グループを候補母集団として取込。既存・提案の神奈川駅も別枠で維持。現行営業・掲載要否の確認は別。",
   "allStationsPolicy": "未決定。全駅を候補台帳で把握することと、全駅に詳細ページを作ることを分けて検討する。",
   "stations": [
@@ -1063,16 +1063,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003874",
+      "id": "shimotakaido",
       "name": "下高井戸",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/shimotakaido/index.html",
       "inventoryGroupCode": "003874",
       "operators": [
         "京王電鉄",
@@ -1082,7 +1082,7 @@
         "世田谷線",
         "京王線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-004021",
@@ -1145,16 +1145,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-004177",
+      "id": "futakotamagawa",
       "name": "二子玉川",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/futakotamagawa/index.html",
       "inventoryGroupCode": "004177",
       "operators": [
         "東急電鉄"
@@ -1163,19 +1163,19 @@
         "大井町線",
         "田園都市線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003830",
+      "id": "daitabashi",
       "name": "代田橋",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/daitabashi/index.html",
       "inventoryGroupCode": "003830",
       "operators": [
         "京王電鉄"
@@ -1183,19 +1183,19 @@
       "lines": [
         "京王線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003861",
+      "id": "chitosekarasuyama",
       "name": "千歳烏山",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/chitosekarasuyama/index.html",
       "inventoryGroupCode": "003861",
       "operators": [
         "京王電鉄"
@@ -1203,7 +1203,7 @@
       "lines": [
         "京王線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003988",
@@ -1326,16 +1326,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-004036",
+      "id": "seijogakuenmae",
       "name": "成城学園前",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/seijogakuenmae/index.html",
       "inventoryGroupCode": "004036",
       "operators": [
         "小田急電鉄"
@@ -1343,7 +1343,7 @@
       "lines": [
         "小田原線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003901",
@@ -1587,16 +1587,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-004024",
+      "id": "soshigayaokura",
       "name": "祖師ヶ谷大蔵",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/soshigayaokura/index.html",
       "inventoryGroupCode": "004024",
       "operators": [
         "小田急電鉄"
@@ -1604,19 +1604,19 @@
       "lines": [
         "小田原線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-004191",
+      "id": "todoroki",
       "name": "等々力",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/todoroki/index.html",
       "inventoryGroupCode": "004191",
       "operators": [
         "東急電鉄"
@@ -1624,19 +1624,19 @@
       "lines": [
         "大井町線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003970",
+      "id": "kyodo",
       "name": "経堂",
       "prefecture": "東京都",
       "area": "世田谷区",
-      "status": "候補",
-      "group": "東京全域・世田谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kyodo/index.html",
       "inventoryGroupCode": "003970",
       "operators": [
         "小田急電鉄"
@@ -1644,7 +1644,7 @@
       "lines": [
         "小田原線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003832",
@@ -1788,16 +1788,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003721",
+      "id": "ningyocho",
       "name": "人形町",
       "prefecture": "東京都",
       "area": "中央区",
-      "status": "候補",
-      "group": "東京全域・中央区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/ningyocho/index.html",
       "inventoryGroupCode": "003721",
       "operators": [
         "東京地下鉄",
@@ -1807,7 +1807,7 @@
         "1号線浅草線",
         "2号線日比谷線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003797",
@@ -1955,16 +1955,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003889",
+      "id": "tsukishima",
       "name": "月島",
       "prefecture": "東京都",
       "area": "中央区",
-      "status": "候補",
-      "group": "東京全域・中央区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/tsukishima/index.html",
       "inventoryGroupCode": "003889",
       "operators": [
         "東京地下鉄",
@@ -1974,7 +1974,7 @@
         "12号線大江戸線",
         "8号線有楽町線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003676",
@@ -2449,16 +2449,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003451",
+      "id": "saginomiya",
       "name": "鷺ノ宮",
       "prefecture": "東京都",
       "area": "中野区",
-      "status": "候補",
-      "group": "東京全域・中野区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/saginomiya/index.html",
       "inventoryGroupCode": "003451",
       "operators": [
         "西武鉄道"
@@ -2466,7 +2466,7 @@
       "lines": [
         "新宿線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-004019",
@@ -2954,16 +2954,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003218",
+      "id": "jujo",
       "name": "十条",
       "prefecture": "東京都",
       "area": "北区",
-      "status": "候補",
-      "group": "東京全域・北区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/jujo/index.html",
       "inventoryGroupCode": "003218",
       "operators": [
         "東日本旅客鉄道"
@@ -2971,7 +2971,7 @@
       "lines": [
         "赤羽線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003278",
@@ -3799,16 +3799,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003651",
+      "id": "jimbocho",
       "name": "神保町",
       "prefecture": "東京都",
       "area": "千代田区",
-      "status": "候補",
-      "group": "東京全域・千代田区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/jimbocho/index.html",
       "inventoryGroupCode": "003651",
       "operators": [
         "東京地下鉄",
@@ -3819,7 +3819,7 @@
         "11号線半蔵門線",
         "6号線三田線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003677",
@@ -3845,16 +3845,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003624",
+      "id": "akihabara",
       "name": "秋葉原",
       "prefecture": "東京都",
       "area": "千代田区",
-      "status": "候補",
-      "group": "東京全域・千代田区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/akihabara/index.html",
       "inventoryGroupCode": "003624",
       "operators": [
         "東京地下鉄",
@@ -3867,7 +3867,7 @@
         "東北線",
         "総武線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003691",
@@ -4144,16 +4144,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003417",
+      "id": "nippori",
       "name": "日暮里",
       "prefecture": "東京都",
       "area": "台東区・荒川区",
-      "status": "候補",
-      "group": "東京全域・台東区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/nippori/index.html",
       "inventoryGroupCode": "003417",
       "operators": [
         "京成電鉄",
@@ -4166,7 +4166,7 @@
         "本線",
         "東北線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003502",
@@ -4189,16 +4189,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003522",
+      "id": "asakusa",
       "name": "浅草",
       "prefecture": "東京都",
       "area": "台東区",
-      "status": "候補",
-      "group": "東京全域・台東区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/asakusa/index.html",
       "inventoryGroupCode": "003522",
       "operators": [
         "東京地下鉄",
@@ -4210,19 +4210,19 @@
         "3号線銀座線",
         "伊勢崎線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003636",
+      "id": "asakusabashi",
       "name": "浅草橋",
       "prefecture": "東京都",
       "area": "台東区",
-      "status": "候補",
-      "group": "東京全域・台東区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/asakusabashi/index.html",
       "inventoryGroupCode": "003636",
       "operators": [
         "東京都",
@@ -4232,7 +4232,7 @@
         "1号線浅草線",
         "総武線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003530",
@@ -4275,16 +4275,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003571",
+      "id": "kuramae",
       "name": "蔵前",
       "prefecture": "東京都",
       "area": "台東区",
-      "status": "候補",
-      "group": "東京全域・台東区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kuramae/index.html",
       "inventoryGroupCode": "003571",
       "operators": [
         "東京都"
@@ -4293,7 +4293,7 @@
         "12号線大江戸線",
         "1号線浅草線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003460",
@@ -4638,16 +4638,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003606",
+      "id": "kokubunji",
       "name": "国分寺",
       "prefecture": "東京都",
       "area": "国分寺市",
-      "status": "候補",
-      "group": "東京全域・国分寺市",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/kokubunji/index.html",
       "inventoryGroupCode": "003606",
       "operators": [
         "東日本旅客鉄道",
@@ -4658,7 +4658,7 @@
         "国分寺線",
         "多摩湖線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003520",
@@ -4702,16 +4702,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003622",
+      "id": "kunitachi",
       "name": "国立",
       "prefecture": "東京都",
       "area": "国立市",
-      "status": "候補",
-      "group": "東京全域・国立市",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kunitachi/index.html",
       "inventoryGroupCode": "003622",
       "operators": [
         "東日本旅客鉄道"
@@ -4719,7 +4719,7 @@
       "lines": [
         "中央線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003733",
@@ -4802,16 +4802,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003654",
+      "id": "ryogoku",
       "name": "両国",
       "prefecture": "東京都",
       "area": "墨田区",
-      "status": "候補",
-      "group": "東京全域・墨田区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/ryogoku/index.html",
       "inventoryGroupCode": "003654",
       "operators": [
         "東日本旅客鉄道"
@@ -4819,7 +4819,7 @@
       "lines": [
         "総武線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003477",
@@ -4882,16 +4882,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003526",
+      "id": "oshiage",
       "name": "押上",
       "prefecture": "東京都",
       "area": "墨田区",
-      "status": "候補",
-      "group": "東京全域・墨田区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/oshiage/index.html",
       "inventoryGroupCode": "003526",
       "operators": [
         "京成電鉄",
@@ -4905,7 +4905,7 @@
         "伊勢崎線",
         "押上線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003479",
@@ -4929,16 +4929,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003538",
+      "id": "honjoazumabashi",
       "name": "本所吾妻橋",
       "prefecture": "東京都",
       "area": "墨田区",
-      "status": "候補",
-      "group": "東京全域・墨田区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/honjoazumabashi/index.html",
       "inventoryGroupCode": "003538",
       "operators": [
         "東京都"
@@ -4946,7 +4946,7 @@
       "lines": [
         "1号線浅草線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003548",
@@ -6059,16 +6059,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003821",
+      "id": "fuchu",
       "name": "府中",
       "prefecture": "東京都",
       "area": "府中市",
-      "status": "候補",
-      "group": "東京全域・府中市",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/fuchu/index.html",
       "inventoryGroupCode": "003821",
       "operators": [
         "京王電鉄"
@@ -6076,7 +6076,7 @@
       "lines": [
         "京王線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003876",
@@ -6261,16 +6261,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003434",
+      "id": "sendagi",
       "name": "千駄木",
       "prefecture": "東京都",
       "area": "文京区",
-      "status": "候補",
-      "group": "東京全域・文京区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/sendagi/index.html",
       "inventoryGroupCode": "003434",
       "operators": [
         "東京地下鉄"
@@ -6278,7 +6278,7 @@
       "lines": [
         "9号線千代田線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003542",
@@ -6647,16 +6647,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003601",
+      "id": "shinokubo",
       "name": "新大久保",
       "prefecture": "東京都",
       "area": "新宿区",
-      "status": "候補",
-      "group": "東京全域・新宿区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/shinokubo/index.html",
       "inventoryGroupCode": "003601",
       "operators": [
         "東日本旅客鉄道"
@@ -6664,7 +6664,7 @@
       "lines": [
         "山手線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003700",
@@ -6882,16 +6882,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003578",
+      "id": "kagurazaka",
       "name": "神楽坂",
       "prefecture": "東京都",
       "area": "新宿区",
-      "status": "候補",
-      "group": "東京全域・新宿区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kagurazaka/index.html",
       "inventoryGroupCode": "003578",
       "operators": [
         "東京地下鉄"
@@ -6899,7 +6899,7 @@
       "lines": [
         "5号線東西線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003623",
@@ -7062,16 +7062,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003508",
+      "id": "takadanobaba",
       "name": "高田馬場",
       "prefecture": "東京都",
       "area": "新宿区",
-      "status": "候補",
-      "group": "東京全域・新宿区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/takadanobaba/index.html",
       "inventoryGroupCode": "003508",
       "operators": [
         "東京地下鉄",
@@ -7083,7 +7083,7 @@
         "山手線",
         "新宿線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003829",
@@ -8063,16 +8063,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003212",
+      "id": "kamiitabashi",
       "name": "上板橋",
       "prefecture": "東京都",
       "area": "板橋区",
-      "status": "候補",
-      "group": "東京全域・板橋区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kamiitabashi/index.html",
       "inventoryGroupCode": "003212",
       "operators": [
         "東武鉄道"
@@ -8080,7 +8080,7 @@
       "lines": [
         "東上本線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003184",
@@ -8203,16 +8203,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003165",
+      "id": "shimurasakaue",
       "name": "志村坂上",
       "prefecture": "東京都",
       "area": "板橋区",
-      "status": "候補",
-      "group": "東京全域・板橋区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/shimurasakaue/index.html",
       "inventoryGroupCode": "003165",
       "operators": [
         "東京都"
@@ -8220,19 +8220,19 @@
       "lines": [
         "6号線三田線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003156",
+      "id": "narimasu",
       "name": "成増",
       "prefecture": "東京都",
       "area": "板橋区",
-      "status": "候補",
-      "group": "東京全域・板橋区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/narimasu/index.html",
       "inventoryGroupCode": "003156",
       "operators": [
         "東武鉄道"
@@ -8240,7 +8240,7 @@
       "lines": [
         "東上本線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003268",
@@ -8507,16 +8507,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003724",
+      "id": "ichinoe",
       "name": "一之江",
       "prefecture": "東京都",
       "area": "江戸川区",
-      "status": "候補",
-      "group": "東京全域・江戸川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/ichinoe/index.html",
       "inventoryGroupCode": "003724",
       "operators": [
         "東京都"
@@ -8524,7 +8524,7 @@
       "lines": [
         "10号線新宿線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003303",
@@ -8547,16 +8547,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003360",
+      "id": "koiwa",
       "name": "小岩",
       "prefecture": "東京都",
       "area": "江戸川区",
-      "status": "候補",
-      "group": "東京全域・江戸川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/koiwa/index.html",
       "inventoryGroupCode": "003360",
       "operators": [
         "東日本旅客鉄道"
@@ -8564,19 +8564,19 @@
       "lines": [
         "総武線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003561",
+      "id": "hirai",
       "name": "平井",
       "prefecture": "東京都",
       "area": "江戸川区",
-      "status": "候補",
-      "group": "東京全域・江戸川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/hirai/index.html",
       "inventoryGroupCode": "003561",
       "operators": [
         "東日本旅客鉄道"
@@ -8584,7 +8584,7 @@
       "lines": [
         "総武線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003695",
@@ -8627,16 +8627,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003667",
+      "id": "mizue",
       "name": "瑞江",
       "prefecture": "東京都",
       "area": "江戸川区",
-      "status": "候補",
-      "group": "東京全域・江戸川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/mizue/index.html",
       "inventoryGroupCode": "003667",
       "operators": [
         "東京都"
@@ -8644,7 +8644,7 @@
       "lines": [
         "10号線新宿線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003565",
@@ -8667,16 +8667,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003745",
+      "id": "funabori",
       "name": "船堀",
       "prefecture": "東京都",
       "area": "江戸川区",
-      "status": "候補",
-      "group": "東京全域・江戸川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/funabori/index.html",
       "inventoryGroupCode": "003745",
       "operators": [
         "東京都"
@@ -8684,19 +8684,19 @@
       "lines": [
         "10号線新宿線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003894",
+      "id": "kasai",
       "name": "葛西",
       "prefecture": "東京都",
       "area": "江戸川区",
-      "status": "候補",
-      "group": "東京全域・江戸川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kasai/index.html",
       "inventoryGroupCode": "003894",
       "operators": [
         "東京地下鉄"
@@ -8704,7 +8704,7 @@
       "lines": [
         "5号線東西線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-004012",
@@ -8727,16 +8727,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003890",
+      "id": "nishikasai",
       "name": "西葛西",
       "prefecture": "東京都",
       "area": "江戸川区",
-      "status": "候補",
-      "group": "東京全域・江戸川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/nishikasai/index.html",
       "inventoryGroupCode": "003890",
       "operators": [
         "東京地下鉄"
@@ -8744,7 +8744,7 @@
       "lines": [
         "5号線東西線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-004144",
@@ -9136,16 +9136,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003754",
+      "id": "kiyosumishirakawa",
       "name": "清澄白河",
       "prefecture": "東京都",
       "area": "江東区",
-      "status": "候補",
-      "group": "東京全域・江東区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kiyosumishirakawa/index.html",
       "inventoryGroupCode": "003754",
       "operators": [
         "東京地下鉄",
@@ -9155,7 +9155,7 @@
         "11号線半蔵門線",
         "12号線大江戸線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003928",
@@ -9260,16 +9260,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003818",
+      "id": "monzennakacho",
       "name": "門前仲町",
       "prefecture": "東京都",
       "area": "江東区",
-      "status": "候補",
-      "group": "東京全域・江東区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/monzennakacho/index.html",
       "inventoryGroupCode": "003818",
       "operators": [
         "東京地下鉄",
@@ -9279,7 +9279,7 @@
         "12号線大江戸線",
         "5号線東西線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-004119",
@@ -9587,16 +9587,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003991",
+      "id": "ebisu",
       "name": "恵比寿",
       "prefecture": "東京都",
       "area": "渋谷区",
-      "status": "候補",
-      "group": "東京全域・渋谷区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/ebisu/index.html",
       "inventoryGroupCode": "003991",
       "operators": [
         "東京地下鉄",
@@ -9606,7 +9606,7 @@
         "2号線日比谷線",
         "山手線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003844",
@@ -10345,16 +10345,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-004076",
+      "id": "komae",
       "name": "狛江",
       "prefecture": "東京都",
       "area": "狛江市",
-      "status": "候補",
-      "group": "東京全域・狛江市",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/komae/index.html",
       "inventoryGroupCode": "004076",
       "operators": [
         "小田急電鉄"
@@ -10362,7 +10362,7 @@
       "lines": [
         "小田原線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003180",
@@ -10567,16 +10567,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-004014",
+      "id": "nakameguro",
       "name": "中目黒",
       "prefecture": "東京都",
       "area": "目黒区",
-      "status": "候補",
-      "group": "東京全域・目黒区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/nakameguro/index.html",
       "inventoryGroupCode": "004014",
       "operators": [
         "東京地下鉄",
@@ -10586,7 +10586,7 @@
         "2号線日比谷線",
         "東横線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-004050",
@@ -10909,16 +10909,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003634",
+      "id": "tachikawa",
       "name": "立川",
       "prefecture": "東京都",
       "area": "立川市",
-      "status": "候補",
-      "group": "東京全域・立川市",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/tachikawa/index.html",
       "inventoryGroupCode": "003634",
       "operators": [
         "東日本旅客鉄道"
@@ -10928,7 +10928,7 @@
         "南武線",
         "青梅線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003617",
@@ -11051,16 +11051,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003427",
+      "id": "kamishakujii",
       "name": "上石神井",
       "prefecture": "東京都",
       "area": "練馬区",
-      "status": "候補",
-      "group": "東京全域・練馬区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kamishakujii/index.html",
       "inventoryGroupCode": "003427",
       "operators": [
         "西武鉄道"
@@ -11068,7 +11068,7 @@
       "lines": [
         "新宿線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003345",
@@ -11294,16 +11294,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003337",
+      "id": "ekoda",
       "name": "江古田",
       "prefecture": "東京都",
       "area": "練馬区",
-      "status": "候補",
-      "group": "東京全域・練馬区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/ekoda/index.html",
       "inventoryGroupCode": "003337",
       "operators": [
         "西武鉄道"
@@ -11311,19 +11311,19 @@
       "lines": [
         "池袋線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003292",
+      "id": "shakujiikoen",
       "name": "石神井公園",
       "prefecture": "東京都",
       "area": "練馬区",
-      "status": "候補",
-      "group": "東京全域・練馬区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/shakujiikoen/index.html",
       "inventoryGroupCode": "003292",
       "operators": [
         "西武鉄道"
@@ -11331,19 +11331,19 @@
       "lines": [
         "池袋線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003328",
+      "id": "nerima",
       "name": "練馬",
       "prefecture": "東京都",
       "area": "練馬区",
-      "status": "候補",
-      "group": "東京全域・練馬区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/nerima/index.html",
       "inventoryGroupCode": "003328",
       "operators": [
         "東京都",
@@ -11355,7 +11355,7 @@
         "西武有楽町線",
         "豊島線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003243",
@@ -11625,16 +11625,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003302",
+      "id": "machiya",
       "name": "町屋",
       "prefecture": "東京都",
       "area": "荒川区",
-      "status": "候補",
-      "group": "東京全域・荒川区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/machiya/index.html",
       "inventoryGroupCode": "003302",
       "operators": [
         "京成電鉄",
@@ -11644,7 +11644,7 @@
         "9号線千代田線",
         "本線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003291",
@@ -11871,16 +11871,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003199",
+      "id": "kameari",
       "name": "亀有",
       "prefecture": "東京都",
       "area": "葛飾区",
-      "status": "候補",
-      "group": "東京全域・葛飾区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kameari/index.html",
       "inventoryGroupCode": "003199",
       "operators": [
         "東日本旅客鉄道"
@@ -11888,19 +11888,19 @@
       "lines": [
         "常磐線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003323",
+      "id": "keiseitateishi",
       "name": "京成立石",
       "prefecture": "東京都",
       "area": "葛飾区",
-      "status": "候補",
-      "group": "東京全域・葛飾区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/keiseitateishi/index.html",
       "inventoryGroupCode": "003323",
       "operators": [
         "京成電鉄"
@@ -11908,7 +11908,7 @@
       "lines": [
         "押上線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003195",
@@ -11975,16 +11975,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003273",
+      "id": "horikirishobuen",
       "name": "堀切菖蒲園",
       "prefecture": "東京都",
       "area": "葛飾区",
-      "status": "候補",
-      "group": "東京全域・葛飾区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/horikirishobuen/index.html",
       "inventoryGroupCode": "003273",
       "operators": [
         "京成電鉄"
@@ -11992,7 +11992,7 @@
       "lines": [
         "本線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "shinkoiwa",
@@ -12035,16 +12035,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003232",
+      "id": "shibamata",
       "name": "柴又",
       "prefecture": "東京都",
       "area": "葛飾区",
-      "status": "候補",
-      "group": "東京全域・葛飾区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-012",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/shibamata/index.html",
       "inventoryGroupCode": "003232",
       "operators": [
         "京成電鉄"
@@ -12052,19 +12052,19 @@
       "lines": [
         "金町線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
-      "id": "tokyo-n02-003191",
+      "id": "kanamachi",
       "name": "金町",
       "prefecture": "東京都",
       "area": "葛飾区",
-      "status": "候補",
-      "group": "東京全域・葛飾区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/kanamachi/index.html",
       "inventoryGroupCode": "003191",
       "operators": [
         "東日本旅客鉄道"
@@ -12072,7 +12072,7 @@
       "lines": [
         "常磐線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003280",
@@ -12096,16 +12096,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003242",
+      "id": "hibarigaoka",
       "name": "ひばりヶ丘",
       "prefecture": "東京都",
       "area": "西東京市",
-      "status": "候補",
-      "group": "東京全域・西東京市",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/hibarigaoka/index.html",
       "inventoryGroupCode": "003242",
       "operators": [
         "西武鉄道"
@@ -12113,7 +12113,7 @@
       "lines": [
         "池袋線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003408",
@@ -12316,16 +12316,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003966",
+      "id": "chofu",
       "name": "調布",
       "prefecture": "東京都",
       "area": "調布市",
-      "status": "候補",
-      "group": "東京全域・調布市",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/chofu/index.html",
       "inventoryGroupCode": "003966",
       "operators": [
         "京王電鉄"
@@ -12334,7 +12334,7 @@
         "京王線",
         "相模原線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003916",
@@ -12498,16 +12498,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003354",
+      "id": "sugamo",
       "name": "巣鴨",
       "prefecture": "東京都",
       "area": "豊島区",
-      "status": "候補",
-      "group": "東京全域・豊島区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/sugamo/index.html",
       "inventoryGroupCode": "003354",
       "operators": [
         "東京都",
@@ -12517,7 +12517,7 @@
         "6号線三田線",
         "山手線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003351",
@@ -12680,16 +12680,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003390",
+      "id": "ikebukuro",
       "name": "池袋",
       "prefecture": "東京都",
       "area": "豊島区",
-      "status": "候補",
-      "group": "東京全域・豊島区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-011",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/ikebukuro/index.html",
       "inventoryGroupCode": "003390",
       "operators": [
         "東京地下鉄",
@@ -12705,7 +12705,7 @@
         "池袋線",
         "赤羽線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003470",
@@ -12829,16 +12829,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003200",
+      "id": "gotanno",
       "name": "五反野",
       "prefecture": "東京都",
       "area": "足立区",
-      "status": "候補",
-      "group": "東京全域・足立区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/gotanno/index.html",
       "inventoryGroupCode": "003200",
       "operators": [
         "東武鉄道"
@@ -12846,7 +12846,7 @@
       "lines": [
         "伊勢崎線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003290",
@@ -12869,16 +12869,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003133",
+      "id": "rokucho",
       "name": "六町",
       "prefecture": "東京都",
       "area": "足立区",
-      "status": "候補",
-      "group": "東京全域・足立区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/rokucho/index.html",
       "inventoryGroupCode": "003133",
       "operators": [
         "首都圏新都市鉄道"
@@ -12886,7 +12886,7 @@
       "lines": [
         "常磐新線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "kitasenju",
@@ -13116,16 +13116,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003214",
+      "id": "ayase",
       "name": "綾瀬",
       "prefecture": "東京都",
       "area": "足立区",
-      "status": "候補",
-      "group": "東京全域・足立区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/ayase/index.html",
       "inventoryGroupCode": "003214",
       "operators": [
         "東京地下鉄",
@@ -13135,7 +13135,7 @@
         "9号線千代田線",
         "常磐線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003078",
@@ -13178,16 +13178,16 @@
       "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
     },
     {
-      "id": "tokyo-n02-003159",
+      "id": "nishiarai",
       "name": "西新井",
       "prefecture": "東京都",
       "area": "足立区",
-      "status": "候補",
-      "group": "東京全域・足立区",
-      "reason": "東京全域の取りこぼし確認用。詳細掲載の要否は調査時に判断。",
-      "conditionCount": 0,
-      "photoCount": 0,
-      "contentPath": null,
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/nishiarai/index.html",
       "inventoryGroupCode": "003159",
       "operators": [
         "東武鉄道"
@@ -13196,7 +13196,7 @@
         "伊勢崎線",
         "大師線"
       ],
-      "notes": "駅の存在と原典路線のみ取得。18条件・家賃・写真は未調査。IDは台帳用で公開slugは着手時に設定。"
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     },
     {
       "id": "tokyo-n02-003144",
@@ -13601,6 +13601,136 @@
       "conditionCount": 18,
       "photoCount": 4,
       "contentPath": "public/station/noborito/index.html"
+    },
+    {
+      "prefecture": "千葉県",
+      "area": "市川市",
+      "id": "ichikawa",
+      "name": "市川",
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/ichikawa/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "千葉県",
+      "area": "船橋市",
+      "id": "funabashi",
+      "name": "船橋",
+      "status": "収録済み",
+      "group": "station-research-result-batch-007",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 4,
+      "contentPath": "public/station/funabashi/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "千葉県",
+      "area": "市川市",
+      "id": "gyotoku",
+      "name": "行徳",
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/gyotoku/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "千葉県",
+      "area": "松戸市",
+      "id": "matsudo",
+      "name": "松戸",
+      "status": "収録済み",
+      "group": "station-research-result-batch-008",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/matsudo/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "千葉県",
+      "area": "市川市",
+      "id": "myoden",
+      "name": "妙典",
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/myoden/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "千葉県",
+      "area": "市川市",
+      "id": "minamigyotoku",
+      "name": "南行徳",
+      "status": "収録済み",
+      "group": "station-research-result-batch-009",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/minamigyotoku/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "埼玉県",
+      "area": "蕨市",
+      "id": "warabi",
+      "name": "蕨",
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/warabi/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "埼玉県",
+      "area": "戸田市",
+      "id": "todakoen",
+      "name": "戸田公園",
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/todakoen/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "神奈川",
+      "area": "県川崎市中原区",
+      "id": "musashishinjo",
+      "name": "武蔵新城",
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/musashishinjo/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
+    },
+    {
+      "prefecture": "千葉県",
+      "area": "船橋市",
+      "id": "barakinakayama",
+      "name": "原木中山",
+      "status": "収録済み",
+      "group": "station-research-result-batch-010",
+      "reason": "受領調査結果を取り込み",
+      "conditionCount": 18,
+      "photoCount": 3,
+      "contentPath": "public/station/barakinakayama/index.html",
+      "notes": "受領結果の形式・整合性を確認して収録。全件独立再調査は未実施。"
     }
   ],
   "inventorySource": "research/tokyo-station-inventory.json"
