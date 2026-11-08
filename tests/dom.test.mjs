@@ -74,6 +74,15 @@ test("theme guides list matching stations and map links show their active condit
   for (const theme of ATLAS_DATA.themePresets) {
     const { dom, document } = await openPage(`themes/${theme.id}`, { map: false });
     assert.equal(document.querySelector('#atlas'), null);
+    assert(document.querySelector('#theme-guide h2')?.textContent.length > 8, `${theme.id}: article guidance`);
+    assert.equal(document.querySelectorAll('.theme-feature').length,3, `${theme.id}: three examples`);
+    for (const example of document.querySelectorAll('.theme-feature')) {
+      const slug=example.querySelector('h3 a')?.pathname.split('/')[2];
+      const station=ATLAS_DATA.stations.find(s=>s.slug===slug);
+      assert(station && theme.tags.some(tag=>station.tags.includes(tag)&&station.evidence[tag]?.status==='verified'),`${theme.id}: example is verified`);
+      assert(example.querySelector('figcaption a[href^="https://commons.wikimedia.org/"]'),`${theme.id}: photo credit`);
+    }
+    assert(document.querySelectorAll('.theme-all-stations').length >= 1, `${theme.id}: full candidates remain accessible`);
     const links=[...document.querySelectorAll('.theme-results .theme-map-link')];
     assert.equal(links.length,theme.id==='weekend-mobility'?3:1);
     for (const link of links) {

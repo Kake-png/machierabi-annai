@@ -48,7 +48,7 @@ function finalizeHtml(html, relativePath) {
   html = html.replaceAll("?v=60", "?v=63").replaceAll("?v=59", "?v=63").replaceAll("?v=57", "?v=63").replaceAll("?v=56", "?v=63").replaceAll("?v=54", "?v=63").replaceAll("?v=53", "?v=63").replaceAll("?v=52", "?v=63").replaceAll("?v=51", "?v=63").replaceAll("?v=50", "?v=63").replaceAll("?v=49", "?v=63").replaceAll("?v=48", "?v=63").replaceAll("?v=47", "?v=63").replaceAll("?v=46", "?v=63").replaceAll("?v=45", "?v=63").replaceAll("?v=44", "?v=63").replaceAll("?v=40", "?v=63").replaceAll("?v=34", "?v=63")
     .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=65"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=65"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=65"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
-  if (relativePath === "themes") html = html.replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=66"');
+  if (relativePath === "themes" || relativePath.startsWith("themes/")) html = html.replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=67"');
   html = html.replace("制定・最終更新：2026年9月21日", "制定：2026年9月21日・最終更新：2026年10月17日")
     .replace("駅徒歩10分以内・管理費等を除く平均", "HOME’Sの1K参考相場・管理費等を除く")
     .replace("家賃は2026年9月22日に確認。店舗・運行・賃料は変わるため、最終確認は各公式情報で行ってください。", "確認済みの条件だけを検索に使います。根拠と確認状況は各駅ページに掲載しています。");
