@@ -48,6 +48,7 @@ function finalizeHtml(html, relativePath) {
   html = html.replaceAll("?v=60", "?v=63").replaceAll("?v=59", "?v=63").replaceAll("?v=57", "?v=63").replaceAll("?v=56", "?v=63").replaceAll("?v=54", "?v=63").replaceAll("?v=53", "?v=63").replaceAll("?v=52", "?v=63").replaceAll("?v=51", "?v=63").replaceAll("?v=50", "?v=63").replaceAll("?v=49", "?v=63").replaceAll("?v=48", "?v=63").replaceAll("?v=47", "?v=63").replaceAll("?v=46", "?v=63").replaceAll("?v=45", "?v=63").replaceAll("?v=44", "?v=63").replaceAll("?v=40", "?v=63").replaceAll("?v=34", "?v=63")
     .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=65"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=65"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=65"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
+  if (relativePath === "themes") html = html.replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=66"');
   html = html.replace("制定・最終更新：2026年9月21日", "制定：2026年9月21日・最終更新：2026年10月17日")
     .replace("駅徒歩10分以内・管理費等を除く平均", "HOME’Sの1K参考相場・管理費等を除く")
     .replace("家賃は2026年9月22日に確認。店舗・運行・賃料は変わるため、最終確認は各公式情報で行ってください。", "確認済みの条件だけを検索に使います。根拠と確認状況は各駅ページに掲載しています。");
@@ -149,7 +150,16 @@ for (const theme of ATLAS_DATA.themePresets) {
 
 const writeDirectory = (relativePath, title, description, content) => writePage(relativePath, directoryTemplate
   .replaceAll("{{TITLE}}", escapeHtml(title)).replaceAll("{{DESCRIPTION}}", escapeHtml(description)).replace("{{CONTENT}}", content));
-writeDirectory("themes", "暮らし別に駅を探す", "好きな過ごし方から住む街を探す。映画・本・サイクリングなどの条件に合う東京・神奈川・千葉の掲載駅を比較できます。", `<div class="entry-grid">${ATLAS_DATA.themePresets.map((theme) => `<a href="/themes/${theme.id}/"><h2>${escapeHtml(theme.navLabel)}</h2><p>${escapeHtml(theme.description)}</p><span>${ATLAS_DATA.stations.filter((station) => matchesTheme(station, theme)).length}駅の候補 →</span></a>`).join("")}</div><p class="data-note">確認済みの条件だけを検索に使います。確認中の条件も残っており、各駅ページと確認表に掲載しています。</p>`);
+const themeGroups = [
+  { id: "everyday", title: "毎日の寄り道を楽しむ", lead: "仕事や学校の帰りに、好きな場所へ立ち寄れる街。", ids: ["books", "movies", "drinking"] },
+  { id: "outdoors", title: "外で過ごす時間をつくる", lead: "休日だけでなく、普段の散歩や自転車も身近に。", ids: ["strolling", "cycling", "night-walk"] },
+  { id: "getaway", title: "週末に遠くへ出かける", lead: "空港・新幹線・車のアクセスから、出発しやすい街を探す。", ids: ["weekend-mobility", "car-life"] }
+];
+const themeById = new Map(ATLAS_DATA.themePresets.map(theme => [theme.id, theme]));
+const themeDirectory = `<div class="theme-intro"><p class="theme-intro-kicker">暮らしの入口</p><h2>住んだあと、何を楽しみたいですか。</h2><p>気になる過ごし方を選ぶと、その条件に合う掲載駅と根拠を見られます。駅が決まっていなくても、まずは好きなことから探してみてください。</p><nav class="theme-jumps" aria-label="過ごし方の種類">${themeGroups.map(group => `<a href="#${group.id}">${escapeHtml(group.title)} <span aria-hidden="true">↓</span></a>`).join("")}</nav></div>
+${themeGroups.map(group => `<section class="theme-group" id="${group.id}" aria-labelledby="${group.id}-title"><header class="theme-group-head"><h2 id="${group.id}-title">${escapeHtml(group.title)}</h2><p>${escapeHtml(group.lead)}</p></header><div class="entry-grid theme-entry-grid">${group.ids.map(id => { const theme = themeById.get(id); if (!theme) throw Error(`Missing theme: ${id}`); const count = ATLAS_DATA.stations.filter(station => matchesTheme(station, theme)).length; return `<a href="/themes/${theme.id}/"><h3>${escapeHtml(theme.navLabel)}</h3><p>${escapeHtml(theme.description)}</p><span>${count}駅の候補を見る <span aria-hidden="true">→</span></span></a>`; }).join("")}</div></section>`).join("")}
+<section class="theme-next"><h2>候補を見つけたら</h2><ol><li>テーマのページで候補駅と、駅ごとの理由を比べる</li><li>気になる駅の詳細で施設名・アクセス・出典を確認する</li><li><a href="/compare/">駅の比較</a>や<a href="/">地図の絞り込み</a>で、家賃やほかの条件も合わせて考える</li></ol><p>候補数は東京・神奈川・千葉の掲載駅だけを対象にした数です。複数のテーマに同じ駅が含まれます。確認済みの条件だけを検索に使い、確認中の条件は<a href="/data-status/">確認状況</a>で分けて表示しています。</p></section>`;
+writeDirectory("themes", "暮らし別に駅を探す", "映画、本、飲み歩き、散歩、サイクリング、週末旅行。好きな過ごし方から東京・神奈川・千葉の掲載駅を探し、家賃や根拠を比較できます。", themeDirectory);
 writeDirectory("stations", "掲載駅一覧", "東京・神奈川・千葉の65駅を掲載しています。交通・買い物・散歩先・夜の帰宅などを同じ項目で確認できます。", `<ul class="directory-list">${stationLinks(ATLAS_DATA.stations)}</ul>`);
 writeDirectory("routes", "路線別に駅を探す", "使いたい路線から掲載駅を探せます。徒歩10分以内の近隣駅も含み、駅ページでは直接乗れる路線と分けています。", ATLAS_DATA.routeGroups.map((group) => `<section><h2>${escapeHtml(group.label)}</h2><ul class="route-directory">${group.routes.map((route) => route.available === false ? `<li><span>${escapeHtml(route.label)}（掲載駅なし）</span></li>` : `<li><a href="/routes/${route.id}/"><span class="route-swatch" style="--route-color:${route.color}"></span>${escapeHtml(route.label)}<small>${route.mapOnly ? "路線表示のみ →" : `${ATLAS_DATA.stations.filter((station) => station.routes.includes(route.id)).length}駅 →`}</small></a></li>`).join("")}</ul></section>`).join(""));
 for (const route of ATLAS_DATA.routeGroups.flatMap((group) => group.routes).filter((route) => route.available !== false)) {

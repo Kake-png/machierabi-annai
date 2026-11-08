@@ -29,6 +29,28 @@ html { font-size: 16px; }
 .entry-grid h2 { margin: 0 0 8px; font-size: 22px; }
 .entry-grid p { color: var(--ink); margin-bottom: 10px; }
 .entry-grid span { font-size: 15px; font-weight: 650; }
+.theme-intro { padding: clamp(22px, 4vw, 38px); background: var(--white); border: 1px solid var(--rule); border-left: 5px solid var(--green-2); }
+.theme-intro-kicker { margin: 0 0 8px; color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+.theme-intro h2 { margin: 0; font-size: clamp(23px, 3.5vw, 32px); line-height: 1.4; }
+.theme-intro > p:not(.theme-intro-kicker) { max-width: 68ch; margin: 12px 0 0; }
+.theme-jumps { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.theme-jumps a { display: inline-flex; gap: 12px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: var(--paper); text-decoration: none; font-weight: 650; }
+.theme-jumps a:hover, .theme-jumps a:focus-visible { border-color: var(--green); text-decoration: underline; }
+.theme-group { margin-top: 44px; scroll-margin-top: 80px; }
+.theme-group-head { margin-bottom: 16px; }
+.theme-group-head h2 { margin: 0; font-size: clamp(22px, 3vw, 28px); }
+.theme-group-head p { margin: 4px 0 0; color: var(--muted); }
+.theme-entry-grid { gap: 12px; }
+.theme-entry-grid > a { padding: 20px; border: 1px solid var(--rule); background: var(--white); }
+.theme-entry-grid > a:hover, .theme-entry-grid > a:focus-visible { border-color: var(--green); text-decoration: none; }
+.theme-entry-grid h3 { margin: 0 0 8px; font-size: 21px; }
+.theme-entry-grid p { margin: 0 0 16px; font-size: 15px; }
+.theme-entry-grid span { color: var(--green); }
+.theme-next { margin-top: 44px; padding: 24px; border-top: 2px solid var(--rule); background: var(--paper-2); }
+.theme-next h2 { margin: 0 0 12px; font-size: 23px; }
+.theme-next ol { padding-left: 1.4em; margin: 0 0 16px; }
+.theme-next li + li { margin-top: 7px; }
+.theme-next p { margin: 0; color: var(--muted); font-size: 14px; }
 .directory-list { list-style: none; padding: 0; margin: 18px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 26px; }
 .directory-list li { border-bottom: 1px solid var(--rule); }
 .directory-list a { display: block; padding: 12px 0; text-decoration: none; }

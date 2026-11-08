@@ -34,7 +34,9 @@ test('contact page links to the supplied Google Form and does not rely on a cont
  assert.equal(link.rel, 'noopener noreferrer');
  assert(!html.includes('/api/contact'));
  const wrangler=JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname,'../wrangler.jsonc'),'utf8'));
- assert(!wrangler.main && !wrangler.assets.binding && !wrangler.assets.run_worker_first);
+ assert.equal(wrangler.main, 'worker/domain-redirect.mjs');
+ assert.equal(wrangler.assets.binding, 'ASSETS');
+ assert.equal(wrangler.assets.run_worker_first, true);
 });
 test('sitemap contains canonical indexable HTML only, with no query variants',()=>{
  const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');

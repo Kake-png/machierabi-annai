@@ -13,7 +13,7 @@ const slugs = new Set();
 const wrangler = JSON.parse(fs.readFileSync(path.join(projectRoot, "wrangler.jsonc"), "utf8"));
 if (wrangler.name !== "machierabi-annai") errors.push("Wrangler targets the wrong Worker name");
 if (wrangler.assets?.directory !== "./public") errors.push("Wrangler must deploy ./public as static assets");
-if (wrangler.main || wrangler.assets?.binding || wrangler.assets?.run_worker_first) errors.push("Static-only deployment must not configure Worker bindings or worker-first routes");
+if (wrangler.main !== "worker/domain-redirect.mjs" || wrangler.assets?.binding !== "ASSETS" || wrangler.assets?.run_worker_first !== true) errors.push("Domain migration Worker must serve assets and redirect the old hostname");
 
 for (const station of stations) {
   if (slugs.has(station.slug)) errors.push(`Duplicate station slug: ${station.slug}`);
