@@ -7,6 +7,7 @@ import { JSDOM, VirtualConsole } from "jsdom";
 import { ATLAS_DATA } from "../public/assets/data.js";
 import * as search from "../public/assets/search.js";
 import { evidenceHtml } from "../public/assets/evidence-view.js";
+import { stationGuide, relatedGuideStations, pilotStationSlugs } from "../public/assets/station-guide.js";
 const publicRoot = path.resolve(import.meta.dirname, "../public");
 const app = fs.readFileSync(path.join(publicRoot, "assets/app.js"), "utf8").replace(/^import .*;\n/gm, "");
 const leaflet = fs.readFileSync(path.join(publicRoot, "vendor/leaflet.js"), "utf8");
@@ -24,7 +25,7 @@ async function openPage(route, { map = true, storage = {}, query = "" } = {}) {
   window.scrollTo = () => {};
   for(const [key,value] of Object.entries(storage))window.localStorage.setItem(key,value);
   window.ATLAS_DATA = ATLAS_DATA;
-  Object.assign(window, search, { evidenceHtml, layoutRoutes });
+  Object.assign(window, search, { evidenceHtml, layoutRoutes, stationGuide, relatedGuideStations });
   Object.defineProperties(window.HTMLElement.prototype, {
     clientWidth: { get() { return this.id.includes("map") ? 900 : 490; } },
     clientHeight: { get() { return 700; } }
@@ -323,4 +324,18 @@ test('route search filters company groups and keeps selected counts', async () =
   assert.match(button.closest('details').querySelector('summary').textContent,/1路線選択中/);
   input.value='';input.dispatchEvent(new window.Event('input',{bubbles:true}));
   assert.equal(button.getAttribute('aria-pressed'),'true');dom.window.close();
+});
+
+test("station guide keeps the published metadata and introduction after JS render", async () => {
+  // Representative browser checks; the static SEO test checks every station.
+  for (const slug of [...pilotStationSlugs, "oimachi", "kokubunji", "shinagawa", "asagaya"]) {
+    const {dom,document} = await openPage(`station/${slug}`, {map:false});
+    const station=ATLAS_DATA.stations.find(s=>s.slug===slug), guide=stationGuide(station);
+    assert.equal(document.title,guide.title,slug);
+    assert.equal(document.querySelector('meta[name="description"]').content,guide.description,slug);
+    assert.equal(document.querySelector('.station-summary').textContent,guide.intro,slug);
+    assert.equal(document.querySelector('h1').textContent,station.name+'駅の住みやすさ',slug);
+    assert.deepEqual([...document.querySelectorAll('#related a')].map(a=>a.pathname),relatedGuideStations(station,ATLAS_DATA.stations).map(s=>`/station/${s.slug}/`));
+    dom.window.close();
+  }
 });

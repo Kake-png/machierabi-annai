@@ -7,6 +7,7 @@ import { syncAudit } from "./sync-audit.mjs";
 import { matchesTheme } from "../public/assets/search.js";
 import { evidenceHtml } from "../public/assets/evidence-view.js";
 import { createHash } from "node:crypto";
+import { stationGuide, relatedGuideStations } from "../public/assets/station-guide.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 syncAudit(root);
@@ -72,6 +73,7 @@ function finalizeHtml(html, relativePath) {
     html = html.replace("</head>", `<script type="application/ld+json">${escapeJson(schema)}</script>\n</head>`);
   }
   html = html.replace("</head>", `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${url}">${relativePath === "compare" ? '<meta name="robots" content="noindex,follow">' : ""}\n</head>`);
+  html = html.replaceAll('/assets/app.js?v=70', '/assets/app.js?v=76');
   return applyMonetization(enhanceSeo(html, relativePath, url, stationCount), relativePath, ATLAS_DATA.stations.map(s => s.slug));
 }
 const writePage = (relativePath, html) => {
@@ -83,6 +85,7 @@ const writePage = (relativePath, html) => {
 
 const stationTemplate = fs.readFileSync(path.join(templates, "station.html"), "utf8");
 const stationSeoHtml = (station) => {
+  const guide = stationGuide(station);
   const themes = ATLAS_DATA.themePresets
     .filter((theme) => matchesTheme(station, theme))
     .slice(0, 4);
@@ -92,10 +95,11 @@ const stationSeoHtml = (station) => {
     ["街の確認点", station.notes?.atmosphere || station.cautions?.join("。")]
   ];
   return `<article class="static-seo-content" aria-label="${escapeHtml(station.name)}駅の概要">
-    <nav class="breadcrumb" aria-label="パンくず"><a href="/">南東京の駅</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
+    <nav class="breadcrumb" aria-label="パンくず"><a href="/stations/">駅一覧</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
     <p class="section-kicker">Station guide</p>
-    <h1>${escapeHtml(station.name)}駅</h1>
-    <p class="static-seo-lead">${escapeHtml(station.summary)}</p>
+    <h1>${escapeHtml(station.name)}駅${guide ? "の住みやすさ" : ""}</h1>
+    <p class="static-seo-lead">${escapeHtml(guide?.intro || station.summary)}</p>
+    ${guide ? `<p class="static-seo-meta">1K参考家賃：${station.rent1k.toFixed(2)}万円（${escapeHtml(station.rentCheckedAt)}確認、管理費等を除く）</p>` : ""}
     <p class="static-seo-meta">${escapeHtml(station.area)} · ${escapeHtml(station.lines.join(" / "))}</p>
     <section><h2>${escapeHtml(station.name)}駅の特徴</h2><ul>${(station.strengths || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section><h2>住む前に確認したいこと</h2><ul>${(station.cautions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
@@ -103,6 +107,7 @@ const stationSeoHtml = (station) => {
     <section><h2>写真と撮影時期</h2><div class="photo-walk">${(station.images || []).map((id) => { const photo = ATLAS_DATA.sources[id]; return `<figure class="photo-item"><img src="/${escapeHtml(photo.file)}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="1200" height="900"><figcaption>${escapeHtml(photo.caption)}<small>${escapeHtml(photo.date)}撮影 · ${escapeHtml(photo.author)} · <a href="${escapeHtml(photo.licenseUrl)}">${escapeHtml(photo.license)}</a> · <a href="${escapeHtml(photo.sourceUrl)}">出典</a> · ${escapeHtml(photo.changes)}</small></figcaption></figure>`; }).join("")}</div><p class="data-note">過去の写真は撮影時点の記録です。店舗・建物が現在も同じとは限りません。</p></section>
     ${evidenceHtml(station, ATLAS_DATA)}
     ${themes.length ? `<nav class="static-seo-links" aria-label="${escapeHtml(station.name)}駅に関連する条件"><h2>関連する条件</h2>${themes.map((theme) => `<a href="/themes/${encodeURIComponent(theme.id)}/">${escapeHtml(theme.navLabel)}</a>`).join("")}</nav>` : ""}
+    ${guide ? `<section id="related"><h2>生活条件が似ている掲載駅</h2><ul>${relatedGuideStations(station, ATLAS_DATA.stations).map(item => `<li><a href="/station/${escapeHtml(item.slug)}/">${escapeHtml(item.name)}駅の住みやすさ</a>：${escapeHtml(item.descriptor)}</li>`).join("")}</ul></section>` : ""}
     <p class="static-seo-note">掲載情報は駅周辺の候補を探すための整理です。家賃・店舗・運行状況は変わるため、契約や訪問の前に各公式情報をご確認ください。</p>
   </article>`;
 };
@@ -213,7 +218,7 @@ fs.writeFileSync(path.join(root, "public", "sitemap.xml"), sitemap);
 fs.writeFileSync(path.join(root, "public", "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${siteOrigin}/sitemap.xml\n`);
 fs.writeFileSync(path.join(root, "public", "deployment-version.txt"), "machierabi-annai-v75\n2026-10-31\n");
 
-const fingerprints = Object.fromEntries(["assets/app.js", "assets/route-layout.js", "assets/data.js", "assets/evidence.js", "assets/audit-data.js", "assets/evidence-view.js", "assets/search.js", "assets/style.css", "assets/interface-v34.css", "index.html"].map((file) => [file, createHash("sha256").update(fs.readFileSync(path.join(root, "public", file))).digest("hex")]));
+const fingerprints = Object.fromEntries(["assets/app.js", "assets/station-guide.js", "assets/route-layout.js", "assets/data.js", "assets/evidence.js", "assets/audit-data.js", "assets/evidence-view.js", "assets/search.js", "assets/style.css", "assets/interface-v34.css", "index.html"].map((file) => [file, createHash("sha256").update(fs.readFileSync(path.join(root, "public", file))).digest("hex")]));
 fs.writeFileSync(path.join(root, "public", "release.json"), JSON.stringify({ version: "machierabi-annai-v75", date: "2026-11-02", stationCount: ATLAS_DATA.stations.length, audit: ATLAS_DATA.auditSummary, fingerprints }, null, 2) + "\n");
 
 console.log(`Built ${ATLAS_DATA.stations.length} station pages, ${ATLAS_DATA.themePresets.length} theme pages, and copied Leaflet browser assets.`);

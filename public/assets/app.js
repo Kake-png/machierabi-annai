@@ -1,7 +1,8 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
-import { ATLAS_DATA } from "/assets/data.js?v=70";
+import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
 import { evidenceHtml } from "/assets/evidence-view.js?v=59";
+import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
 
 (() => {
   "use strict";
@@ -640,20 +641,6 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
     };
   }
 
-  function distance(a, b) {
-    const x = (a.lng - b.lng) * Math.cos(((a.lat + b.lat) / 2) * Math.PI / 180);
-    const y = a.lat - b.lat;
-    return Math.sqrt(x * x + y * y);
-  }
-
-  function relatedStations(station) {
-    return stations.filter((candidate) => candidate.slug !== station.slug)
-      .map((candidate) => ({ candidate, tagScore: candidate.tags.filter((tag) => station.tags.includes(tag)).length, distance: distance(station, candidate) }))
-      .sort((a, b) => (b.tagScore - a.tagScore) || (a.distance - b.distance))
-      .slice(0, 3)
-      .map(({ candidate }) => candidate);
-  }
-
   function renderPhoto(sourceKey, index) {
     const photo = sources[sourceKey];
     if (!photo) return "";
@@ -679,7 +666,8 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
     }
 
     const editorial = defaultsFor(station);
-    const related = relatedStations(station);
+    const guide = stationGuide(station);
+    const related = relatedGuideStations(station, stations);
     const photos = station.images || [];
     const leadPhoto = sources[photos[0]];
     const practical = station.practical || {};
@@ -690,18 +678,22 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
       .sort((a, b) => b.score - a.score)
       .slice(0, 4)
       .map(({ theme }) => theme);
-    document.title = `${station.name}駅の住みやすさ・街の特徴｜街えらび案内所`;
-    const description = document.querySelector('meta[name="description"]') || document.head.appendChild(document.createElement("meta"));
-    description.name = "description";
-    description.content = `${station.name}駅の交通・買い物・休日の過ごし方。${station.summary}`;
+    // Physical station pages already contain canonical, server-generated metadata.
+    // Only legacy client-only routes need a fallback; pilot copy is shared with the build.
+    if (guide || !document.body.dataset.stationSlug) {
+      document.title = guide?.title || `${station.name}駅の住みやすさ・街の特徴｜街えらび案内所`;
+      const description = document.querySelector('meta[name="description"]') || document.head.appendChild(document.createElement("meta"));
+      description.name = "description";
+      description.content = guide?.description || `${station.name}駅の交通・買い物・休日の過ごし方。${station.summary}`;
+    }
 
     root.innerHTML = `
-      <nav class="breadcrumb" aria-label="パンくず"><a href="/">南東京</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
+      <nav class="breadcrumb" aria-label="パンくず"><a href="/stations/">駅一覧</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
       <section class="station-hero">
         <div class="station-hero-copy">
           <div class="station-meta">${station.lines.map((line) => `<span class="line-label">${escapeHtml(line)}</span>`).join("")}</div>
-          <h1>${escapeHtml(station.name)}</h1><p class="station-kana">${escapeHtml(station.kana)} · ${escapeHtml(station.area)}</p>
-          <p class="station-descriptor">${escapeHtml(station.descriptor)}</p><p class="station-summary">${escapeHtml(station.summary)}</p>
+          <h1>${escapeHtml(station.name)}${guide ? "駅の住みやすさ" : ""}</h1><p class="station-kana">${escapeHtml(station.kana)} · ${escapeHtml(station.area)}</p>
+          <p class="station-descriptor">${escapeHtml(station.descriptor)}</p><p class="station-summary">${escapeHtml(guide?.intro || station.summary)}</p>
           <div class="hero-actions">${favoriteHtml(station)}<button class="button" type="button" data-compare-toggle="${station.slug}">比較に追加</button><a class="button secondary" href="/compare/">比較表を見る</a></div>
         </div>
         ${leadPhoto ? `<figure class="station-lead-photo">
@@ -727,7 +719,7 @@ import { evidenceHtml } from "/assets/evidence-view.js?v=59";
             ${[["01", "交通", editorial.notes.transport], ["02", "日常の用事", editorial.notes.daily], ["03", "街の表情", editorial.notes.atmosphere], ["04", "休日と時間帯", editorial.notes.weekend], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", practical.car], ["07", "夜の帰宅", practical.evening]].map(([number, title, copy]) => `<div class="life-note"><small>${number}</small><h3>${title}</h3><p>${escapeHtml(copy)}</p></div>`).join("")}
           </div></section>
           ${evidenceHtml(station, ATLAS_DATA)}
-          <section class="content-section" id="related"><p class="section-kicker">Keep alternatives</p><h2>一緒に見ておきたい駅。</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
+          <section class="content-section" id="related"><p class="section-kicker">Keep alternatives</p><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅。"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
         </article>
       </div>`;
 
