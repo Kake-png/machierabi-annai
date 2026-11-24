@@ -1,5 +1,5 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
-import { ATLAS_DATA } from "/assets/data.js?v=70";
+import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
 import { evidenceHtml } from "/assets/evidence-view.js?v=59";
 import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
@@ -688,7 +688,7 @@ import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=7
     }
 
     root.innerHTML = `
-      <nav class="breadcrumb" aria-label="パンくず"><a href="/">南東京</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
+      <nav class="breadcrumb" aria-label="パンくず"><a href="/stations/">駅一覧</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
       <section class="station-hero">
         <div class="station-hero-copy">
           <div class="station-meta">${station.lines.map((line) => `<span class="line-label">${escapeHtml(line)}</span>`).join("")}</div>

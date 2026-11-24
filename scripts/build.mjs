@@ -95,7 +95,7 @@ const stationSeoHtml = (station) => {
     ["街の確認点", station.notes?.atmosphere || station.cautions?.join("。")]
   ];
   return `<article class="static-seo-content" aria-label="${escapeHtml(station.name)}駅の概要">
-    <nav class="breadcrumb" aria-label="パンくず"><a href="/">南東京の駅</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
+    <nav class="breadcrumb" aria-label="パンくず"><a href="/stations/">駅一覧</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
     <p class="section-kicker">Station guide</p>
     <h1>${escapeHtml(station.name)}駅${guide ? "の住みやすさ" : ""}</h1>
     <p class="static-seo-lead">${escapeHtml(guide?.intro || station.summary)}</p>

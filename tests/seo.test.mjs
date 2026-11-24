@@ -64,9 +64,9 @@ test('home and directory station counts follow the published station data', () =
  assert(listing.querySelector('.site-footer').textContent.includes(expected));
 });
 
-test('pilot station pages have matching static copy, metadata and crawlable related links', () => {
+test('all station pages have matching static copy, metadata and crawlable related links', () => {
  assert.equal(pilotStationSlugs.length,10);
- for(const slug of pilotStationSlugs){
+ for(const {slug} of ATLAS_DATA.stations){
   const station=ATLAS_DATA.stations.find(s=>s.slug===slug); assert(station,slug);
   const guide=stationGuide(station);
   const d=new JSDOM(fs.readFileSync(path.join(root,'station',slug,'index.html'),'utf8')).window.document;
@@ -74,6 +74,11 @@ test('pilot station pages have matching static copy, metadata and crawlable rela
   assert.equal(d.querySelector('meta[name="description"]').content,guide.description,slug);
   assert.equal(d.querySelector('meta[property="og:description"]').content,guide.description,slug);
   assert.equal(d.querySelector('.static-seo-lead').textContent,guide.intro,slug);
+  assert(guide.intro.length>20,slug);
+  if(!pilotStationSlugs.includes(slug)) {
+   assert(station.editorialSummary && guide.intro.startsWith(station.editorialSummary.trim()),slug);
+   assert(!guide.intro.includes('施設名・アクセス・確認日は各条件の根拠で確認できます。'),slug);
+  }
   assert.equal(d.querySelector('h1').textContent,station.name+'駅の住みやすさ',slug);
   assert(d.querySelector('.static-seo-content').textContent.includes(station.rent1k.toFixed(2)+'万円'),slug);
   assert.deepEqual([...d.querySelectorAll('#related a')].map(a=>a.getAttribute('href')),relatedGuideStations(station,ATLAS_DATA.stations).map(s=>`/station/${s.slug}/`));

@@ -326,8 +326,9 @@ test('route search filters company groups and keeps selected counts', async () =
   assert.equal(button.getAttribute('aria-pressed'),'true');dom.window.close();
 });
 
-test("pilot station guide keeps the published metadata and introduction after JS render", async () => {
-  for (const slug of pilotStationSlugs) {
+test("station guide keeps the published metadata and introduction after JS render", async () => {
+  // Representative browser checks; the static SEO test checks every station.
+  for (const slug of [...pilotStationSlugs, "oimachi", "kokubunji", "shinagawa", "asagaya"]) {
     const {dom,document} = await openPage(`station/${slug}`, {map:false});
     const station=ATLAS_DATA.stations.find(s=>s.slug===slug), guide=stationGuide(station);
     assert.equal(document.title,guide.title,slug);

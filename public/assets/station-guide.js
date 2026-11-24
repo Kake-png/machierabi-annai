@@ -13,16 +13,29 @@ const entries = {
   ryogoku: ["総武線・大江戸線・隅田川", "総武線各駅停車や大江戸線を使い、休日に隅田川沿いの散歩を楽しみたい人に向いた街です。両国国技館や江戸NORENが身近にあり、錦糸町へも総武線で移動できます。衣料品店や大型公園・映画館へのアクセスは、普段の過ごし方に合わせて確認しましょう。"]
 };
 export const pilotStationSlugs = Object.freeze(Object.keys(entries));
+// All stations use their original editorial research; the ten edited entries remain explicit overrides.
+const themes = {
+  street:"商店街", shopping:"買い物", library:"図書館", large_bookstore:"大型書店", cinema:"映画館", reuse:"リユース店", park:"公園", river:"川沿い", cycle:"サイクリング", sea:"海・港", view:"夜景", late:"深夜の買い物", drinks:"飲み歩き", expressway:"高速道路", airport:"羽田アクセス", shinkansen:"新幹線アクセス", racecourse:"競馬場アクセス", multi:"複数路線"
+};
+const order = Object.keys(themes);
+function researchEntry(station) {
+  const labels = order.filter(tag => station.evidence[tag]?.status === "verified" && station.evidence[tag]?.value === true).slice(0,3).map(tag=>themes[tag]);
+  const focus = labels.length ? labels.join("・") : "交通・生活環境";
+  const original = station.editorialSummary?.trim() || station.summary;
+  // Preserve the individual research summary rather than invent new factual claims.
+  // Avoid duplicating rent (which is separately sourced) or obsolete comparisons from small batches.
+  const caution = (station.cautions || []).find(s=>typeof s==="string" && s.trim() && !/家賃|相場|万円|最も|未確定|未確認/.test(s));
+  const intro = original + (caution && !original.includes(caution) ? " 住む前の確認点："+caution.replace(/[。！!]+$/u,"")+"。" : "");
+  return [focus,intro];
+}
 export function stationGuide(station) {
-  const entry = entries[station.slug];
-  if (!entry) return null;
-  const [focus, intro] = entry;
+  const [focus, intro] = entries[station.slug] || researchEntry(station);
   const rent = station.rentStatus === "verified" && Number.isFinite(station.rent1k)
     ? `1K参考家賃${station.rent1k.toFixed(2)}万円。` : "";
   return {
     intro,
     title: `${station.name}駅の住みやすさ・家賃｜${focus}｜街えらび案内所`,
-    description: `${station.name}駅周辺の住みやすさを、${focus}などから紹介。${rent}${intro.split("。")[0]}。条件別の根拠・出典も掲載しています。`
+    description: `${station.name}駅周辺の住みやすさを、${focus}などから紹介。${rent}${intro.split("。").filter(Boolean).slice(0,2).join("。")}。`
   };
 }
 export function relatedGuideStations(station, stations) {
