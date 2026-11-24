@@ -47,3 +47,17 @@ test('sitemap contains canonical indexable HTML only, with no query variants',()
   assert(!d.querySelector('meta[name="robots"]').content.includes('noindex'));
  }
 });
+
+test('home and directory station counts follow the published station data', () => {
+ const {stationCount}=JSON.parse(fs.readFileSync(path.join(root,'release.json'),'utf8'));
+ const d=new JSDOM(fs.readFileSync(path.join(root,'index.html'),'utf8')).window.document;
+ const listing=new JSDOM(fs.readFileSync(path.join(root,'stations/index.html'),'utf8')).window.document;
+ assert.equal(listing.querySelectorAll('.directory-list > li').length,stationCount);
+ assert.equal(d.querySelector('.panel-head > p').textContent,`東京・神奈川・千葉・${stationCount}駅`);
+ assert.equal(d.querySelector('#result-count').textContent,`${stationCount}駅`);
+ const expected=`東京・神奈川・千葉の${stationCount}駅`;
+ for(const selector of ['meta[name="description"]','meta[property="og:description"]','meta[name="twitter:description"]']) assert(d.querySelector(selector).content.includes(expected));
+ assert(JSON.parse(d.querySelector('script[type="application/ld+json"]').textContent).description.includes(expected));
+ assert(listing.querySelector('.directory-title > p').textContent.includes(expected));
+ assert(listing.querySelector('.site-footer').textContent.includes(expected));
+});
