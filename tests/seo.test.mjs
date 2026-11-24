@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { JSDOM } from 'jsdom';
+import { ATLAS_DATA } from '../public/assets/data.js';
+import { stationGuide, pilotStationSlugs, relatedGuideStations } from '../public/assets/station-guide.js';
 const root = path.resolve(import.meta.dirname, '../public');
 const files = fs.readdirSync(root, {recursive:true}).filter(f => f.endsWith('.html'));
 test('all pages have consistent identity, metadata and social image; indexable titles/descriptions are unique', () => {
@@ -60,4 +62,21 @@ test('home and directory station counts follow the published station data', () =
  assert(JSON.parse(d.querySelector('script[type="application/ld+json"]').textContent).description.includes(expected));
  assert(listing.querySelector('.directory-title > p').textContent.includes(expected));
  assert(listing.querySelector('.site-footer').textContent.includes(expected));
+});
+
+test('pilot station pages have matching static copy, metadata and crawlable related links', () => {
+ assert.equal(pilotStationSlugs.length,10);
+ for(const slug of pilotStationSlugs){
+  const station=ATLAS_DATA.stations.find(s=>s.slug===slug); assert(station,slug);
+  const guide=stationGuide(station);
+  const d=new JSDOM(fs.readFileSync(path.join(root,'station',slug,'index.html'),'utf8')).window.document;
+  assert.equal(d.title,guide.title,slug);
+  assert.equal(d.querySelector('meta[name="description"]').content,guide.description,slug);
+  assert.equal(d.querySelector('meta[property="og:description"]').content,guide.description,slug);
+  assert.equal(d.querySelector('.static-seo-lead').textContent,guide.intro,slug);
+  assert.equal(d.querySelector('h1').textContent,station.name+'駅の住みやすさ',slug);
+  assert(d.querySelector('.static-seo-content').textContent.includes(station.rent1k.toFixed(2)+'万円'),slug);
+  assert.deepEqual([...d.querySelectorAll('#related a')].map(a=>a.getAttribute('href')),relatedGuideStations(station,ATLAS_DATA.stations).map(s=>`/station/${s.slug}/`));
+  assert.equal(new Set([...d.querySelectorAll('#related a')].map(a=>a.getAttribute('href'))).size,3);
+ }
 });

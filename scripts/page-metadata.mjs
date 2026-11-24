@@ -1,3 +1,4 @@
+import { stationGuide } from "../public/assets/station-guide.js";
 // Editorial choices use confirmed station conditions, rather than guessed rankings.
 const themes = {
   movies: ['映画館が近い街・駅を探す｜アクセスと暮らしの比較', '映画館を日常的に利用したい人へ。確認済みの劇場へのアクセスと駅ごとの特徴、1K参考家賃を比較。東京・神奈川・千葉の掲載駅から住む街を探せます。'],
@@ -18,6 +19,8 @@ const stationChoices = {
 };
 export function themeMetadata(id) { if (!themes[id]) throw Error(`Missing theme metadata: ${id}`); return {title:themes[id][0],description:themes[id][1]}; }
 export function stationMetadata(station) {
+  const guide = stationGuide(station);
+  if (guide) return {title: guide.title, description: guide.description};
   const selected=["cinema","cycle","library","park","view","street","shopping"].filter(t=>station.tags.includes(t)).slice(0,2);
   const labels={cinema:"映画館",cycle:"サイクリング",library:"図書館",park:"公園",view:"夜景",street:"商店街",shopping:"買い物"};
   const choice=stationChoices[station.slug] || [selected.map(t=>labels[t]).join("・") || "暮らし",...selected];
