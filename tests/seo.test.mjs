@@ -103,3 +103,21 @@ test('Sobu rapid guide compares every listed candidate with sourced rent and lin
   assert(e.querySelector('a[href="/station/'+s.slug+'/"]'));
  }
 });
+
+test('four theme guides contain sourced budget and condition comparisons',()=>{
+ for(const id of ['books','movies','drinking','car-life']){
+  const d=new JSDOM(fs.readFileSync(path.join(root,'themes',id,'index.html'),'utf8')).window.document;
+  const guide=d.querySelector('#theme-comparison');assert(guide,id);
+  for(const group of guide.querySelectorAll('[data-comparison-group]')){
+   let last=-Infinity;const seen=new Set();
+   for(const row of group.querySelectorAll('[data-comparison-station]')){
+    const s=ATLAS_DATA.stations.find(s=>s.slug===row.dataset.comparisonStation);assert(s,id);
+    assert(!seen.has(s.slug));seen.add(s.slug);assert(s.rent1k>=last);last=s.rent1k;
+    assert(row.textContent.includes(s.rent1k.toFixed(2)+'万円'));
+    assert([...row.querySelectorAll('a')].some(a=>a.getAttribute('href')===s.rentSourceUrl));
+    if(group.querySelector('h3').textContent.includes('10万円以下'))assert(s.rent1k<=10);
+    if(id==='books' && group.dataset.comparisonGroup==='0')assert(s.tags.includes('library')&&s.tags.includes('large_bookstore'));
+   }
+  }
+ }
+});
