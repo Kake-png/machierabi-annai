@@ -86,6 +86,24 @@ test('all station pages have matching static copy, metadata and crawlable relate
  }
 });
 
+test('Sobu rapid guide compares every listed candidate with sourced rent and links',()=>{
+ const id='line-7cd84b30a1';
+ const d=new JSDOM(fs.readFileSync(path.join(root,'routes',id,'index.html'),'utf8')).window.document;
+ const rows=ATLAS_DATA.stations.filter(s=>s.routes.includes(id)).sort((a,b)=>a.rent1k-b.rent1k);
+ assert(rows.length>0);
+ assert(d.title.includes('住みやすさ・家賃比較'));
+ assert.equal(d.querySelector('link[rel="canonical"]').href,'https://machierabi.3f7735.org/routes/'+id+'/');
+ assert(!d.querySelector('meta[name="robots"]').content.includes('noindex'));
+ const entries=[...d.querySelectorAll('#route-living-guide [data-route-guide-station]')];
+ assert.deepEqual(entries.map(e=>e.dataset.routeGuideStation),rows.map(s=>s.slug));
+ for(let i=0;i<rows.length;i++){
+  const s=rows[i],e=entries[i];
+  assert(e.textContent.includes(s.rent1k.toFixed(2)+'万円'));
+  assert([...e.querySelectorAll('a')].some(a=>a.getAttribute('href')===s.rentSourceUrl));
+  assert(e.querySelector('a[href="/station/'+s.slug+'/"]'));
+ }
+});
+
 test('four theme guides contain sourced budget and condition comparisons',()=>{
  for(const id of ['books','movies','drinking','car-life']){
   const d=new JSDOM(fs.readFileSync(path.join(root,'themes',id,'index.html'),'utf8')).window.document;
