@@ -171,18 +171,39 @@ ${themeGroups.map(group => `<section class="theme-group" id="${group.id}" aria-l
 writeDirectory("themes", "暮らし別に駅を探す", "映画、本、飲み歩き、散歩、サイクリング、週末旅行。好きな過ごし方から東京・神奈川・千葉の掲載駅を探し、家賃や根拠を比較できます。", themeDirectory);
 writeDirectory("stations", "掲載駅一覧", `東京・神奈川・千葉の${stationCount}駅を掲載しています。交通・買い物・散歩先・夜の帰宅などを同じ項目で確認できます。`, `<ul class="directory-list">${stationLinks(ATLAS_DATA.stations)}</ul>`);
 writeDirectory("routes", "路線別に駅を探す", "使いたい路線から掲載駅を探せます。徒歩10分以内の近隣駅も含み、駅ページでは直接乗れる路線と分けています。", ATLAS_DATA.routeGroups.map((group) => `<section><h2>${escapeHtml(group.label)}</h2><ul class="route-directory">${group.routes.map((route) => route.available === false ? `<li><span>${escapeHtml(route.label)}（掲載駅なし）</span></li>` : `<li><a href="/routes/${route.id}/"><span class="route-swatch" style="--route-color:${route.color}"></span>${escapeHtml(route.label)}<small>${route.mapOnly ? "路線表示のみ →" : `${ATLAS_DATA.stations.filter((station) => station.routes.includes(route.id)).length}駅 →`}</small></a></li>`).join("")}</ul></section>`).join(""));
+// Editorial pilot for the route flagged as crawled but not indexed.
+const sobuRapidNotes = {
+  kinshicho: "映画館や錦糸公園、駅前の商業施設を日常的に使いたい人の候補。",
+  shinkoiwa: "ルミエール商店街で買い物をしたい人や、新小岩公園を利用したい人の候補。",
+  ichikawa: "駅ビルで買い物を済ませ、江戸川方面で自転車を楽しみたい人の候補。",
+  funabashi: "百貨店・駅ビル・書店を利用し、東武線や近隣の京成船橋駅も使い分けたい人の候補。"
+};
+function sobuRapidGuide(candidates) {
+  const rows = [...candidates].sort((a,b)=>a.rent1k-b.rent1k);
+  const low = rows[0], high = rows.at(-1);
+  return `<section class="theme-static-copy" id="route-living-guide">
+    <h2>総武線快速沿線の住みやすさ・1K家賃比較</h2>
+    <p>東京方面への移動を考えるなら、都内の錦糸町・新小岩と千葉県側の市川・船橋を比べてみましょう。駅前の買い物や休日の過ごし方、家賃の違いを確認できます。</p>
+    <p>掲載${rows.length}駅の1K参考相場は${low.rent1k.toFixed(2)}〜${high.rent1k.toFixed(2)}万円です。以下は掲載駅だけの比較で、総武線快速全駅のランキングではありません。</p>
+    <dl class="evidence-list">${rows.map(s=>`<div data-route-guide-station="${escapeHtml(s.slug)}"><dt><a href="/station/${escapeHtml(s.slug)}/">${escapeHtml(s.name)}駅</a> — <strong>${s.rent1k.toFixed(2)}万円</strong></dt><dd><p>${escapeHtml(sobuRapidNotes[s.slug] || s.editorialSummary || s.summary)}</p><p>確認済みの条件：${escapeHtml(s.tags.map(tag=>ATLAS_DATA.tagLabels[tag]).join("・"))}</p><small>HOME’S参考相場・${escapeHtml(s.rentCheckedAt)}確認。管理費等を除く。<a href="${escapeHtml(s.rentSourceUrl)}" rel="external noopener">家賃の出典</a></small></dd></div>`).join("")}</dl>
+    <h3>沿線で住む駅を選ぶときの確認点</h3>
+    <p>快速の停車駅と各駅停車の駅を区別し、利用する時間帯の列車、乗換、駅から物件までの徒歩経路を確認してください。家賃は参考相場で、個別物件の募集賃料とは異なります。</p>
+    <p><a href="/compare/">駅を比較する</a> · <a href="/criteria/">生活条件の判定基準</a></p>
+  </section>`;
+}
 for (const route of ATLAS_DATA.routeGroups.flatMap((group) => group.routes).filter((route) => route.available !== false)) {
   const candidates = ATLAS_DATA.stations.filter((station) => station.routes.includes(route.id));
   const routeTemplate = candidates.length ? homeTemplate : homeTemplate.replace('content="index,follow,max-image-preview:large"', 'content="noindex,follow"');
-  const title = route.mapOnly ? `${route.label}の路線図` : `${route.label}から住む駅を探す`;
+  const isSobuRapid = route.id === "line-7cd84b30a1" && candidates.length > 0;
+  const title = isSobuRapid ? "総武線快速沿線の住みやすさ・家賃比較" : route.mapOnly ? `${route.label}の路線図` : `${route.label}から住む駅を探す`;
   writePage(path.join("routes", route.id), routeTemplate
     .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(title)}｜街えらび案内所</title>`)
-    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${route.mapOnly ? `${escapeHtml(route.label)}の路線の位置を地図で確認できます。沿線の掲載駅情報は準備中です。` : `${escapeHtml(route.label)}を使える掲載駅の候補。駅の交通・買い物・休日の条件を比べられます。`}">`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${isSobuRapid ? `総武線快速を使える掲載${candidates.length}駅の1K参考家賃、買い物、休日の過ごし方を比較。錦糸町・新小岩・市川・船橋などの駅別情報と出典を確認できます。` : route.mapOnly ? `${escapeHtml(route.label)}の路線の位置を地図で確認できます。沿線の掲載駅情報は準備中です。` : `${escapeHtml(route.label)}を使える掲載駅の候補。駅の交通・買い物・休日の条件を比べられます。`}">`)
     .replace('id="atlas-title">好きなことを、続けやすい街へ。', `id="atlas-title">${escapeHtml(title)}`)
     .replace('<body data-page="home">', `<body data-page="home" data-route-id="${route.id}">`)
     .replace('id="route-drawer"', 'id="route-drawer" open')
     .replace(/(<strong id="result-count">)\d+駅(<\/strong>)/, (_, before, after) => `${before}${candidates.length}駅${after}`)
-    .replace("<!--THEME_STATIC-->", `<section class="theme-static-copy"><h2>${escapeHtml(route.label)}を使える掲載駅</h2><p>${candidates.length ? "路線全体の駅一覧ではなく、このサイトで掲載している候補駅です。駅名が異なる近隣駅から乗る場合も含みます。" : "沿線の掲載駅は準備中です。現在は路線の位置を地図で確認できます。"}</p><ul class="directory-list">${stationLinks(candidates)}</ul><p><a href="/routes/">他の路線から探す</a></p></section>`)
+    .replace("<!--THEME_STATIC-->", `${isSobuRapid ? sobuRapidGuide(candidates) : ""}<section class="theme-static-copy"><h2>${escapeHtml(route.label)}を使える掲載駅</h2><p>${candidates.length ? "路線全体の駅一覧ではなく、このサイトで掲載している候補駅です。駅名が異なる近隣駅から乗る場合も含みます。" : "沿線の掲載駅は準備中です。現在は路線の位置を地図で確認できます。"}</p><ul class="directory-list">${stationLinks(candidates)}</ul><p><a href="/routes/">他の路線から探す</a></p></section>`)
     .replace(/<!--DIRECTORY_START-->[\s\S]*?<!--DIRECTORY_END-->/, ""));
 }
 writeDirectory("contact", "お問い合わせ", "掲載情報や写真についてのご連絡はこちらからお送りください。", `<p>掲載情報・写真についてのご連絡や、サイトへのご意見は、下のフォームからお送りください。</p><p><a class="button" href="https://forms.gle/n291N3gCkJ53yYA27" target="_blank" rel="noopener noreferrer">お問い合わせフォームを開く</a></p><p class="data-note">Googleフォームが新しいタブで開きます。入力内容はGoogleフォームを通じて送信されます。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご確認ください。</p>`);
