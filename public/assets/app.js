@@ -1,8 +1,16 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
 import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
-import { evidenceHtml } from "/assets/evidence-view.js?v=77";
+import { evidenceHtml } from "/assets/evidence-view.js?v=78";
 import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
+const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
+// 根拠欄：小さな三角だけでなく、見出し行のどこを押しても詳細を開閉する（キーボード操作は従来どおり三角のボタン）。
+document.addEventListener("click", (event) => {
+  const heading = event.target.closest?.(".condition-reason-heading");
+  if (!heading || event.target.closest("a")) return;
+  const details = heading.parentElement?.querySelector("details.evidence-condition");
+  if (details) details.open = !details.open;
+});
 
 (() => {
   "use strict";
@@ -646,7 +654,7 @@ import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=7
     if (!photo) return "";
     return `<figure class="photo-item">
       <div class="photo-frame"><img src="${escapeHtml(imageUrl(photo))}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="1200" height="900"></div>
-      <figcaption><p><b>${String(index + 1).padStart(2, "0")}.</b> ${escapeHtml(photo.caption)}</p>
+      <figcaption><p><b>${String(index + 1).padStart(2, "0")}</b> ${escapeHtml(trimPeriod(photo.caption))}</p>
       <div class="photo-credit">${escapeHtml(photo.date)}撮影 · <a href="${escapeHtml(photo.sourceUrl)}" rel="external noopener">${escapeHtml(photo.author)}</a> · <a href="${escapeHtml(photo.licenseUrl)}" rel="license external noopener">${escapeHtml(photo.license)}</a> · ${escapeHtml(photo.changes)}</div></figcaption>
     </figure>`;
   }
@@ -698,7 +706,7 @@ import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=7
         </div>
         ${leadPhoto ? `<figure class="station-lead-photo">
           <img src="${escapeHtml(imageUrl(leadPhoto))}" alt="${escapeHtml(leadPhoto.alt)}" width="1200" height="900">
-          <figcaption><span>街の入口</span><p>${escapeHtml(leadPhoto.caption)}</p><small>${escapeHtml(leadPhoto.date)} · ${escapeHtml(leadPhoto.author)} · ${escapeHtml(leadPhoto.license)}</small></figcaption>
+          <figcaption><span>街の入口</span><p>${escapeHtml(trimPeriod(leadPhoto.caption))}</p><small>${escapeHtml(leadPhoto.date)} · ${escapeHtml(leadPhoto.author)} · ${escapeHtml(leadPhoto.license)}</small></figcaption>
         </figure>` : ""}
       </section>
       <section class="station-facts" aria-label="暮らしの要点">
@@ -710,16 +718,16 @@ import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=7
       <div class="station-body">
         <aside class="station-index"><h2>目次</h2><ol><li><a href="#viewpoint">特徴と確認点</a></li><li><a href="#station-map-section">地図で確認</a></li><li><a href="#photos">街の写真</a></li><li><a href="#life">暮らしのポイント</a></li><li><a href="#evidence">条件の根拠・出典</a></li><li><a href="#related">近い候補</a></li></ol></aside>
         <article class="station-content">
-          <section class="content-section" id="viewpoint"><p class="section-kicker">Station notes</p><h2>この駅の特徴と確認点。</h2>
+          <section class="content-section" id="viewpoint"><p class="section-kicker">Station notes</p><h2>この駅の特徴と確認点</h2>
             <div class="split-notes"><div class="split-note"><h3>この駅の強み</h3><ul>${editorial.strengths.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div><div class="split-note"><h3>住む前の確認点</h3><ul>${editorial.cautions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div>
           </section>
-          <section class="content-section" id="station-map-section"><p class="section-kicker">Map</p><h2>駅周辺を地図で確認。</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
-          <section class="content-section" id="photos"><p class="section-kicker">Photos</p><h2>写真で見る街の様子。</h2>${photos.length ? `<div class="photo-walk">${photos.map(renderPhoto).join("")}</div>` : '<div class="photo-empty"><strong>写真は準備中です。</strong><br>権利条件と撮影地点を確認できた写真だけを追加します。写真がなくても、地図と本文でページは利用できます。</div>'}</section>
-          <section class="content-section" id="life"><p class="section-kicker">Daily life</p><h2>暮らしのポイント。</h2><div class="life-grid">
-            ${[["01", "交通", editorial.notes.transport], ["02", "日常の用事", editorial.notes.daily], ["03", "街の表情", editorial.notes.atmosphere], ["04", "休日と時間帯", editorial.notes.weekend], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", practical.car], ["07", "夜の帰宅", practical.evening]].map(([number, title, copy]) => `<div class="life-note"><small>${number}</small><h3>${title}</h3><p>${escapeHtml(copy)}</p></div>`).join("")}
+          <section class="content-section" id="station-map-section"><p class="section-kicker">Map</p><h2>駅周辺を地図で確認</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
+          <section class="content-section" id="photos"><p class="section-kicker">Photos</p><h2>写真で見る街の様子</h2>${photos.length ? `<div class="photo-walk">${photos.map(renderPhoto).join("")}</div>` : '<div class="photo-empty"><strong>写真は準備中です。</strong><br>権利条件と撮影地点を確認できた写真だけを追加します。写真がなくても、地図と本文でページは利用できます。</div>'}</section>
+          <section class="content-section" id="life"><p class="section-kicker">Daily life</p><h2>暮らしのポイント</h2><div class="life-grid">
+            ${[["01", "交通", editorial.notes.transport], ["02", "日常の用事", editorial.notes.daily], ["03", "街の表情", editorial.notes.atmosphere], ["04", "休日と時間帯", editorial.notes.weekend], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", practical.car], ["07", "夜の帰宅", practical.evening]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3><p>${escapeHtml(copy)}</p></div>`).join("")}
           </div></section>
           ${evidenceHtml(station, ATLAS_DATA)}
-          <section class="content-section" id="related"><p class="section-kicker">Keep alternatives</p><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅。"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
+          <section class="content-section" id="related"><p class="section-kicker">Keep alternatives</p><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
         </article>
       </div>`;
 

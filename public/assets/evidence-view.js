@@ -17,7 +17,7 @@ function reasonBody(text) {
   const head = at > 0 ? text.slice(0, at) : "";
   const rest = at > 0 ? text.slice(at + 1) : text;
   const items = splitSlashList(rest.replace(/。$/u, ""));
-  if (items.length < 3) return `<p>${escape(text)}</p>`;
+  if (items.length < 3) return `<p>${escape(text.replace(/。$/u, ""))}</p>`;
   return `${head ? `<p class="reason-label">${escape(head)}</p>` : ""}<ul class="reason-list">${items.map((item) => `<li>${escape(item)}</li>`).join("")}</ul>`;
 }
 export function evidenceHtml(station, data) {

@@ -823,3 +823,16 @@ main p, main li, main dd, main summary, main figcaption { word-break: auto-phras
 .condition-reason-heading .reason-list { list-style: none; margin: 0; }
 .condition-reason-heading .reason-list li { font-size: 14px; line-height: 1.7; color: #40544d; padding: 2px 0; }
 .condition-reason-heading .reason-label + .reason-list { margin-top: -4px; }
+
+/* 2026-11-27 読みやすさ(2): 冒頭ブロックの段差・見出しと本文の分離・番号と見出しを1行に・根拠欄の開閉範囲（docs/change-log.md 参照） */
+.station-hero .station-hero-copy h1 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 700; line-height: 1.25; }
+.station-hero .station-kana { margin-top: 4px; letter-spacing: .06em; }
+.station-hero .station-descriptor { margin-top: 22px; padding-left: 12px; border-left: 4px solid var(--green-2); font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; line-height: 1.5; }
+.station-hero .station-summary { margin-top: 14px; padding-left: 16px; font-size: 15px; line-height: 1.85; }
+.station-facts > div > small { display: block; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+.station-facts > div > p { margin-top: 6px; padding-left: 12px; border-left: 2px solid var(--rule); }
+.life-note h3 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 8px; font-size: 16px; }
+.life-note h3 small { font-size: 15px; font-weight: 400; }
+.life-note p { padding-left: 12px; border-left: 2px solid var(--rule); }
+.condition-reason-heading { cursor: pointer; }
+@media (hover: hover) { .condition-reason:hover .condition-reason-heading h3 { text-decoration: underline; text-underline-offset: 3px; } }
