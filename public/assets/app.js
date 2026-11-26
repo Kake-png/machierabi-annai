@@ -1,7 +1,7 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
 import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
-import { evidenceHtml } from "/assets/evidence-view.js?v=59";
+import { evidenceHtml } from "/assets/evidence-view.js?v=77";
 import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
 
 (() => {
