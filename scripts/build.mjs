@@ -52,7 +52,7 @@ function finalizeHtml(html, relativePath) {
     .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=67"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=70"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
   if (relativePath === "themes" || relativePath.startsWith("themes/")) html = html.replace('href="/assets/interface-v34.css?v=70"', 'href="/assets/interface-v34.css?v=71"');
-  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=73');
+  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=74');
   html = html.replace("制定・最終更新：2026年9月21日", "制定：2026年9月21日・最終更新：2026年10月17日")
     .replace("駅徒歩10分以内・管理費等を除く平均", "HOME’Sの1K参考相場・管理費等を除く")
     .replace("家賃は2026年9月22日に確認。店舗・運行・賃料は変わるため、最終確認は各公式情報で行ってください。", "確認済みの条件だけを検索に使います。根拠と確認状況は各駅ページに掲載しています。");
