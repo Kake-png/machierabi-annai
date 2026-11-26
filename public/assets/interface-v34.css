@@ -851,3 +851,15 @@ main p, main li, main dd, main summary, main figcaption { word-break: auto-phras
 .night-shift .evidence-section .condition-reason .evidence-body small { color: #e1ebe5; }
 .night-shift .evidence-section .condition-reason .evidence-body a { color: #9fd3b8; }
 .night-shift .evidence-condition > summary { color: #c9d8cf; }
+
+/* 2026-11-27 ダークモード（検索画面）: 薄い文字、真っ白なボタン、地図の読み込み中の背景、候補の丸（docs/change-log.md 参照） */
+.search-first .station-row.no-code { grid-template-columns: 1fr 18px; }
+.night-shift .rent-tick span, .night-shift .rent-filter > small, .night-shift .condition-match > span { color: #c2d1c8; }
+.night-shift .rent-inputs button { background: #27352f; color: #e8f0eb; border-color: #72887a; }
+.night-shift .rent-inputs button:hover { background: #34463e; color: #fff; }
+.night-shift input::placeholder { color: #a9b9b0; opacity: 1; }
+.night-shift .search-first .row-code { background: #30443a; color: #edf3ef; }
+.night-shift .brand-mark { color: #10201a; }
+.night-shift .compare-count { color: #1c2522; }
+/* 地図: 読み込み中・タイルの切れ目を、暗くしたタイルと同じ色にして、白く光らないようにする */
+.night-shift .leaflet-container, .night-shift .map-wrap, .night-shift .station-map, .night-shift .content-map, .night-shift #map { background: #191919; }

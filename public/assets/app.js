@@ -473,8 +473,8 @@ document.addEventListener("click", (event) => {
         : "";
       const selected=[...activeTags,...preferredTags];
       const stateFor=tag=>{const r=station.evidence[tag];return r.status==='pending'?'確認中':r.value?'○':'— 条件外';};
-      return `<article class="station-result"><a class="station-row" href="${stationUrl(station)}" data-slug="${station.slug}">
-        <span class="row-code">${preferredTags.size ? `${[...preferredTags].filter(t=>station.tags.includes(t)).length}/${preferredTags.size}` : '候補'}</span>
+      return `<article class="station-result"><a class="station-row${preferredTags.size ? "" : " no-code"}" href="${stationUrl(station)}" data-slug="${station.slug}">
+        ${preferredTags.size ? `<span class="row-code">${[...preferredTags].filter(t=>station.tags.includes(t)).length}/${preferredTags.size}</span>` : ""}
         <span><h3>${escapeHtml(station.name)}</h3><p>${escapeHtml(station.area)} · ${escapeHtml(station.lines.join(" / "))}</p>${nearbyNote}${!selected.length?`<p class="row-facts">${escapeHtml(station.descriptor)}</p>`:""}
         ${selected.length?`<span class="match-summary">${activeTags.size?`必須 ${[...activeTags].filter(t=>station.tags.includes(t)).length}/${activeTags.size}`:''}${activeTags.size&&preferredTags.size?' ・ ':''}${preferredTags.size?`あれば嬉しい ${[...preferredTags].filter(t=>station.tags.includes(t)).length}/${preferredTags.size}`:''}</span><span class="selected-evidence">${selected.map(tag=>`<span class="condition-badge ${station.tags.includes(tag)?'is-match':'is-other'}">${escapeHtml(tagLabels[tag])} ${stateFor(tag)}</span>`).join('')}</span>`:''}</span>
         <span class="row-status" aria-hidden="true">→</span>
