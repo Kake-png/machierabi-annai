@@ -25,3 +25,5 @@ qa-*
 
 # Local photo research cache (published WebP files live in public/images)
 /assets/
+
+__pycache__/
