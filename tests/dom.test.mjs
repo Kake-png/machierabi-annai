@@ -6,8 +6,8 @@ import path from "node:path";
 import { JSDOM, VirtualConsole } from "jsdom";
 import { ATLAS_DATA } from "../public/assets/data.js";
 import * as search from "../public/assets/search.js";
-import { evidenceHtml } from "../public/assets/evidence-view.js";
-import { stationGuide, relatedGuideStations, pilotStationSlugs } from "../public/assets/station-guide.js";
+import { evidenceHtml, conditionBrief, noteWithFacts } from "../public/assets/evidence-view.js";
+import { stationGuide, relatedGuideStations, relatedCardBody, pilotStationSlugs } from "../public/assets/station-guide.js";
 import { renderNoteBody } from "../public/assets/text-format.js";
 const publicRoot = path.resolve(import.meta.dirname, "../public");
 const app = fs.readFileSync(path.join(publicRoot, "assets/app.js"), "utf8").replace(/^import .*;\n/gm, "");
@@ -26,7 +26,7 @@ async function openPage(route, { map = true, storage = {}, query = "" } = {}) {
   window.scrollTo = () => {};
   for(const [key,value] of Object.entries(storage))window.localStorage.setItem(key,value);
   window.ATLAS_DATA = ATLAS_DATA;
-  Object.assign(window, search, { evidenceHtml, layoutRoutes, stationGuide, relatedGuideStations, renderNoteBody });
+  Object.assign(window, search, { evidenceHtml, conditionBrief, noteWithFactsFor: noteWithFacts, layoutRoutes, stationGuide, relatedGuideStations, relatedCardBody, renderNoteBody });
   Object.defineProperties(window.HTMLElement.prototype, {
     clientWidth: { get() { return this.id.includes("map") ? 900 : 490; } },
     clientHeight: { get() { return 700; } }

@@ -45,3 +45,24 @@ export function relatedGuideStations(station, stations) {
     .sort((a,b) => b.score-a.score || a.distance-b.distance)
     .slice(0,3).map(({candidate})=>candidate);
 }
+
+// 似ている駅カードの中身。同一文面になりがちな自動要約の代わりに、
+// 家賃の差・共通の条件数・その駅にだけある条件／ない条件を出す。
+export function relatedCardFacts(station, candidate) {
+  const shared = candidate.tags.filter((tag) => station.tags.includes(tag));
+  const extra = candidate.tags.filter((tag) => !station.tags.includes(tag));
+  const missing = station.tags.filter((tag) => !candidate.tags.includes(tag));
+  const diff = Math.round((candidate.rent1k - station.rent1k) * 100) / 100;
+  return { rent: candidate.rent1k, diff, shared, extra, missing };
+}
+export function relatedCardBody(station, candidate, tagLabels, escape) {
+  const f = relatedCardFacts(station, candidate);
+  const diffText = Math.abs(f.diff) < 0.05 ? `${escape(station.name)}とほぼ同じ` : `${escape(station.name)}より${Math.abs(f.diff).toFixed(2)}万円${f.diff < 0 ? "安い" : "高い"}`;
+  const names = (tags) => tags.slice(0, 3).map((tag) => escape(tagLabels[tag])).join("・") + (tags.length > 3 ? ` ほか${tags.length - 3}件` : "");
+  return `<dl class="related-facts">`
+    + `<div><dt>1K家賃の目安</dt><dd><strong>${f.rent.toFixed(2)}</strong>万円<small>${diffText}</small></dd></div>`
+    + `<div><dt>共通の条件</dt><dd><strong>${f.shared.length}</strong>件</dd></div>`
+    + (f.extra.length ? `<div class="related-diff"><dt>こちらにもある</dt><dd>${names(f.extra)}</dd></div>` : "")
+    + (f.missing.length ? `<div class="related-diff"><dt>こちらにはない</dt><dd>${names(f.missing)}</dd></div>` : "")
+    + `</dl>`;
+}
