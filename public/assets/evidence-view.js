@@ -20,6 +20,13 @@ function reasonBody(text) {
   if (items.length < 3) return `<p>${escape(text.replace(/。$/u, ""))}</p>`;
   return `${head ? `<p class="reason-label">${escape(head)}</p>` : ""}<ul class="reason-list">${items.map((item) => `<li>${escape(item)}</li>`).join("")}</ul>`;
 }
+// 条件ごとの短い根拠（一覧表示用）。1文目だけを返す。
+export function conditionBrief(station, tag) {
+  const record = station.evidence?.[tag];
+  if (!record || record.status !== "verified" || !record.value) return "";
+  const brief = EVIDENCE_SUMMARIES[`${station.slug}::${tag}`] || String(record.text || "");
+  return (brief.split(/(?<=。)/u)[0] || "").replace(/。$/u, "").trim();
+}
 export function evidenceHtml(station, data) {
   const verified = station.tags;
   const pending = Object.keys(data.tagLabels).filter((tag) => station.evidence[tag].status === "pending");

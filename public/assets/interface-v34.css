@@ -910,3 +910,6 @@ small.note-source, .life-note small.note-source, .station-facts small.note-sourc
 .night-shift .station-keyfacts { background: #1b2522; }
 .night-shift .station-keyfacts dd strong { color: #e6efe9; }
 @media (max-width: 520px) { .station-keyfacts dd strong { font-size: 22px; } .station-keyfacts > div { padding: 9px 9px; } }
+.condition-jump .condition-more { padding: 5px 10px; border: 1px dashed var(--rule); border-radius: 4px; background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; }
+.condition-jump .condition-more:hover { color: var(--ink); border-style: solid; }
+.condition-jump li[hidden] { display: none; }

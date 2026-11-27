@@ -1,7 +1,7 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
 import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
-import { evidenceHtml } from "/assets/evidence-view.js?v=79";
+import { evidenceHtml, conditionBrief } from "/assets/evidence-view.js?v=80";
 import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
 import { renderNoteBody } from "/assets/text-format.js?v=2";
 const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
@@ -650,6 +650,22 @@ document.addEventListener("click", (event) => {
     };
   }
 
+  // 「各条件の根拠を参照」だけの欄は、該当する条件の短い根拠に置き換える（中身のない定型文を出さない）。
+  const PLACEHOLDER_SENTENCE = /[^。]*(?:条件の(?:根拠|理由・出典)を|運行日や行き先は路線ごとに確認できます|交通状況により変わります)[^。]*。?/gu;
+  const FIELD_TAGS = { car: ["expressway"], outdoors: ["park", "river", "cycle", "sea"], evening: ["late", "drinks", "view"], weekend: ["cinema", "park", "view"], daily: ["shopping", "street", "late"], atmosphere: ["street", "drinks"] };
+  const FIELD_EMPTY = { car: "高速入口が近い条件には、調べた範囲では当てはまりません。", outdoors: "大きな公園・川・サイクリングコース・海の条件には、調べた範囲では当てはまりません。", evening: "夜景・飲み歩き・深夜の食品買い物の条件には、調べた範囲では当てはまりません。" };
+  function noteWithFacts(station, field, text) {
+    const raw = String(text || "");
+    const kept = raw.replace(PLACEHOLDER_SENTENCE, "").trim();
+    if (kept && kept !== raw.trim()) return kept;
+    if (kept) return raw;
+    const facts = (FIELD_TAGS[field] || []).filter((tag) => station.tags.includes(tag))
+      .map((tag) => [tag, conditionBrief(station, tag)]).filter(([, brief]) => brief)
+      .map(([tag, brief]) => `${tagLabels[tag]}：${brief}。`);
+    return facts.join("") || FIELD_EMPTY[field] || "";
+  }
+  const GENERIC_DESCRIPTOR = /^\d+路線を利用可能(?:・|$)/u;
+
   function renderPhoto(sourceKey, index) {
     const photo = sources[sourceKey];
     if (!photo) return "";
@@ -715,7 +731,7 @@ document.addEventListener("click", (event) => {
         <div class="station-hero-copy">
           <div class="station-meta">${station.lines.map((line) => `<span class="line-label">${escapeHtml(line)}</span>`).join("")}</div>
           <h1>${escapeHtml(station.name)}${guide ? "駅の住みやすさ" : ""}</h1><p class="station-kana">${escapeHtml(station.kana)} · ${escapeHtml(station.area)}</p>
-          <p class="station-descriptor">${escapeHtml(station.descriptor)}</p><dl class="station-keyfacts" aria-label="この駅の要点"><div><dt>1K家賃の目安</dt><dd><strong>${station.rent1k.toFixed(2)}</strong>万円<small>${escapeHtml(station.rentCheckedAt)}確認</small></dd></div><div><dt>利用できる路線</dt><dd><strong>${station.lines.length}</strong>路線</dd></div><div><dt>確認できた条件</dt><dd><strong>${station.tags.length}</strong>件</dd></div></dl>${station.tags.length ? `<nav class="condition-jump" aria-label="この駅で当てはまる条件"><p>この駅で当てはまる条件<small>押すと理由・出典へ移動</small></p><ul>${station.tags.map((tag) => `<li><a href="#evidence-${escapeHtml(tag)}">${escapeHtml(tagLabels[tag])}</a></li>`).join("")}</ul></nav>` : ""}
+          ${GENERIC_DESCRIPTOR.test(station.descriptor || "") ? "" : `<p class="station-descriptor">${escapeHtml(station.descriptor)}</p>`}<dl class="station-keyfacts" aria-label="この駅の要点"><div><dt>1K家賃の目安</dt><dd><strong>${station.rent1k.toFixed(2)}</strong>万円<small>${escapeHtml(station.rentCheckedAt)}確認</small></dd></div><div><dt>利用できる路線</dt><dd><strong>${station.lines.length}</strong>路線</dd></div><div><dt>確認できた条件</dt><dd><strong>${station.tags.length}</strong>件</dd></div></dl>${station.tags.length ? `<nav class="condition-jump" aria-label="この駅で当てはまる条件"><p>この駅で当てはまる条件<small>押すと理由・出典へ移動</small></p><ul>${station.tags.map((tag, i) => `<li${i >= 6 ? " data-extra hidden" : ""}><a href="#evidence-${escapeHtml(tag)}">${escapeHtml(tagLabels[tag])}</a></li>`).join("")}${station.tags.length > 7 ? `<li><button type="button" class="condition-more" aria-expanded="false">ほか${station.tags.length - 6}件</button></li>` : ""}</ul></nav>` : ""}
         <p class="station-summary">${escapeHtml(guide?.intro || station.summary)}</p>
           <div class="hero-actions">${favoriteHtml(station)}<button class="button" type="button" data-compare-toggle="${station.slug}">比較に追加</button><a class="button secondary" href="/compare/">比較表を見る</a></div>
         </div>
@@ -725,27 +741,30 @@ document.addEventListener("click", (event) => {
         </figure>` : ""}
       </section>
       <section class="station-facts" aria-label="暮らしの要点">
-        <div><small>1K家賃目安</small>${renderNoteBody(rentCopy, escapeHtml)}</div>
-        <div><small>車と道路</small>${renderNoteBody(practical.car || "", escapeHtml)}</div>
-        <div><small>散歩・自転車</small>${renderNoteBody(practical.outdoors || "", escapeHtml)}</div>
+        <div><small>車と道路</small>${renderNoteBody(noteWithFacts(station, "car", practical.car), escapeHtml)}</div>
+        <div><small>散歩・自転車</small>${renderNoteBody(noteWithFacts(station, "outdoors", practical.outdoors), escapeHtml)}</div>
       </section>
       <nav class="station-lenses" aria-label="暮らし別に探す"><span>関連する暮らしの条件</span>${stationThemes.map((theme) => `<a href="${themeUrl(theme)}">${escapeHtml(theme.navLabel)}</a>`).join("")}<a href="/themes/">暮らし別の一覧</a></nav>
       <div class="station-body">
         <aside class="station-index"><h2>目次</h2><ol><li><a href="#viewpoint">特徴と確認点</a></li><li><a href="#life">暮らしのポイント</a></li><li><a href="#evidence">条件の根拠・出典</a></li><li><a href="#related">近い候補</a></li><li><a href="#station-map-section">地図で確認</a></li><li><a href="#photos">街の写真</a></li></ol></aside>
         <article class="station-content">
-          <section class="content-section" id="viewpoint"><p class="section-kicker">Station notes</p><h2>この駅の特徴と確認点</h2>
+          <section class="content-section" id="viewpoint"><h2>この駅の特徴と確認点</h2>
             <div class="split-notes"><div class="split-note"><h3>この駅の強み</h3><ul>${editorial.strengths.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div><div class="split-note"><h3>住む前の確認点</h3><ul>${editorial.cautions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div>
           </section>
-          <section class="content-section" id="life"><p class="section-kicker">Daily life</p><h2>暮らしのポイント</h2><div class="life-grid">
-            ${[["01", "交通", editorial.notes.transport], ["02", "日常の用事", editorial.notes.daily], ["03", "街の表情", editorial.notes.atmosphere], ["04", "休日と時間帯", editorial.notes.weekend], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", practical.car], ["07", "夜の帰宅", practical.evening]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3>${renderNoteBody(copy || "", escapeHtml)}</div>`).join("")}
+          <section class="content-section" id="life"><h2>暮らしのポイント</h2><div class="life-grid">
+            ${[["01", "交通", noteWithFacts(station, "transport", editorial.notes.transport)], ["02", "日常の用事", noteWithFacts(station, "daily", editorial.notes.daily)], ["03", "街の表情", noteWithFacts(station, "atmosphere", editorial.notes.atmosphere)], ["04", "休日と時間帯", noteWithFacts(station, "weekend", editorial.notes.weekend)], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", noteWithFacts(station, "car", practical.car)], ["07", "夜の帰宅", noteWithFacts(station, "evening", practical.evening)]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3>${renderNoteBody(copy || "", escapeHtml)}</div>`).join("")}
           </div></section>
           ${evidenceHtml(station, ATLAS_DATA)}
-          <section class="content-section" id="related"><p class="section-kicker">Keep alternatives</p><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
-          <section class="content-section" id="station-map-section"><p class="section-kicker">Map</p><h2>駅周辺を地図で確認</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
-          <section class="content-section" id="photos"><p class="section-kicker">Photos</p><h2>写真で見る街の様子</h2>${photos.length ? `<div class="photo-walk">${photos.map(renderPhoto).join("")}</div>` : '<div class="photo-empty"><strong>写真は準備中です。</strong><br>権利条件と撮影地点を確認できた写真だけを追加します。写真がなくても、地図と本文でページは利用できます。</div>'}</section>
+          <section class="content-section" id="related"><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
+          <section class="content-section" id="station-map-section"><h2>駅周辺を地図で確認</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
+          <section class="content-section" id="photos"><h2>写真で見る街の様子</h2>${photos.length ? `<div class="photo-walk">${photos.map(renderPhoto).join("")}</div>` : '<div class="photo-empty"><strong>写真は準備中です。</strong><br>権利条件と撮影地点を確認できた写真だけを追加します。写真がなくても、地図と本文でページは利用できます。</div>'}</section>
         </article>
       </div>`;
 
+    root.querySelector(".condition-more")?.addEventListener("click", (event) => {
+      root.querySelectorAll(".condition-jump [data-extra]").forEach((item) => { item.hidden = false; });
+      event.currentTarget.closest("li").remove();
+    });
     revealConditionFromHash();
     window.addEventListener("hashchange", revealConditionFromHash);
     const map = await createMap("station-map", { center: [station.lng, station.lat], zoom: 13.2, fallbackSelector: "#station-map-fallback" });
