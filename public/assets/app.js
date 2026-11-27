@@ -467,6 +467,53 @@ document.addEventListener("click", (event) => {
     }
 
     if (map) map.on("zoomend moveend", syncRouteLines);
+    // スマホの地図：駅名ラベルは、乗り入れ路線の多い駅から順に、重ならない範囲で出す。入りきらない駅は点にし、拡大すると駅名に戻る。
+    // 点だけだと、地名に慣れていない人は場所が分からないため、ターミナル駅などの目印は常に駅名で残す。
+    // ズームのたびに置き直すと、三鷹のように「名前→点→名前」と行き来してしまう。そこで駅ごとに「このズーム以上なら名前を出す」値を
+    // 先に決め、拡大すると名前は増えるだけ・減らないようにする。
+    function labelMinZooms() {
+      const entries = markerEntries.filter(({ marker }) => map.hasLayer(marker));
+      entries.sort((a, b) => b.station.lines.length - a.station.lines.length || a.station.slug.localeCompare(b.station.slug));
+      const placed = [];
+      const result = new Map();
+      entries.forEach(({ station }) => {
+        const point = map.project([station.lat, station.lng], 0);
+        const width = Math.max(58, [...station.name].length * 15 + 20) + 6;
+        const height = 38;
+        let minZoom = -Infinity;
+        placed.forEach((other) => {
+          // 2つのラベルが重ならなくなるズーム（拡大するほど駅どうしの画面上の距離は広がる）
+          const dx = Math.abs(point.x - other.point.x), dy = Math.abs(point.y - other.point.y);
+          const apartX = dx > 0 ? Math.log2((width + other.width) / 2 / dx) : Infinity;
+          const apartY = dy > 0 ? Math.log2((height + other.height) / 2 / dy) : Infinity;
+          const apart = Math.min(apartX, apartY);
+          // 相手の名前が出ていて、まだ重なるズームの間は、こちらは点にする
+          if (apart > other.minZoom) minZoom = Math.max(minZoom, apart);
+        });
+        placed.push({ point, width, height, minZoom });
+        result.set(station.slug, minZoom);
+      });
+      return result;
+    }
+    function layoutMapLabels() {
+      if (!map || !window.matchMedia?.("(max-width: 720px)").matches) {
+        markerEntries.forEach(({ marker }) => { marker.getElement?.()?.querySelector(".station-map-label")?.classList.remove("is-dot"); marker.setZIndexOffset?.(0); });
+        return;
+      }
+      const minZooms = labelMinZooms();
+      const zoom = map.getZoom();
+      markerEntries.forEach(({ station, marker }) => {
+        const label = marker.getElement?.()?.querySelector(".station-map-label");
+        if (!label || !minZooms.has(station.slug)) return;
+        const dot = zoom < minZooms.get(station.slug) - 1e-6;
+        label.classList.toggle("is-dot", dot);
+        marker.setZIndexOffset(dot ? 0 : 1000); // 駅名ラベルを点より前に出す
+      });
+    }
+    if (map) {
+      map.on("zoomend", layoutMapLabels);
+      layoutMapLabels();
+    }
 
     function rowHtml(station, index) {
       const nearbySelected = [...activeRoutes].filter((route) => station.nearbyRoutes.includes(route));
@@ -549,6 +596,7 @@ document.addEventListener("click", (event) => {
         if (visible.has(station.slug)) marker.addTo(map);
         else marker.remove();
       });
+      layoutMapLabels();
       document.querySelectorAll("[data-fallback-slug]").forEach((node) => { node.hidden = !visible.has(node.dataset.fallbackSlug); });
       atlasPanel.scrollTop = previousPanelScroll;
       window.requestAnimationFrame(() => {
@@ -613,6 +661,8 @@ document.addEventListener("click", (event) => {
     mobileDialog.addEventListener('click',event=>{if(event.target.closest('[data-close-mobile]'))closeMobile();});
     mobileDialog.addEventListener('cancel',()=>document.body.classList.remove('conditions-open'));
     document.querySelectorAll('[data-result-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.search-first').classList.toggle('is-map-view',b.dataset.resultView==='map');document.querySelectorAll('[data-result-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));map?.invalidateSize();}));
+    // スマホでは、条件なしで開いたトップを地図から始める（一覧から始まると、何のサイトか分かりにくい）。
+    if(mobileMedia.matches&&!activeTheme&&[...new URLSearchParams(location.search).values()].every(v=>!v))document.querySelector('[data-result-view="map"]')?.click();
 
     const featuredStations = activeTheme
       ? stations.filter((station) => matchesTheme(station, activeTheme)).slice(0, 6)
