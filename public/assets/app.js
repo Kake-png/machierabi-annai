@@ -4,7 +4,7 @@ import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "
 import { evidenceHtml, noteWithFacts as noteWithFactsFor } from "/assets/evidence-view.js?v=81";
 import { stationGuide, relatedGuideStations, relatedCardBody } from "/assets/station-guide.js?v=79";
 import { renderNoteBody } from "/assets/text-format.js?v=2";
-import { safetyHtml } from "/assets/safety-view.js?v=3";
+import { safetyHtml } from "/assets/safety-view.js?v=4";
 const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
 // 根拠欄：小さな三角だけでなく、見出し行のどこを押しても詳細を開閉する（キーボード操作は従来どおり三角のボタン）。
 document.addEventListener("click", (event) => {
