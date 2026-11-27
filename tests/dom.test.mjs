@@ -9,6 +9,7 @@ import * as search from "../public/assets/search.js";
 import { evidenceHtml, conditionBrief, noteWithFacts } from "../public/assets/evidence-view.js";
 import { stationGuide, relatedGuideStations, relatedCardBody, pilotStationSlugs } from "../public/assets/station-guide.js";
 import { renderNoteBody } from "../public/assets/text-format.js";
+import { safetyHtml } from "../public/assets/safety-view.js";
 const publicRoot = path.resolve(import.meta.dirname, "../public");
 const app = fs.readFileSync(path.join(publicRoot, "assets/app.js"), "utf8").replace(/^import .*;\n/gm, "");
 const leaflet = fs.readFileSync(path.join(publicRoot, "vendor/leaflet.js"), "utf8");
@@ -26,7 +27,7 @@ async function openPage(route, { map = true, storage = {}, query = "" } = {}) {
   window.scrollTo = () => {};
   for(const [key,value] of Object.entries(storage))window.localStorage.setItem(key,value);
   window.ATLAS_DATA = ATLAS_DATA;
-  Object.assign(window, search, { evidenceHtml, conditionBrief, noteWithFactsFor: noteWithFacts, layoutRoutes, stationGuide, relatedGuideStations, relatedCardBody, renderNoteBody });
+  Object.assign(window, search, { evidenceHtml, conditionBrief, noteWithFactsFor: noteWithFacts, layoutRoutes, stationGuide, relatedGuideStations, relatedCardBody, renderNoteBody, safetyHtml });
   Object.defineProperties(window.HTMLElement.prototype, {
     clientWidth: { get() { return this.id.includes("map") ? 900 : 490; } },
     clientHeight: { get() { return 700; } }

@@ -925,3 +925,19 @@ small.note-source, .life-note small.note-source, .station-facts small.note-sourc
 .night-shift .related-facts dd { color: #e6efe9; }
 .night-shift .related-facts dd strong { color: #e6efe9; }
 .static-seo-content .related-facts { margin-bottom: 10px; }
+
+/* 治安の数字（A〜E の位置・件数・順位。判定ではなく位置の目安） */
+.safety-section .safety-lead { margin: 0 0 12px; }
+.safety-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.safety-row { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white, #fff); }
+.safety-grade { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 8px; background: var(--paper, #f4f1ea); color: var(--green); font-size: 28px; font-weight: 700; line-height: 1; }
+.safety-body h3 { margin: 0 0 4px; font-size: 15px; line-height: 1.4; }
+.safety-body h3 small { margin-left: 8px; color: var(--muted); font-size: 12px; font-weight: 400; }
+.safety-count { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.safety-count strong { font-size: 20px; line-height: 1.3; }
+.safety-count span { color: var(--muted); font-size: 13px; }
+.safety-rank { margin: 2px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.safety-legend, .safety-note { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+.night-shift .safety-row { background: #1b2522; }
+.night-shift .safety-grade { background: #26322e; color: #e6efe9; }
+@media (max-width: 520px) { .safety-row { grid-template-columns: 44px minmax(0, 1fr); gap: 10px; padding: 10px; } .safety-grade { width: 44px; height: 44px; font-size: 24px; } }
