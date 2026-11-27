@@ -898,3 +898,15 @@ small.note-source, .life-note small.note-source, .station-facts small.note-sourc
 /* Zen Maru Gothic は旧書体より字幅が広いので、見出しの大きさと折り返しを調整 */
 .station-hero h1 { font-size: clamp(38px, 4.2vw, 58px); line-height: 1.22; text-wrap: balance; }
 .station-hero h1, .content-section h2, .section-head h2, .page-title h1, .prose h2 { word-break: auto-phrase; text-wrap: balance; }
+
+/* 駅ページ最初の画面：家賃・路線数・確認できた条件数を数字で先に見せる */
+.station-keyfacts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 16px 0 6px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white, #fff); overflow: hidden; }
+.station-keyfacts > div { padding: 10px 12px; min-width: 0; }
+.station-keyfacts > div + div { border-left: 1px solid var(--rule); }
+.station-keyfacts dt { margin: 0 0 2px; color: var(--muted); font-size: 12px; line-height: 1.4; }
+.station-keyfacts dd { margin: 0; font-size: 14px; line-height: 1.35; }
+.station-keyfacts dd strong { font-size: 26px; font-weight: 700; letter-spacing: 0; color: var(--green); }
+.station-keyfacts dd small { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; }
+.night-shift .station-keyfacts { background: #1b2522; }
+.night-shift .station-keyfacts dd strong { color: #e6efe9; }
+@media (max-width: 520px) { .station-keyfacts dd strong { font-size: 22px; } .station-keyfacts > div { padding: 9px 9px; } }

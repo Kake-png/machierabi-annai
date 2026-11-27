@@ -715,7 +715,7 @@ document.addEventListener("click", (event) => {
         <div class="station-hero-copy">
           <div class="station-meta">${station.lines.map((line) => `<span class="line-label">${escapeHtml(line)}</span>`).join("")}</div>
           <h1>${escapeHtml(station.name)}${guide ? "駅の住みやすさ" : ""}</h1><p class="station-kana">${escapeHtml(station.kana)} · ${escapeHtml(station.area)}</p>
-          <p class="station-descriptor">${escapeHtml(station.descriptor)}</p>${station.tags.length ? `<nav class="condition-jump" aria-label="この駅で当てはまる条件"><p>この駅で当てはまる条件<small>押すと理由・出典へ移動</small></p><ul>${station.tags.map((tag) => `<li><a href="#evidence-${escapeHtml(tag)}">${escapeHtml(tagLabels[tag])}</a></li>`).join("")}</ul></nav>` : ""}
+          <p class="station-descriptor">${escapeHtml(station.descriptor)}</p><dl class="station-keyfacts" aria-label="この駅の要点"><div><dt>1K家賃の目安</dt><dd><strong>${station.rent1k.toFixed(2)}</strong>万円<small>${escapeHtml(station.rentCheckedAt)}確認</small></dd></div><div><dt>利用できる路線</dt><dd><strong>${station.lines.length}</strong>路線</dd></div><div><dt>確認できた条件</dt><dd><strong>${station.tags.length}</strong>件</dd></div></dl>${station.tags.length ? `<nav class="condition-jump" aria-label="この駅で当てはまる条件"><p>この駅で当てはまる条件<small>押すと理由・出典へ移動</small></p><ul>${station.tags.map((tag) => `<li><a href="#evidence-${escapeHtml(tag)}">${escapeHtml(tagLabels[tag])}</a></li>`).join("")}</ul></nav>` : ""}
         <p class="station-summary">${escapeHtml(guide?.intro || station.summary)}</p>
           <div class="hero-actions">${favoriteHtml(station)}<button class="button" type="button" data-compare-toggle="${station.slug}">比較に追加</button><a class="button secondary" href="/compare/">比較表を見る</a></div>
         </div>

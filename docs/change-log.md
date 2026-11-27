@@ -15,6 +15,13 @@
 
 ---
 
+## 2026-11-27 ／ Claude ／ ブランチ `design/first-screen-facts`
+
+- 変更：駅ページの見出し直下に、1K家賃の目安（確認日つき）・利用できる路線数・確認できた条件数を大きい数字で出す枠（`.station-keyfacts`）を追加。app.js v=82、CSS v=81。ダークモード対応。
+- 理由：「◯◯駅＋テーマ」で来た人が最初の画面で事実を得られていなかった（家賃は約1.4画面下）。
+- 影響範囲：クライアント描画の全137駅ページ。静的SEO用HTMLは変更なし。
+- 未確認・今後：実機スマホでの確認。条件チップが多い駅での最初の画面の使い方。
+
 ## 2026-11-27 ／ Claude ／ ブランチ `design/font-zen-maru`（`content/research-cleanup` の上に積んだ変更）
 
 - 変更：サイト全体の書体を Zen Maru Gothic（丸ゴシック）に変更。自前配信（`public/assets/fonts/` に172ファイル約2.6MB、各ページが読むのは必要な分割だけで、駅ページ約95KB・ホーム約86KB）。`fonts.css` を新設し `scripts/build.mjs` が全HTMLの `style.css` の前に挿入。CSS v=79→80。駅名の大見出しは `clamp(38px,4.2vw,58px)` と `text-wrap: balance` に。
