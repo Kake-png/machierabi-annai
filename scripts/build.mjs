@@ -8,6 +8,7 @@ import { matchesTheme } from "../public/assets/search.js";
 import { evidenceHtml } from "../public/assets/evidence-view.js";
 import { createHash } from "node:crypto";
 import { stationGuide, relatedGuideStations } from "../public/assets/station-guide.js";
+import { renderNoteBody } from "../public/assets/text-format.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 syncAudit(root);
@@ -52,7 +53,7 @@ function finalizeHtml(html, relativePath) {
     .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=67"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=70"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
   if (relativePath === "themes" || relativePath.startsWith("themes/")) html = html.replace('href="/assets/interface-v34.css?v=70"', 'href="/assets/interface-v34.css?v=71"');
-  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=76');
+  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=77');
   html = html.replace("制定・最終更新：2026年9月21日", "制定：2026年9月21日・最終更新：2026年10月17日")
     .replace("駅徒歩10分以内・管理費等を除く平均", "HOME’Sの1K参考相場・管理費等を除く")
     .replace("家賃は2026年9月22日に確認。店舗・運行・賃料は変わるため、最終確認は各公式情報で行ってください。", "確認済みの条件だけを検索に使います。根拠と確認状況は各駅ページに掲載しています。");
@@ -74,7 +75,7 @@ function finalizeHtml(html, relativePath) {
     html = html.replace("</head>", `<script type="application/ld+json">${escapeJson(schema)}</script>\n</head>`);
   }
   html = html.replace("</head>", `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${url}">${relativePath === "compare" ? '<meta name="robots" content="noindex,follow">' : ""}\n</head>`);
-  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=79');
+  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=80');
   return applyMonetization(enhanceSeo(html, relativePath, url, stationCount), relativePath, ATLAS_DATA.stations.map(s => s.slug));
 }
 const writePage = (relativePath, html) => {
@@ -104,7 +105,7 @@ const stationSeoHtml = (station) => {
     <p class="static-seo-meta">${escapeHtml(station.area)} · ${escapeHtml(station.lines.join(" / "))}</p>
     <section><h2>${escapeHtml(station.name)}駅の特徴</h2><ul>${(station.strengths || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section><h2>住む前に確認したいこと</h2><ul>${(station.cautions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
-    <section><h2>生活条件から見た${escapeHtml(station.name)}駅</h2><dl>${facts.map(([label, copy]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(copy)}</dd></div>`).join("")}</dl></section>
+    <section><h2>生活条件から見た${escapeHtml(station.name)}駅</h2><dl>${facts.map(([label, copy]) => `<div><dt>${escapeHtml(label)}</dt><dd>${renderNoteBody(copy || "", escapeHtml)}</dd></div>`).join("")}</dl></section>
     <section><h2>写真と撮影時期</h2><div class="photo-walk">${(station.images || []).map((id) => { const photo = ATLAS_DATA.sources[id]; return `<figure class="photo-item"><img src="/${escapeHtml(photo.file)}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="1200" height="900"><figcaption>${escapeHtml(photo.caption)}<small>${escapeHtml(photo.date)}撮影 · ${escapeHtml(photo.author)} · <a href="${escapeHtml(photo.licenseUrl)}">${escapeHtml(photo.license)}</a> · <a href="${escapeHtml(photo.sourceUrl)}">出典</a> · ${escapeHtml(photo.changes)}</small></figcaption></figure>`; }).join("")}</div><p class="data-note">過去の写真は撮影時点の記録です。店舗・建物が現在も同じとは限りません。</p></section>
     ${evidenceHtml(station, ATLAS_DATA)}
     ${themes.length ? `<nav class="static-seo-links" aria-label="${escapeHtml(station.name)}駅に関連する条件"><h2>関連する条件</h2>${themes.map((theme) => `<a href="/themes/${encodeURIComponent(theme.id)}/">${escapeHtml(theme.navLabel)}</a>`).join("")}</nav>` : ""}

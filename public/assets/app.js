@@ -3,6 +3,7 @@ import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
 import { evidenceHtml } from "/assets/evidence-view.js?v=78";
 import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
+import { renderNoteBody } from "/assets/text-format.js?v=1";
 const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
 // 根拠欄：小さな三角だけでなく、見出し行のどこを押しても詳細を開閉する（キーボード操作は従来どおり三角のボタン）。
 document.addEventListener("click", (event) => {
@@ -710,9 +711,9 @@ document.addEventListener("click", (event) => {
         </figure>` : ""}
       </section>
       <section class="station-facts" aria-label="暮らしの要点">
-        <div><small>1K家賃目安</small><p>${escapeHtml(rentCopy)}</p></div>
-        <div><small>車と道路</small><p>${escapeHtml(practical.car)}</p></div>
-        <div><small>散歩・自転車</small><p>${escapeHtml(practical.outdoors)}</p></div>
+        <div><small>1K家賃目安</small>${renderNoteBody(rentCopy, escapeHtml)}</div>
+        <div><small>車と道路</small>${renderNoteBody(practical.car || "", escapeHtml)}</div>
+        <div><small>散歩・自転車</small>${renderNoteBody(practical.outdoors || "", escapeHtml)}</div>
       </section>
       <nav class="station-lenses" aria-label="暮らし別に探す"><span>関連する暮らしの条件</span>${stationThemes.map((theme) => `<a href="${themeUrl(theme)}">${escapeHtml(theme.navLabel)}</a>`).join("")}<a href="/themes/">暮らし別の一覧</a></nav>
       <div class="station-body">
@@ -722,7 +723,7 @@ document.addEventListener("click", (event) => {
             <div class="split-notes"><div class="split-note"><h3>この駅の強み</h3><ul>${editorial.strengths.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div><div class="split-note"><h3>住む前の確認点</h3><ul>${editorial.cautions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div>
           </section>
           <section class="content-section" id="life"><p class="section-kicker">Daily life</p><h2>暮らしのポイント</h2><div class="life-grid">
-            ${[["01", "交通", editorial.notes.transport], ["02", "日常の用事", editorial.notes.daily], ["03", "街の表情", editorial.notes.atmosphere], ["04", "休日と時間帯", editorial.notes.weekend], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", practical.car], ["07", "夜の帰宅", practical.evening]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3><p>${escapeHtml(copy)}</p></div>`).join("")}
+            ${[["01", "交通", editorial.notes.transport], ["02", "日常の用事", editorial.notes.daily], ["03", "街の表情", editorial.notes.atmosphere], ["04", "休日と時間帯", editorial.notes.weekend], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", practical.car], ["07", "夜の帰宅", practical.evening]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3>${renderNoteBody(copy || "", escapeHtml)}</div>`).join("")}
           </div></section>
           ${evidenceHtml(station, ATLAS_DATA)}
           <section class="content-section" id="related"><p class="section-kicker">Keep alternatives</p><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
