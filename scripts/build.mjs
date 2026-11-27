@@ -5,9 +5,9 @@ import { stationMetadata, themeMetadata } from "./page-metadata.mjs";
 import { themeContent } from "./theme-pages.mjs";
 import { syncAudit } from "./sync-audit.mjs";
 import { matchesTheme } from "../public/assets/search.js";
-import { evidenceHtml } from "../public/assets/evidence-view.js";
+import { evidenceHtml, noteWithFacts } from "../public/assets/evidence-view.js";
 import { createHash } from "node:crypto";
-import { stationGuide, relatedGuideStations } from "../public/assets/station-guide.js";
+import { stationGuide, relatedGuideStations, relatedCardBody } from "../public/assets/station-guide.js";
 import { renderNoteBody } from "../public/assets/text-format.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -53,7 +53,7 @@ function finalizeHtml(html, relativePath) {
     .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=67"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=70"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
   if (relativePath === "themes" || relativePath.startsWith("themes/")) html = html.replace('href="/assets/interface-v34.css?v=70"', 'href="/assets/interface-v34.css?v=71"');
-  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=82');
+  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=83');
   // 自前配信の Zen Maru Gothic。style.css より先に読み込み、表示は font-display: swap。
   html = html.replace(/<link rel="stylesheet" href="\/assets\/fonts\.css[^"]*">/g, "");
   html = html.replace('<link rel="stylesheet" href="/assets/style.css', '<link rel="stylesheet" href="/assets/fonts.css?v=1"><link rel="stylesheet" href="/assets/style.css');
@@ -78,7 +78,7 @@ function finalizeHtml(html, relativePath) {
     html = html.replace("</head>", `<script type="application/ld+json">${escapeJson(schema)}</script>\n</head>`);
   }
   html = html.replace("</head>", `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${url}">${relativePath === "compare" ? '<meta name="robots" content="noindex,follow">' : ""}\n</head>`);
-  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=83');
+  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=84');
   return applyMonetization(enhanceSeo(html, relativePath, url, stationCount), relativePath, ATLAS_DATA.stations.map(s => s.slug));
 }
 const writePage = (relativePath, html) => {
@@ -94,25 +94,33 @@ const stationSeoHtml = (station) => {
   const themes = ATLAS_DATA.themePresets
     .filter((theme) => matchesTheme(station, theme))
     .slice(0, 4);
-  const facts = [
-    ["交通", station.notes?.transport || `${station.lines.join("、")}を利用できる駅です。`],
-    ["日常", station.notes?.daily || station.summary],
-    ["街の確認点", station.notes?.atmosphere || station.cautions?.join("。")]
-  ];
+  const labels = ATLAS_DATA.tagLabels;
+  const practical = station.practical || {};
+  const note = (field, text) => noteWithFacts(station, field, text, labels);
+  const life = [
+    ["交通", note("transport", station.notes?.transport || `${station.lines.join("、")}を利用できる駅です。`)],
+    ["日常の用事", note("daily", station.notes?.daily || station.summary)],
+    ["街の表情", note("atmosphere", station.notes?.atmosphere || station.cautions?.join("。"))],
+    ["休日と時間帯", note("weekend", station.notes?.weekend)],
+    ["1K家賃目安", `1K参考相場 ${station.rent1k.toFixed(2)}万円（${station.rentCheckedAt}確認、管理費等を除く）。物件ごとの賃料や成約額とは異なります。`],
+    ["車と道路", note("car", practical.car)],
+    ["夜の帰宅", note("evening", practical.evening)]
+  ].filter(([, copy]) => copy);
+  // 画面（app.js の renderStation）と同じ順番：要点 → 特徴と確認点 → 暮らしのポイント → 似ている掲載駅 → 理由・出典 → 写真
   return `<article class="static-seo-content" aria-label="${escapeHtml(station.name)}駅の概要">
     <nav class="breadcrumb" aria-label="パンくず"><a href="/stations/">駅一覧</a> / <span>${escapeHtml(station.area)}</span> / <strong>${escapeHtml(station.name)}</strong></nav>
-    <p class="section-kicker">Station guide</p>
+    <p class="static-seo-meta">${escapeHtml(station.lines.join(" / "))}</p>
     <h1>${escapeHtml(station.name)}駅${guide ? "の住みやすさ" : ""}</h1>
+    <p class="static-seo-meta">${escapeHtml(station.kana || "")}${station.kana ? " · " : ""}${escapeHtml(station.area)}</p>
+    <dl class="station-keyfacts" aria-label="この駅の要点"><div><dt>1K家賃の目安</dt><dd><strong>${station.rent1k.toFixed(2)}</strong>万円<small>${escapeHtml(station.rentCheckedAt)}確認</small></dd></div><div><dt>利用できる路線</dt><dd><strong>${station.lines.length}</strong>路線</dd></div><div><dt>確認できた条件</dt><dd><strong>${station.tags.length}</strong>件</dd></div></dl>
+    ${station.tags.length ? `<nav class="condition-jump" aria-label="この駅で当てはまる条件"><p>この駅で当てはまる条件</p><ul>${station.tags.map((tag) => `<li><a href="#evidence-${escapeHtml(tag)}">${escapeHtml(labels[tag])}</a></li>`).join("")}</ul></nav>` : ""}
     <p class="static-seo-lead">${escapeHtml(guide?.intro || station.summary)}</p>
-    ${guide ? `<p class="static-seo-meta">1K参考家賃：${station.rent1k.toFixed(2)}万円（${escapeHtml(station.rentCheckedAt)}確認、管理費等を除く）</p>` : ""}
-    <p class="static-seo-meta">${escapeHtml(station.area)} · ${escapeHtml(station.lines.join(" / "))}</p>
-    <section><h2>${escapeHtml(station.name)}駅の特徴</h2><ul>${(station.strengths || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
-    <section><h2>住む前に確認したいこと</h2><ul>${(station.cautions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
-    <section><h2>生活条件から見た${escapeHtml(station.name)}駅</h2><dl>${facts.map(([label, copy]) => `<div><dt>${escapeHtml(label)}</dt><dd>${renderNoteBody(copy || "", escapeHtml)}</dd></div>`).join("")}</dl></section>
-    <section><h2>写真と撮影時期</h2><div class="photo-walk">${(station.images || []).map((id) => { const photo = ATLAS_DATA.sources[id]; return `<figure class="photo-item"><img src="/${escapeHtml(photo.file)}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="1200" height="900"><figcaption>${escapeHtml(photo.caption)}<small>${escapeHtml(photo.date)}撮影 · ${escapeHtml(photo.author)} · <a href="${escapeHtml(photo.licenseUrl)}">${escapeHtml(photo.license)}</a> · <a href="${escapeHtml(photo.sourceUrl)}">出典</a> · ${escapeHtml(photo.changes)}</small></figcaption></figure>`; }).join("")}</div><p class="data-note">過去の写真は撮影時点の記録です。店舗・建物が現在も同じとは限りません。</p></section>
+    <section id="viewpoint"><h2>この駅の特徴と確認点</h2><h3>${escapeHtml(station.name)}駅の特徴</h3><ul>${(station.strengths || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul><h3>住む前に確認したいこと</h3><ul>${(station.cautions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+    <section id="life"><h2>暮らしのポイント</h2><dl>${life.map(([label, copy]) => `<div><dt>${escapeHtml(label)}</dt><dd>${renderNoteBody(copy, escapeHtml)}</dd></div>`).join("")}</dl></section>
+    <section id="related"><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><ul>${relatedGuideStations(station, ATLAS_DATA.stations).map((item) => `<li><a href="/station/${escapeHtml(item.slug)}/">${escapeHtml(item.name)}駅の住みやすさ</a>${relatedCardBody(station, item, labels, escapeHtml)}</li>`).join("")}</ul></section>
     ${evidenceHtml(station, ATLAS_DATA)}
+    <section><h2>写真で見る街の様子</h2><div class="photo-walk">${(station.images || []).map((id) => { const photo = ATLAS_DATA.sources[id]; return `<figure class="photo-item"><img src="/${escapeHtml(photo.file)}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="1200" height="900"><figcaption>${escapeHtml(photo.caption)}<small>${escapeHtml(photo.date)}撮影 · ${escapeHtml(photo.author)} · <a href="${escapeHtml(photo.licenseUrl)}">${escapeHtml(photo.license)}</a> · <a href="${escapeHtml(photo.sourceUrl)}">出典</a> · ${escapeHtml(photo.changes)}</small></figcaption></figure>`; }).join("")}</div><p class="data-note">過去の写真は撮影時点の記録です。店舗・建物が現在も同じとは限りません。</p></section>
     ${themes.length ? `<nav class="static-seo-links" aria-label="${escapeHtml(station.name)}駅に関連する条件"><h2>関連する条件</h2>${themes.map((theme) => `<a href="/themes/${encodeURIComponent(theme.id)}/">${escapeHtml(theme.navLabel)}</a>`).join("")}</nav>` : ""}
-    ${guide ? `<section id="related"><h2>生活条件が似ている掲載駅</h2><ul>${relatedGuideStations(station, ATLAS_DATA.stations).map(item => `<li><a href="/station/${escapeHtml(item.slug)}/">${escapeHtml(item.name)}駅の住みやすさ</a>：${escapeHtml(item.descriptor)}</li>`).join("")}</ul></section>` : ""}
     <p class="static-seo-note">掲載情報は駅周辺の候補を探すための整理です。家賃・店舗・運行状況は変わるため、契約や訪問の前に各公式情報をご確認ください。</p>
   </article>`;
 };

@@ -27,6 +27,20 @@ export function conditionBrief(station, tag) {
   const brief = EVIDENCE_SUMMARIES[`${station.slug}::${tag}`] || String(record.text || "");
   return (brief.split(/(?<=。)/u)[0] || "").replace(/。$/u, "").trim();
 }
+// 「各条件の根拠を参照」だけの欄は、該当する条件の短い根拠に置き換える（中身のない定型文を出さない）。
+export const PLACEHOLDER_SENTENCE = /[^。]*(?:条件の(?:根拠|理由・出典)を|運行日や行き先は路線ごとに確認できます|交通状況により変わります)[^。]*。?/gu;
+const FIELD_TAGS = { car: ["expressway"], outdoors: ["park", "river", "cycle", "sea"], evening: ["late", "drinks", "view"], weekend: ["cinema", "park", "view"], daily: ["shopping", "street", "late"], atmosphere: ["street", "drinks"] };
+const FIELD_EMPTY = { car: "高速入口が近い条件には、調べた範囲では当てはまりません。", outdoors: "大きな公園・川・サイクリングコース・海の条件には、調べた範囲では当てはまりません。", evening: "夜景・飲み歩き・深夜の食品買い物の条件には、調べた範囲では当てはまりません。" };
+export function noteWithFacts(station, field, text, tagLabels) {
+  const raw = String(text || "");
+  const kept = raw.replace(PLACEHOLDER_SENTENCE, "").trim();
+  if (kept && kept !== raw.trim()) return kept;
+  if (kept) return raw;
+  const facts = (FIELD_TAGS[field] || []).filter((tag) => station.tags.includes(tag))
+    .map((tag) => [tag, conditionBrief(station, tag)]).filter(([, brief]) => brief)
+    .map(([tag, brief]) => `${tagLabels[tag]}：${brief}。`);
+  return facts.join("") || FIELD_EMPTY[field] || "";
+}
 export function evidenceHtml(station, data) {
   const verified = station.tags;
   const pending = Object.keys(data.tagLabels).filter((tag) => station.evidence[tag].status === "pending");

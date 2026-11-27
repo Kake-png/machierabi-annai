@@ -27,7 +27,12 @@
   - 最初の画面の数字と重複する「1K家賃目安」を要点欄（`.station-facts`）から外した（本文「暮らしのポイント」には残す）。
   - 駅ページの英字の小見出し（Station notes／Daily life／Keep alternatives／Map／Photos）を削除。
   - app.js v=83、CSS v=82、evidence-view.js v=80（`conditionBrief` を追加）。
-- 未確認・今後：実機スマホでの確認。比較カードの自動要約も駅ごとの文にするか。
+- 追加の変更2（同じブランチ）：
+  - 似ている掲載駅のカード：同一文面だった「◯路線を利用可能・…」の代わりに、1K家賃と表示中の駅との差（例：北千住より1.94万円高い）、共通の条件数、「こちらにもある／こちらにはない」条件を出す（`station-guide.js` の `relatedCardBody`。画面と静的HTMLで共通）。
+  - 静的SEO用HTML（`scripts/build.mjs` の `stationSeoHtml`）を画面と同じ順番に：要点の数字→条件一覧→導入文→特徴と確認点→暮らしのポイント（7項目、定型文の置き換えも同じ処理）→似ている掲載駅→理由・出典→写真。英字の見出し（Station guide）も削除。
+  - 定型文の置き換え（`noteWithFacts`）を `app.js` から `evidence-view.js` に移し、ビルドと共有。
+  - app.js v=84、CSS v=83、evidence-view.js v=81、station-guide.js v=77。
+- 未確認・今後：実機スマホでの確認。
 
 ## 2026-11-27 ／ Claude ／ ブランチ `design/font-zen-maru`（`content/research-cleanup` の上に積んだ変更）
 

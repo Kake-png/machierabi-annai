@@ -1,8 +1,8 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
 import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
-import { evidenceHtml, conditionBrief } from "/assets/evidence-view.js?v=80";
-import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
+import { evidenceHtml, noteWithFacts as noteWithFactsFor } from "/assets/evidence-view.js?v=81";
+import { stationGuide, relatedGuideStations, relatedCardBody } from "/assets/station-guide.js?v=77";
 import { renderNoteBody } from "/assets/text-format.js?v=2";
 const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
 // 根拠欄：小さな三角だけでなく、見出し行のどこを押しても詳細を開閉する（キーボード操作は従来どおり三角のボタン）。
@@ -650,20 +650,7 @@ document.addEventListener("click", (event) => {
     };
   }
 
-  // 「各条件の根拠を参照」だけの欄は、該当する条件の短い根拠に置き換える（中身のない定型文を出さない）。
-  const PLACEHOLDER_SENTENCE = /[^。]*(?:条件の(?:根拠|理由・出典)を|運行日や行き先は路線ごとに確認できます|交通状況により変わります)[^。]*。?/gu;
-  const FIELD_TAGS = { car: ["expressway"], outdoors: ["park", "river", "cycle", "sea"], evening: ["late", "drinks", "view"], weekend: ["cinema", "park", "view"], daily: ["shopping", "street", "late"], atmosphere: ["street", "drinks"] };
-  const FIELD_EMPTY = { car: "高速入口が近い条件には、調べた範囲では当てはまりません。", outdoors: "大きな公園・川・サイクリングコース・海の条件には、調べた範囲では当てはまりません。", evening: "夜景・飲み歩き・深夜の食品買い物の条件には、調べた範囲では当てはまりません。" };
-  function noteWithFacts(station, field, text) {
-    const raw = String(text || "");
-    const kept = raw.replace(PLACEHOLDER_SENTENCE, "").trim();
-    if (kept && kept !== raw.trim()) return kept;
-    if (kept) return raw;
-    const facts = (FIELD_TAGS[field] || []).filter((tag) => station.tags.includes(tag))
-      .map((tag) => [tag, conditionBrief(station, tag)]).filter(([, brief]) => brief)
-      .map(([tag, brief]) => `${tagLabels[tag]}：${brief}。`);
-    return facts.join("") || FIELD_EMPTY[field] || "";
-  }
+  const noteWithFacts = (station, field, text) => noteWithFactsFor(station, field, text, tagLabels);
   const GENERIC_DESCRIPTOR = /^\d+路線を利用可能(?:・|$)/u;
 
   function renderPhoto(sourceKey, index) {
@@ -755,7 +742,7 @@ document.addEventListener("click", (event) => {
             ${[["01", "交通", noteWithFacts(station, "transport", editorial.notes.transport)], ["02", "日常の用事", noteWithFacts(station, "daily", editorial.notes.daily)], ["03", "街の表情", noteWithFacts(station, "atmosphere", editorial.notes.atmosphere)], ["04", "休日と時間帯", noteWithFacts(station, "weekend", editorial.notes.weekend)], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", noteWithFacts(station, "car", practical.car)], ["07", "夜の帰宅", noteWithFacts(station, "evening", practical.evening)]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3>${renderNoteBody(copy || "", escapeHtml)}</div>`).join("")}
           </div></section>
           ${evidenceHtml(station, ATLAS_DATA)}
-          <section class="content-section" id="related"><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
+          <section class="content-section" id="related"><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3>${relatedCardBody(station, item, tagLabels, escapeHtml)}</a>`).join("")}</div></section>
           <section class="content-section" id="station-map-section"><h2>駅周辺を地図で確認</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
           <section class="content-section" id="photos"><h2>写真で見る街の様子</h2>${photos.length ? `<div class="photo-walk">${photos.map(renderPhoto).join("")}</div>` : '<div class="photo-empty"><strong>写真は準備中です。</strong><br>権利条件と撮影地点を確認できた写真だけを追加します。写真がなくても、地図と本文でページは利用できます。</div>'}</section>
         </article>
