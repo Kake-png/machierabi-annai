@@ -1,8 +1,8 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
-import { ATLAS_DATA } from "/assets/data.js?v=77";
+import { ATLAS_DATA } from "/assets/data.js?v=78";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
 import { evidenceHtml, noteWithFacts as noteWithFactsFor } from "/assets/evidence-view.js?v=81";
-import { stationGuide, relatedGuideStations, relatedCardBody } from "/assets/station-guide.js?v=78";
+import { stationGuide, relatedGuideStations, relatedCardBody } from "/assets/station-guide.js?v=79";
 import { renderNoteBody } from "/assets/text-format.js?v=2";
 const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
 // 根拠欄：小さな三角だけでなく、見出し行のどこを押しても詳細を開閉する（キーボード操作は従来どおり三角のボタン）。
