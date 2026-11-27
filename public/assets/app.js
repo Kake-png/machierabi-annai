@@ -469,24 +469,45 @@ document.addEventListener("click", (event) => {
     if (map) map.on("zoomend moveend", syncRouteLines);
     // スマホの地図：駅名ラベルは、乗り入れ路線の多い駅から順に、重ならない範囲で出す。入りきらない駅は点にし、拡大すると駅名に戻る。
     // 点だけだと、地名に慣れていない人は場所が分からないため、ターミナル駅などの目印は常に駅名で残す。
+    // ズームのたびに置き直すと、三鷹のように「名前→点→名前」と行き来してしまう。そこで駅ごとに「このズーム以上なら名前を出す」値を
+    // 先に決め、拡大すると名前は増えるだけ・減らないようにする。
+    function labelMinZooms() {
+      const entries = markerEntries.filter(({ marker }) => map.hasLayer(marker));
+      entries.sort((a, b) => b.station.lines.length - a.station.lines.length || a.station.slug.localeCompare(b.station.slug));
+      const placed = [];
+      const result = new Map();
+      entries.forEach(({ station }) => {
+        const point = map.project([station.lat, station.lng], 0);
+        const width = Math.max(58, [...station.name].length * 15 + 20) + 6;
+        const height = 38;
+        let minZoom = -Infinity;
+        placed.forEach((other) => {
+          // 2つのラベルが重ならなくなるズーム（拡大するほど駅どうしの画面上の距離は広がる）
+          const dx = Math.abs(point.x - other.point.x), dy = Math.abs(point.y - other.point.y);
+          const apartX = dx > 0 ? Math.log2((width + other.width) / 2 / dx) : Infinity;
+          const apartY = dy > 0 ? Math.log2((height + other.height) / 2 / dy) : Infinity;
+          const apart = Math.min(apartX, apartY);
+          // 相手の名前が出ていて、まだ重なるズームの間は、こちらは点にする
+          if (apart > other.minZoom) minZoom = Math.max(minZoom, apart);
+        });
+        placed.push({ point, width, height, minZoom });
+        result.set(station.slug, minZoom);
+      });
+      return result;
+    }
     function layoutMapLabels() {
       if (!map || !window.matchMedia?.("(max-width: 720px)").matches) {
         markerEntries.forEach(({ marker }) => { marker.getElement?.()?.querySelector(".station-map-label")?.classList.remove("is-dot"); marker.setZIndexOffset?.(0); });
         return;
       }
-      const placed = [];
-      const visibleEntries = markerEntries.filter(({ marker }) => map.hasLayer(marker));
-      visibleEntries.sort((a, b) => b.station.lines.length - a.station.lines.length);
-      visibleEntries.forEach(({ station, marker }) => {
+      const minZooms = labelMinZooms();
+      const zoom = map.getZoom();
+      markerEntries.forEach(({ station, marker }) => {
         const label = marker.getElement?.()?.querySelector(".station-map-label");
-        if (!label) return;
-        const point = map.latLngToContainerPoint([station.lat, station.lng]);
-        const width = Math.max(58, [...station.name].length * 15 + 20);
-        const box = { left: point.x - width / 2 - 3, right: point.x + width / 2 + 3, top: point.y - 19, bottom: point.y + 19 };
-        const overlaps = placed.some((other) => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top);
-        label.classList.toggle("is-dot", overlaps);
-        marker.setZIndexOffset(overlaps ? 0 : 1000); // 駅名ラベルを点より前に出す
-        if (!overlaps) placed.push(box);
+        if (!label || !minZooms.has(station.slug)) return;
+        const dot = zoom < minZooms.get(station.slug) - 1e-6;
+        label.classList.toggle("is-dot", dot);
+        marker.setZIndexOffset(dot ? 0 : 1000); // 駅名ラベルを点より前に出す
       });
     }
     if (map) {
