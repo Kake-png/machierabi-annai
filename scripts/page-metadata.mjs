@@ -26,6 +26,6 @@ export function stationMetadata(station) {
   const choice=stationChoices[station.slug] || [selected.map(t=>labels[t]).join("・") || "暮らし",...selected];
   const [label,...tags]=choice;
   for(const tag of tags) if(!station.tags.includes(tag)||station.evidence[tag]?.status!=='verified'||station.evidence[tag]?.value!==true) throw Error(`${station.slug}: unverified metadata ${tag}`);
-  const description = `${station.name}駅周辺で住む街を探す人へ。${station.summary.replace(/施設名・アクセス・確認日は各条件の根拠で確認できます。$/, '')}交通・1K参考家賃と条件の根拠・出典を確認できます。`;
+  const description = `${station.summary}${station.name}駅の路線・1K家賃の目安と、条件ごとの出典をまとめています。`;
   return {title:`${station.name}駅の住みやすさ｜${label}を楽しむ街探し｜街えらび案内所`,description};
 }
