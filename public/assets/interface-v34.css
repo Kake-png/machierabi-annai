@@ -887,3 +887,10 @@ small.note-source, .life-note small.note-source, .station-facts small.note-sourc
 .night-shift .condition-jump a:hover, .night-shift .condition-jump a:focus-visible { background: #e8f0eb; color: #1c2522; }
 .night-shift .condition-reason.is-target { background: #2c3a33; }
 @media (max-width: 720px) { .condition-jump { margin: 14px 0 16px; } .condition-jump a { font-size: 13px; padding: 6px 10px; } }
+
+/* 2026-11-27 ダークモード：トップ・駅ページ以外（このサイトについて・比較など）の文字とボタン（docs/change-log.md 参照） */
+.night-shift .prose p, .night-shift .prose li { color: #c9d8cf; }
+.night-shift .prose a { color: #9fd3b8; }
+.night-shift .button:not(.secondary) { background: #396452; border-color: #87ab97; color: #fff; }
+.night-shift .button:not(.secondary):hover { background: #4c7561; color: #fff; }
+.night-shift .skip-link { background: #e8f0eb; color: #10201a; }
