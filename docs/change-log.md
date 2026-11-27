@@ -15,6 +15,13 @@
 
 ---
 
+## 2026-11-27 ／ Claude ／ ブランチ `design/font-zen-maru`（`content/research-cleanup` の上に積んだ変更）
+
+- 変更：サイト全体の書体を Zen Maru Gothic（丸ゴシック）に変更。自前配信（`public/assets/fonts/` に172ファイル約2.6MB、各ページが読むのは必要な分割だけで、駅ページ約95KB・ホーム約86KB）。`fonts.css` を新設し `scripts/build.mjs` が全HTMLの `style.css` の前に挿入。CSS v=79→80。駅名の大見出しは `clamp(38px,4.2vw,58px)` と `text-wrap: balance` に。
+- 理由：どのサイトも同じ OS 標準書体で、量産サイトのように見えて読む気が起きにくい、という運営者の指摘。候補4案（現状・Zen Kaku Gothic New・明朝＋ゴシック・Zen Maru Gothic）から運営者が丸ゴシックを選択。
+- 影響範囲：全ページの見た目（本文・見出し・ボタン・地図ポップアップ）。ダークモードは同じ変数を使うため追従。
+- 未確認・今後：実機スマホでの表示確認、文字サイズの種類の整理（known-issues）、フォントのラインセンス表記をフッターや運営情報へ載せるか。
+
 ## 2026-11-27 ／ Claude ／ ブランチ `content/research-cleanup`
 
 - 変更1：駅データ（`public/assets/imported-*.js`）の本文から、裏取り作業の経過メモを取り除いた（232箇所、`scripts/cleanup-research-notes.py`）。「判定は変更なし」「新しい資料は取得していない」のような文は削除。「【再確認 日付】」「batch-○○で採用」「（元調査の地図経路）」は消すか読者向けの表現に変更。「OSMの○○までOSRM 456m＝6分」は「○○まで約456m（徒歩約6分）」に書き換えた。店名・距離・所要時間・出典名は残している。「住む前の確認点」や概要の「未確認」は、読者への注意として残した。
