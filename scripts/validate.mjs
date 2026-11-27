@@ -94,7 +94,7 @@ if (!revisionCss.includes(".search-first .condition-drawer > summary { margin-to
 if (indexHtml.includes("unpkg.com/maplibre") || indexHtml.includes("maplibre-gl-csp")) errors.push("Home still references MapLibre assets");
 if (!indexHtml.includes('src="/vendor/leaflet.js?v=1.9.4"')) errors.push("Home is missing local Leaflet browser bundle");
 if (!indexHtml.includes('href="/assets/interface-v34.css?v=76"')) errors.push("Home is missing the versioned interface stylesheet");
-if (!indexHtml.includes('type="module" src="/assets/app.js?v=78"')) errors.push("Home is missing versioned module app script");
+if (!indexHtml.includes('type="module" src="/assets/app.js?v=79"')) errors.push("Home is missing versioned module app script");
 if (!indexHtml.includes('id="rent-max"')) errors.push("Home is missing the 1K rent filter");
 if (!indexHtml.includes('id="criteria-list"')) errors.push("Home is missing the criteria guide");
 if (!indexHtml.includes('id="route-list"')) errors.push("Home is missing the route filter list");

@@ -716,18 +716,18 @@ document.addEventListener("click", (event) => {
       </section>
       <nav class="station-lenses" aria-label="暮らし別に探す"><span>関連する暮らしの条件</span>${stationThemes.map((theme) => `<a href="${themeUrl(theme)}">${escapeHtml(theme.navLabel)}</a>`).join("")}<a href="/themes/">暮らし別の一覧</a></nav>
       <div class="station-body">
-        <aside class="station-index"><h2>目次</h2><ol><li><a href="#viewpoint">特徴と確認点</a></li><li><a href="#station-map-section">地図で確認</a></li><li><a href="#photos">街の写真</a></li><li><a href="#life">暮らしのポイント</a></li><li><a href="#evidence">条件の根拠・出典</a></li><li><a href="#related">近い候補</a></li></ol></aside>
+        <aside class="station-index"><h2>目次</h2><ol><li><a href="#viewpoint">特徴と確認点</a></li><li><a href="#life">暮らしのポイント</a></li><li><a href="#evidence">条件の根拠・出典</a></li><li><a href="#related">近い候補</a></li><li><a href="#station-map-section">地図で確認</a></li><li><a href="#photos">街の写真</a></li></ol></aside>
         <article class="station-content">
           <section class="content-section" id="viewpoint"><p class="section-kicker">Station notes</p><h2>この駅の特徴と確認点</h2>
             <div class="split-notes"><div class="split-note"><h3>この駅の強み</h3><ul>${editorial.strengths.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div><div class="split-note"><h3>住む前の確認点</h3><ul>${editorial.cautions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div>
           </section>
-          <section class="content-section" id="station-map-section"><p class="section-kicker">Map</p><h2>駅周辺を地図で確認</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
-          <section class="content-section" id="photos"><p class="section-kicker">Photos</p><h2>写真で見る街の様子</h2>${photos.length ? `<div class="photo-walk">${photos.map(renderPhoto).join("")}</div>` : '<div class="photo-empty"><strong>写真は準備中です。</strong><br>権利条件と撮影地点を確認できた写真だけを追加します。写真がなくても、地図と本文でページは利用できます。</div>'}</section>
           <section class="content-section" id="life"><p class="section-kicker">Daily life</p><h2>暮らしのポイント</h2><div class="life-grid">
             ${[["01", "交通", editorial.notes.transport], ["02", "日常の用事", editorial.notes.daily], ["03", "街の表情", editorial.notes.atmosphere], ["04", "休日と時間帯", editorial.notes.weekend], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", practical.car], ["07", "夜の帰宅", practical.evening]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3><p>${escapeHtml(copy)}</p></div>`).join("")}
           </div></section>
           ${evidenceHtml(station, ATLAS_DATA)}
           <section class="content-section" id="related"><p class="section-kicker">Keep alternatives</p><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.descriptor)}</p></a>`).join("")}</div></section>
+          <section class="content-section" id="station-map-section"><p class="section-kicker">Map</p><h2>駅周辺を地図で確認</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
+          <section class="content-section" id="photos"><p class="section-kicker">Photos</p><h2>写真で見る街の様子</h2>${photos.length ? `<div class="photo-walk">${photos.map(renderPhoto).join("")}</div>` : '<div class="photo-empty"><strong>写真は準備中です。</strong><br>権利条件と撮影地点を確認できた写真だけを追加します。写真がなくても、地図と本文でページは利用できます。</div>'}</section>
         </article>
       </div>`;
 
