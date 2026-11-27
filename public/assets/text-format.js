@@ -58,5 +58,6 @@ export function renderNoteBody(text = "", escapeHtml) {
   }
   const listHtml = listBlocks.map((items) => `<ul class="note-list">${items.map((item) => `<li>${annotateCitations(item, escapeHtml)}</li>`).join("")}</ul>`).join("");
   const proseHtml = proseSentences.length ? `<p>${proseSentences.map((sentence) => `${annotateCitations(sentence, escapeHtml)}。`).join("")}</p>` : "";
-  return listHtml + proseHtml;
+  // 「…は各条件の根拠を参照」のような案内文は、根拠欄へのリンクにする
+  return (listHtml + proseHtml).replace(/各条件の(根拠|理由・出典)/gu, '<a href="#evidence">各条件の$1</a>');
 }
