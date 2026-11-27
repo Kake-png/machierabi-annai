@@ -9,6 +9,7 @@ import { evidenceHtml, noteWithFacts } from "../public/assets/evidence-view.js";
 import { createHash } from "node:crypto";
 import { stationGuide, relatedGuideStations, relatedCardBody } from "../public/assets/station-guide.js";
 import { renderNoteBody } from "../public/assets/text-format.js";
+import { safetyHtml } from "../public/assets/safety-view.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 syncAudit(root);
@@ -53,7 +54,7 @@ function finalizeHtml(html, relativePath) {
     .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=67"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=70"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
   if (relativePath === "themes" || relativePath.startsWith("themes/")) html = html.replace('href="/assets/interface-v34.css?v=70"', 'href="/assets/interface-v34.css?v=71"');
-  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=84');
+  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=86');
   // 自前配信の Zen Maru Gothic。style.css より先に読み込み、表示は font-display: swap。
   html = html.replace(/<link rel="stylesheet" href="\/assets\/fonts\.css[^"]*">/g, "");
   html = html.replace('<link rel="stylesheet" href="/assets/style.css', '<link rel="stylesheet" href="/assets/fonts.css?v=1"><link rel="stylesheet" href="/assets/style.css');
@@ -78,7 +79,7 @@ function finalizeHtml(html, relativePath) {
     html = html.replace("</head>", `<script type="application/ld+json">${escapeJson(schema)}</script>\n</head>`);
   }
   html = html.replace("</head>", `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${url}">${relativePath === "compare" ? '<meta name="robots" content="noindex,follow">' : ""}\n</head>`);
-  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=87');
+  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=88');
   return applyMonetization(enhanceSeo(html, relativePath, url, stationCount), relativePath, ATLAS_DATA.stations.map(s => s.slug));
 }
 const writePage = (relativePath, html) => {
@@ -117,6 +118,7 @@ const stationSeoHtml = (station) => {
     <p class="static-seo-lead">${escapeHtml(guide?.intro || station.summary)}</p>
     <section id="viewpoint"><h2>この駅の特徴と確認点</h2><h3>${escapeHtml(station.name)}駅の特徴</h3><ul>${(station.strengths || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul><h3>住む前に確認したいこと</h3><ul>${(station.cautions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section id="life"><h2>暮らしのポイント</h2><dl>${life.map(([label, copy]) => `<div><dt>${escapeHtml(label)}</dt><dd>${renderNoteBody(copy, escapeHtml)}</dd></div>`).join("")}</dl></section>
+    ${safetyHtml(station, escapeHtml)}
     <section id="related"><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><ul>${relatedGuideStations(station, ATLAS_DATA.stations).map((item) => `<li><a href="/station/${escapeHtml(item.slug)}/">${escapeHtml(item.name)}駅の住みやすさ</a>${relatedCardBody(station, item, labels, escapeHtml)}</li>`).join("")}</ul></section>
     ${evidenceHtml(station, ATLAS_DATA)}
     <section><h2>写真で見る街の様子</h2><div class="photo-walk">${(station.images || []).map((id) => { const photo = ATLAS_DATA.sources[id]; return `<figure class="photo-item"><img src="/${escapeHtml(photo.file)}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="1200" height="900"><figcaption>${escapeHtml(photo.caption)}<small>${escapeHtml(photo.date)}撮影 · ${escapeHtml(photo.author)} · <a href="${escapeHtml(photo.licenseUrl)}">${escapeHtml(photo.license)}</a> · <a href="${escapeHtml(photo.sourceUrl)}">出典</a> · ${escapeHtml(photo.changes)}</small></figcaption></figure>`; }).join("")}</div><p class="data-note">過去の写真は撮影時点の記録です。店舗・建物が現在も同じとは限りません。</p></section>

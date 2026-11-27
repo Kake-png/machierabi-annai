@@ -4,6 +4,7 @@ import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "
 import { evidenceHtml, noteWithFacts as noteWithFactsFor } from "/assets/evidence-view.js?v=81";
 import { stationGuide, relatedGuideStations, relatedCardBody } from "/assets/station-guide.js?v=79";
 import { renderNoteBody } from "/assets/text-format.js?v=2";
+import { safetyHtml } from "/assets/safety-view.js?v=3";
 const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
 // 根拠欄：小さな三角だけでなく、見出し行のどこを押しても詳細を開閉する（キーボード操作は従来どおり三角のボタン）。
 document.addEventListener("click", (event) => {
@@ -466,11 +467,31 @@ document.addEventListener("click", (event) => {
     }
 
     if (map) map.on("zoomend moveend", syncRouteLines);
-    // スマホで引いた状態では駅名ラベルが重なって読めないので、点で表示し、拡大すると駅名に戻す。
+    // スマホの地図：駅名ラベルは、乗り入れ路線の多い駅から順に、重ならない範囲で出す。入りきらない駅は点にし、拡大すると駅名に戻る。
+    // 点だけだと、地名に慣れていない人は場所が分からないため、ターミナル駅などの目印は常に駅名で残す。
+    function layoutMapLabels() {
+      if (!map || !window.matchMedia?.("(max-width: 720px)").matches) {
+        markerEntries.forEach(({ marker }) => { marker.getElement?.()?.querySelector(".station-map-label")?.classList.remove("is-dot"); marker.setZIndexOffset?.(0); });
+        return;
+      }
+      const placed = [];
+      const visibleEntries = markerEntries.filter(({ marker }) => map.hasLayer(marker));
+      visibleEntries.sort((a, b) => b.station.lines.length - a.station.lines.length);
+      visibleEntries.forEach(({ station, marker }) => {
+        const label = marker.getElement?.()?.querySelector(".station-map-label");
+        if (!label) return;
+        const point = map.latLngToContainerPoint([station.lat, station.lng]);
+        const width = Math.max(58, [...station.name].length * 15 + 20);
+        const box = { left: point.x - width / 2 - 3, right: point.x + width / 2 + 3, top: point.y - 19, bottom: point.y + 19 };
+        const overlaps = placed.some((other) => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top);
+        label.classList.toggle("is-dot", overlaps);
+        marker.setZIndexOffset(overlaps ? 0 : 1000); // 駅名ラベルを点より前に出す
+        if (!overlaps) placed.push(box);
+      });
+    }
     if (map) {
-      const syncCompactLabels = () => map.getContainer().classList.toggle("map-compact", Boolean(window.matchMedia?.("(max-width: 720px)").matches) && map.getZoom() < 12.5);
-      map.on("zoomend", syncCompactLabels);
-      syncCompactLabels();
+      map.on("zoomend", layoutMapLabels);
+      layoutMapLabels();
     }
 
     function rowHtml(station, index) {
@@ -554,6 +575,7 @@ document.addEventListener("click", (event) => {
         if (visible.has(station.slug)) marker.addTo(map);
         else marker.remove();
       });
+      layoutMapLabels();
       document.querySelectorAll("[data-fallback-slug]").forEach((node) => { node.hidden = !visible.has(node.dataset.fallbackSlug); });
       atlasPanel.scrollTop = previousPanelScroll;
       window.requestAnimationFrame(() => {
@@ -741,7 +763,7 @@ document.addEventListener("click", (event) => {
       </section>
       <nav class="station-lenses" aria-label="暮らし別に探す"><span>関連する暮らしの条件</span>${stationThemes.map((theme) => `<a href="${themeUrl(theme)}">${escapeHtml(theme.navLabel)}</a>`).join("")}<a href="/themes/">暮らし別の一覧</a></nav>
       <div class="station-body">
-        <aside class="station-index"><h2>目次</h2><ol><li><a href="#viewpoint">特徴と確認点</a></li><li><a href="#life">暮らしのポイント</a></li><li><a href="#evidence">条件の根拠・出典</a></li><li><a href="#related">近い候補</a></li><li><a href="#station-map-section">地図で確認</a></li><li><a href="#photos">街の写真</a></li></ol></aside>
+        <aside class="station-index"><h2>目次</h2><ol><li><a href="#viewpoint">特徴と確認点</a></li><li><a href="#life">暮らしのポイント</a></li>${safetyHtml(station, escapeHtml) ? '<li><a href="#safety">治安の数字</a></li>' : ""}<li><a href="#evidence">条件の根拠・出典</a></li><li><a href="#related">近い候補</a></li><li><a href="#station-map-section">地図で確認</a></li><li><a href="#photos">街の写真</a></li></ol></aside>
         <article class="station-content">
           <section class="content-section" id="viewpoint"><h2>この駅の特徴と確認点</h2>
             <div class="split-notes"><div class="split-note"><h3>この駅の強み</h3><ul>${editorial.strengths.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div><div class="split-note"><h3>住む前の確認点</h3><ul>${editorial.cautions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div>
@@ -749,6 +771,7 @@ document.addEventListener("click", (event) => {
           <section class="content-section" id="life"><h2>暮らしのポイント</h2><div class="life-grid">
             ${[["01", "交通", noteWithFacts(station, "transport", editorial.notes.transport)], ["02", "日常の用事", noteWithFacts(station, "daily", editorial.notes.daily)], ["03", "街の表情", noteWithFacts(station, "atmosphere", editorial.notes.atmosphere)], ["04", "休日と時間帯", noteWithFacts(station, "weekend", editorial.notes.weekend)], ["05", "1K家賃目安", rentCopy], ["06", "車と道路", noteWithFacts(station, "car", practical.car)], ["07", "夜の帰宅", noteWithFacts(station, "evening", practical.evening)]].map(([number, title, copy]) => `<div class="life-note"><h3><small>${number}</small>${title}</h3>${renderNoteBody(copy || "", escapeHtml)}</div>`).join("")}
           </div></section>
+          ${safetyHtml(station, escapeHtml)}
           ${evidenceHtml(station, ATLAS_DATA)}
           <section class="content-section" id="related"><h2>${guide ? "生活条件が似ている掲載駅" : "一緒に見ておきたい駅"}</h2><div class="related-list">${related.map((item) => `<a class="related-item" href="${stationUrl(item)}"><small>${escapeHtml(item.area)}</small><h3>${escapeHtml(item.name)}</h3>${relatedCardBody(station, item, tagLabels, escapeHtml)}</a>`).join("")}</div></section>
           <section class="content-section" id="station-map-section"><h2>駅周辺を地図で確認</h2><div class="content-map"><div class="mini-map" id="station-map" aria-label="${escapeHtml(station.name)}駅周辺の地図"></div><div class="map-fallback" id="station-map-fallback">地図を読み込めませんでした。写真と本文はそのまま利用できます。</div><span class="station-map-note">中心は駅。住む場所を選ぶ時は、出口・線路・幹線道路まで確認を。</span></div></section>
