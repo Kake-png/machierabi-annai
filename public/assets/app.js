@@ -466,6 +466,12 @@ document.addEventListener("click", (event) => {
     }
 
     if (map) map.on("zoomend moveend", syncRouteLines);
+    // スマホで引いた状態では駅名ラベルが重なって読めないので、点で表示し、拡大すると駅名に戻す。
+    if (map) {
+      const syncCompactLabels = () => map.getContainer().classList.toggle("map-compact", Boolean(window.matchMedia?.("(max-width: 720px)").matches) && map.getZoom() < 12.5);
+      map.on("zoomend", syncCompactLabels);
+      syncCompactLabels();
+    }
 
     function rowHtml(station, index) {
       const nearbySelected = [...activeRoutes].filter((route) => station.nearbyRoutes.includes(route));
@@ -612,6 +618,8 @@ document.addEventListener("click", (event) => {
     mobileDialog.addEventListener('click',event=>{if(event.target.closest('[data-close-mobile]'))closeMobile();});
     mobileDialog.addEventListener('cancel',()=>document.body.classList.remove('conditions-open'));
     document.querySelectorAll('[data-result-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.search-first').classList.toggle('is-map-view',b.dataset.resultView==='map');document.querySelectorAll('[data-result-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));map?.invalidateSize();}));
+    // スマホでは、条件なしで開いたトップを地図から始める（一覧から始まると、何のサイトか分かりにくい）。
+    if(mobileMedia.matches&&!activeTheme&&[...new URLSearchParams(location.search).values()].every(v=>!v))document.querySelector('[data-result-view="map"]')?.click();
 
     const featuredStations = activeTheme
       ? stations.filter((station) => matchesTheme(station, activeTheme)).slice(0, 6)

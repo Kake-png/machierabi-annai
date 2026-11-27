@@ -925,3 +925,6 @@ small.note-source, .life-note small.note-source, .station-facts small.note-sourc
 .night-shift .related-facts dd { color: #e6efe9; }
 .night-shift .related-facts dd strong { color: #e6efe9; }
 .static-seo-content .related-facts { margin-bottom: 10px; }
+
+/* スマホの地図：引いた状態では駅を点にして重なりを避ける（拡大すると駅名ラベルに戻る） */
+.map-compact .atlas-label-icon .station-map-label { min-width: 0 !important; width: 14px !important; height: 14px !important; padding: 0 !important; font-size: 0 !important; border-radius: 50% !important; border-width: 2px !important; box-shadow: 0 1px 3px rgba(0,0,0,.35) !important; }
