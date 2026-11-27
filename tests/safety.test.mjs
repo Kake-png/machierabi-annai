@@ -35,4 +35,6 @@ test("章に『安全』『危険』の語を使わず、出典と判定では�
   assert.match(html, /警視庁/);
   assert.match(html, /良し悪しの判定ではありません/);
   assert.ok(safetyEntryFor({ slug: "kitasenju" }));
+  // 土地の使われ方の説明は、数字の前（章の頭）に置く。
+  assert.ok(html.indexOf("土地の使われ方") < html.indexOf('class="safety-list"'));
 });
