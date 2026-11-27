@@ -810,3 +810,59 @@ body,
 .route-name-search{width:100%;box-sizing:border-box;padding:.65rem;margin-bottom:.6rem;font:inherit;color:inherit;background:transparent;border:1px solid #82958e;border-radius:4px}.route-group>summary{cursor:pointer;display:flex;justify-content:space-between;gap:.5rem;padding:.65rem 0;font-weight:700}.route-selected-count{font-size:.8rem;font-weight:400}.route-group-options{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 0 .75rem}.route-chip[hidden],.route-group[hidden]{display:none!important}
 
 .theme-feature-grid{display:grid;grid-template-columns:1fr;gap:2rem}.theme-feature{display:grid;grid-template-columns:minmax(200px,32%) 1fr;gap:1.5rem}.theme-feature p{line-height:1.85}@media(max-width:700px){.theme-feature{grid-template-columns:1fr;gap:.5rem}}
+
+/* 2026-11-27 読みやすさ: 日本語の改行・スマホの段組み・字下げ（docs/change-log.md 参照） */
+main p, main li, main dd, main summary, main figcaption { word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
+@media (max-width: 720px) {
+  .life-grid { grid-template-columns: 1fr; }
+  .life-note:last-child:nth-child(odd) { grid-column: auto; }
+  .life-note, .life-note:nth-child(odd), .life-note:nth-child(even) { padding-left: 0; padding-right: 0; border-right: 0; }
+}
+.condition-reason-heading p, .condition-reason-heading .reason-list { margin-left: 2px; padding-left: 14px; border-left: 3px solid #c6d0ca; }
+.condition-reason-heading .reason-label { margin: 0 0 4px; padding-left: 14px; border-left: 3px solid #c6d0ca; font-size: 13px; color: #40544d; }
+.condition-reason-heading .reason-list { list-style: none; margin: 0; }
+.condition-reason-heading .reason-list li { font-size: 14px; line-height: 1.7; color: #40544d; padding: 2px 0; }
+.condition-reason-heading .reason-label + .reason-list { margin-top: -4px; }
+
+/* 2026-11-27 読みやすさ(2): 冒頭ブロックの段差・見出しと本文の分離・番号と見出しを1行に・根拠欄の開閉範囲（docs/change-log.md 参照） */
+.station-hero .station-hero-copy h1 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 700; line-height: 1.25; }
+.station-hero .station-kana { margin-top: 4px; letter-spacing: .06em; }
+.station-hero .station-descriptor { margin-top: 22px; padding-left: 12px; border-left: 4px solid var(--green-2); font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; line-height: 1.5; }
+.station-hero .station-summary { margin-top: 14px; padding-left: 16px; font-size: 15px; line-height: 1.85; }
+.station-facts > div > small { display: block; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+.station-facts > div > p { margin-top: 6px; padding-left: 12px; border-left: 2px solid var(--rule); }
+.life-note h3 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 8px; font-size: 16px; }
+.life-note h3 small { font-size: 15px; font-weight: 400; }
+.life-note p { padding-left: 12px; border-left: 2px solid var(--rule); }
+.condition-reason-heading { cursor: pointer; }
+@media (hover: hover) { .condition-reason:hover .condition-reason-heading h3 { text-decoration: underline; text-underline-offset: 3px; } }
+
+/* 2026-11-27 ダークモードの根拠欄: 要約・箇条書きの文字色が薄すぎる（コントラスト比1.9）、展開した詳細が白地に白文字（1.04）だった */
+.night-shift .condition-reason-heading p,
+.night-shift .condition-reason-heading .reason-label,
+.night-shift .condition-reason-heading .reason-list li { color: #c9d8cf; }
+.night-shift .condition-reason-heading p,
+.night-shift .condition-reason-heading .reason-label,
+.night-shift .condition-reason-heading .reason-list { border-left-color: #5f786b; }
+.night-shift .condition-reason { border-top-color: #3f5249; }
+.night-shift .evidence-section .condition-reason .evidence-body { background: #27332e; color: #e1ebe5; border-color: #4a5f55; }
+.night-shift .evidence-section .condition-reason .evidence-body p,
+.night-shift .evidence-section .condition-reason .evidence-body li,
+.night-shift .evidence-section .condition-reason .evidence-body small { color: #e1ebe5; }
+.night-shift .evidence-section .condition-reason .evidence-body a { color: #9fd3b8; }
+.night-shift .evidence-condition > summary { color: #c9d8cf; }
+
+/* 2026-11-27 ダークモード（検索画面）: 薄い文字、真っ白なボタン、地図の読み込み中の背景、候補の丸（docs/change-log.md 参照） */
+.search-first .station-row.no-code { grid-template-columns: 1fr 18px; }
+.night-shift .rent-tick span, .night-shift .rent-filter > small, .night-shift .condition-match > span { color: #c2d1c8; }
+.night-shift .rent-inputs button { background: #27352f; color: #e8f0eb; border-color: #72887a; }
+.night-shift .rent-inputs button:hover { background: #34463e; color: #fff; }
+.night-shift input::placeholder { color: #a9b9b0; opacity: 1; }
+.night-shift .search-first .row-code { background: #30443a; color: #edf3ef; }
+.night-shift .brand-mark { color: #10201a; }
+.night-shift .compare-count { color: #1c2522; }
+/* 地図: 読み込み中・タイルの切れ目を、暗くしたタイルと同じ色にして、白く光らないようにする */
+.night-shift .leaflet-container, .night-shift .map-wrap, .night-shift .station-map, .night-shift .content-map, .night-shift #map { background: #191919; }
+
+/* v76: 候補ラベル廃止に伴い、気になるボタンを結果枠の右下に寄せる */
+.station-result>.favorite-button{display:flex;width:fit-content;margin:2px 16px 12px auto}
