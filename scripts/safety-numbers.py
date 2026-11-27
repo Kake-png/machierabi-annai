@@ -2,10 +2,11 @@
 """駅ごとの「治安の数字」を作る。
 
 使い方:
-  python3 -I scripts/safety-numbers.py <警視庁 町丁別CSV(R7.csv)> <geolonia latest.csv> [公表年]
+  python3 -I scripts/safety-numbers.py <geolonia latest.csv> 2023=R5.csv 2024=R6.csv 2025=R7.csv
 
 入力:
-  * 警視庁「区市町村の町丁別、罪種別及び手口別認知件数」(cp932のCSV)
+  * 警視庁「区市町村の町丁別、罪種別及び手口別認知件数」(cp932のCSV)を西暦=ファイルで何年分か。
+    年ごとのぶれ(特に空き巣は年0〜4件)をならすため、駅ごとに年平均にする
   * geolonia/japanese-addresses の data/latest.csv (町丁ごとの代表点の緯度経度)
   * 駅の座標は public/assets/data.js から読む(node で書き出す)
 
@@ -69,19 +70,9 @@ def load_stations():
     return [s for s in stations if s["area"].startswith("東京都") or (s["area"].endswith("区") and "市" not in s["area"])]
 
 
-def main():
-    crime_csv, geo_csv = sys.argv[1], sys.argv[2]
-    year = int(sys.argv[3]) if len(sys.argv) > 3 else 2025
-
-    geo, cities = {}, set()
-    with open(geo_csv, encoding="utf-8") as f:
-        for r in csv.DictReader(f):
-            if r["都道府県名"] != "東京都" or not r["緯度"] or not r["経度"]:
-                continue
-            cities.add(r["市区町村名"])
-            geo.setdefault(normalize(r["市区町村名"] + r["大字町丁目名"]), (float(r["緯度"]), float(r["経度"])))
-
-    with open(crime_csv, encoding="cp932") as f:
+def read_year(path, geo, cities):
+    """1年分のCSVから、(代表点, 行) の一覧と、座標が見つからず除いた件数を返す。"""
+    with open(path, encoding="cp932") as f:
         rows = list(csv.reader(f))
     index = {h: i for i, h in enumerate(rows[0])}
     towns, missed = [], 0
@@ -94,34 +85,54 @@ def main():
             towns.append((point, r))
         else:
             missed += int(r[index["総合計"]])
+    return index, towns, missed
+
+
+def main():
+    geo_csv = sys.argv[1]
+    year_files = sorted((int(a.split("=")[0]), a.split("=")[1]) for a in sys.argv[2:])
+
+    geo, cities = {}, set()
+    with open(geo_csv, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if r["都道府県名"] != "東京都" or not r["緯度"] or not r["経度"]:
+                continue
+            cities.add(r["市区町村名"])
+            geo.setdefault(normalize(r["市区町村名"] + r["大字町丁目名"]), (float(r["緯度"]), float(r["経度"])))
 
     stations = load_stations()
-    counts = {}
-    for s in stations:
-        c = {k: 0 for k in CATEGORIES}
-        c["all"] = 0
-        c["towns"] = 0
-        for (lat, lng), r in towns:
-            if haversine(s["lat"], s["lng"], lat, lng) <= RADIUS_M:
-                c["towns"] += 1
-                c["all"] += int(r[index["総合計"]])
+    years = [y for y, _ in year_files]
+    totals = {s["slug"]: {k: 0 for k in [*CATEGORIES, "all", "towns"]} for s in stations}
+    for year, path in year_files:
+        index, towns, missed = read_year(path, geo, cities)
+        print(f"{year}: towns_used={len(towns)} missed_crimes={missed}")
+        for s in stations:
+            t = totals[s["slug"]]
+            inside = [(point, r) for point, r in towns if haversine(s["lat"], s["lng"], point[0], point[1]) <= RADIUS_M]
+            for _, r in inside:
+                t["all"] += int(r[index["総合計"]])
                 for k, cols in CATEGORIES.items():
-                    c[k] += sum(int(r[index[n]]) for n in cols)
-        counts[s["slug"]] = c
+                    t[k] += sum(int(r[index[n]]) for n in cols)
+            if year == years[-1]:  # 町丁の数は年によって少し違うので、最新年のものを使う
+                t["towns"] = len(inside)
 
     n = len(stations)
+    avg = {}
+    for slug, t in totals.items():
+        avg[slug] = {k: round(v / len(years), 1) for k, v in t.items() if k != "towns"}
+        avg[slug]["towns"] = t["towns"]
     result = {}
-    for slug, c in counts.items():
+    for slug, c in avg.items():
         entry = {"towns": c["towns"], "all": c["all"]}
         for k in CATEGORIES:
-            less = sum(1 for o in counts.values() if o[k] < c[k])
-            equal = sum(1 for o in counts.values() if o[k] == c[k])
+            less = sum(1 for o in avg.values() if o[k] < c[k])
+            equal = sum(1 for o in avg.values() if o[k] == c[k])
             percentile = (less + equal / 2) / n  # 同数の駅は真ん中の位置にそろえる
             entry[k] = {"n": c[k], "rank": less + 1, "ties": equal, "grade": GRADES[min(4, int(percentile * 5))]}
         result[slug] = entry
 
     data = {
-        "year": year,
+        "years": years,
         "radiusM": RADIUS_M,
         "stationCount": n,
         "pilot": ["kitasenju", "ikebukuro", "yukigayaotsuka"],
@@ -129,9 +140,14 @@ def main():
     }
     out = ROOT / "public/assets/safety-data.js"
     out.write_text("export const SAFETY_DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
-    print(f"stations={n} towns_used={len(towns)} missed_crimes={missed}")
+    print(f"stations={n} years={years}")
     for slug in data["pilot"]:
         print(slug, json.dumps(result[slug], ensure_ascii=False))
+    for k in CATEGORIES:
+        dist = {}
+        for e in result.values():
+            dist.setdefault(e[k]["grade"], []).append(e[k]["n"])
+        print(k, {g: (min(v), max(v), len(v)) for g, v in sorted(dist.items())})
 
 
 if __name__ == "__main__":
