@@ -1,9 +1,9 @@
 import {layoutRoutes} from "/assets/route-layout.js?v=59";
 import { ATLAS_DATA } from "/assets/data.js?v=76";
 import { filterStations, matchesTheme, readSearchState, searchParamsFor } from "/assets/search.js?v=59";
-import { evidenceHtml } from "/assets/evidence-view.js?v=78";
+import { evidenceHtml } from "/assets/evidence-view.js?v=79";
 import { stationGuide, relatedGuideStations } from "/assets/station-guide.js?v=76";
-import { renderNoteBody } from "/assets/text-format.js?v=1";
+import { renderNoteBody } from "/assets/text-format.js?v=2";
 const trimPeriod = (value = "") => String(value).replace(/。$/u, "");
 // 根拠欄：小さな三角だけでなく、見出し行のどこを押しても詳細を開閉する（キーボード操作は従来どおり三角のボタン）。
 document.addEventListener("click", (event) => {
@@ -660,6 +660,19 @@ document.addEventListener("click", (event) => {
     </figure>`;
   }
 
+  // 「#evidence-drinks」のような条件へのリンクで来たとき：該当条件の詳細を開き、そこまで移動して目印をつける。
+  // 駅ページはJSで描き直すため、ブラウザ標準のアンカー移動だけでは位置がずれる。
+  function revealConditionFromHash() {
+    const match = location.hash.match(/^#evidence-([\w-]+)$/);
+    if (!match) return;
+    const target = document.getElementById(`evidence-${match[1]}`);
+    if (!target) return;
+    const details = target.querySelector("details.evidence-condition");
+    if (details) details.open = true;
+    document.querySelectorAll(".condition-reason.is-target").forEach((node) => node.classList.remove("is-target"));
+    target.classList.add("is-target");
+    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+  }
   async function renderStation() {
     const root = document.querySelector("#station-page");
     if (!root) return;
@@ -702,7 +715,8 @@ document.addEventListener("click", (event) => {
         <div class="station-hero-copy">
           <div class="station-meta">${station.lines.map((line) => `<span class="line-label">${escapeHtml(line)}</span>`).join("")}</div>
           <h1>${escapeHtml(station.name)}${guide ? "駅の住みやすさ" : ""}</h1><p class="station-kana">${escapeHtml(station.kana)} · ${escapeHtml(station.area)}</p>
-          <p class="station-descriptor">${escapeHtml(station.descriptor)}</p><p class="station-summary">${escapeHtml(guide?.intro || station.summary)}</p>
+          <p class="station-descriptor">${escapeHtml(station.descriptor)}</p>${station.tags.length ? `<nav class="condition-jump" aria-label="この駅で当てはまる条件"><p>この駅で当てはまる条件<small>押すと理由・出典へ移動</small></p><ul>${station.tags.map((tag) => `<li><a href="#evidence-${escapeHtml(tag)}">${escapeHtml(tagLabels[tag])}</a></li>`).join("")}</ul></nav>` : ""}
+        <p class="station-summary">${escapeHtml(guide?.intro || station.summary)}</p>
           <div class="hero-actions">${favoriteHtml(station)}<button class="button" type="button" data-compare-toggle="${station.slug}">比較に追加</button><a class="button secondary" href="/compare/">比較表を見る</a></div>
         </div>
         ${leadPhoto ? `<figure class="station-lead-photo">
@@ -732,6 +746,8 @@ document.addEventListener("click", (event) => {
         </article>
       </div>`;
 
+    revealConditionFromHash();
+    window.addEventListener("hashchange", revealConditionFromHash);
     const map = await createMap("station-map", { center: [station.lng, station.lat], zoom: 13.2, fallbackSelector: "#station-map-fallback" });
     if (map) {
       addStationMarker(map, station, { feature: true, popup: false }).addTo(map);

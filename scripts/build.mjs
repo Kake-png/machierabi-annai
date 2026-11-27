@@ -53,7 +53,10 @@ function finalizeHtml(html, relativePath) {
     .replace('href="/assets/interface-v34.css"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=63"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=65"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=67"', 'href="/assets/interface-v34.css?v=70"').replace('href="/assets/interface-v34.css?v=64"', 'href="/assets/interface-v34.css?v=70"')
     .replaceAll("https://tiles.openfreemap.org", "https://tile.openstreetmap.org");
   if (relativePath === "themes" || relativePath.startsWith("themes/")) html = html.replace('href="/assets/interface-v34.css?v=70"', 'href="/assets/interface-v34.css?v=71"');
-  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=77');
+  html = html.replace(/\/assets\/interface-v34\.css\?v=\d+/g, '/assets/interface-v34.css?v=80');
+  // 自前配信の Zen Maru Gothic。style.css より先に読み込み、表示は font-display: swap。
+  html = html.replace(/<link rel="stylesheet" href="\/assets\/fonts\.css[^"]*">/g, "");
+  html = html.replace('<link rel="stylesheet" href="/assets/style.css', '<link rel="stylesheet" href="/assets/fonts.css?v=1"><link rel="stylesheet" href="/assets/style.css');
   html = html.replace("制定・最終更新：2026年9月21日", "制定：2026年9月21日・最終更新：2026年10月17日")
     .replace("駅徒歩10分以内・管理費等を除く平均", "HOME’Sの1K参考相場・管理費等を除く")
     .replace("家賃は2026年9月22日に確認。店舗・運行・賃料は変わるため、最終確認は各公式情報で行ってください。", "確認済みの条件だけを検索に使います。根拠と確認状況は各駅ページに掲載しています。");
@@ -75,7 +78,7 @@ function finalizeHtml(html, relativePath) {
     html = html.replace("</head>", `<script type="application/ld+json">${escapeJson(schema)}</script>\n</head>`);
   }
   html = html.replace("</head>", `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${url}">${relativePath === "compare" ? '<meta name="robots" content="noindex,follow">' : ""}\n</head>`);
-  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=80');
+  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=81');
   return applyMonetization(enhanceSeo(html, relativePath, url, stationCount), relativePath, ATLAS_DATA.stations.map(s => s.slug));
 }
 const writePage = (relativePath, html) => {
