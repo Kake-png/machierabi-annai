@@ -78,7 +78,7 @@ function finalizeHtml(html, relativePath) {
     html = html.replace("</head>", `<script type="application/ld+json">${escapeJson(schema)}</script>\n</head>`);
   }
   html = html.replace("</head>", `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${url}">${relativePath === "compare" ? '<meta name="robots" content="noindex,follow">' : ""}\n</head>`);
-  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=84');
+  html = html.replace(/\/assets\/app.js\?v=\d+/g, '/assets/app.js?v=85');
   return applyMonetization(enhanceSeo(html, relativePath, url, stationCount), relativePath, ATLAS_DATA.stations.map(s => s.slug));
 }
 const writePage = (relativePath, html) => {
