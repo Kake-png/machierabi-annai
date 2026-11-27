@@ -949,3 +949,6 @@ small.note-source, .life-note small.note-source, .station-facts small.note-sourc
 
 /* スマホの地図：引いた状態では、重なる駅を点にして重なりを避ける（駅名ラベルは大きな駅から優先して出す） */
 .atlas-label-icon .station-map-label.is-dot { position: absolute !important; left: 50% !important; top: 50% !important; margin: 0 !important; transform: translate(-50%, -50%) !important; min-width: 0 !important; width: 14px !important; height: 14px !important; padding: 0 !important; font-size: 0 !important; border-radius: 50% !important; border-width: 2px !important; box-shadow: 0 1px 3px rgba(0,0,0,.35) !important; }
+
+/* 駅名ラベルも点と同じく、枠の中央（=駅の位置）に固定する。ブラウザによって、枠の中で下にずれて描かれるのを防ぐ。 */
+.atlas-label-icon .station-map-label { position: absolute !important; left: 50% !important; top: 50% !important; margin: 0 !important; transform: translate(-50%, -50%) !important; }
