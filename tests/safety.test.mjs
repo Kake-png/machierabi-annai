@@ -56,3 +56,20 @@ test("章に『安全』『危険』の語を使わず、出典と判定では�
   // 土地の使われ方の説明は、数字の前（章の頭）に置く。
   assert.ok(html.indexOf("土地の使われ方") < html.indexOf('class="safety-list"'));
 });
+
+test("ランクは東京の中央値に対する倍率の固定しきい値で決まり、順位も残る", () => {
+  const steps = SAFETY_DATA.ratioSteps;
+  assert.deepEqual(steps, [0.5, 0.8, 1.25, 2]);
+  for (const [slug, entry] of Object.entries(SAFETY_DATA.stations)) {
+    if (entry.partial) continue;
+    for (const key of ["home", "street", "bike"]) {
+      const item = entry[key];
+      const expected = "ABCDE"[steps.filter((t) => item.n / SAFETY_DATA.medians[key] >= t).length];
+      assert.equal(item.grade, expected, `${slug} ${key}`);
+      assert.ok(Number.isInteger(item.rank) && item.rank >= 1, `${slug} ${key} rank`);
+    }
+  }
+  const html = safetyHtml({ slug: "kitasenju", name: "北千住", area: "東京都足立区" }, (x) => x);
+  assert.match(html, /東京の駅の中央値（年/);
+  assert.match(html, /112駅中、少ない方から/);
+});

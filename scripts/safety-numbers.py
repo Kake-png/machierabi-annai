@@ -31,6 +31,7 @@ CATEGORIES = {
     "street": ["凶悪犯強盗", "粗暴犯暴行", "粗暴犯傷害", "非侵入窃盗ひったくり"],
     "bike": ["非侵入窃盗自転車盗"],
 }
+RATIO_STEPS = [0.5, 0.8, 1.25, 2.0]  # 中央値の0.5倍・0.8倍・1.25倍・2倍を境にA〜E
 GRADES = "ABCDE"
 KAN = "〇一二三四五六七八九"
 
@@ -135,6 +136,11 @@ def main():
         avg[slug]["towns"] = t["towns"]
     ranked = {slug: c for slug, c in avg.items() if slug not in partial}
     n = len(ranked)
+    # ランクは東京の掲載駅の中央値に対する倍率で決める（固定のしきい値。順位ではなく件数の水準）
+    medians = {}
+    for k in CATEGORIES:
+        vals = sorted(o[k] for o in ranked.values())
+        medians[k] = round((vals[n // 2 - 1] + vals[n // 2]) / 2 if n % 2 == 0 else vals[n // 2], 1)
     result = {}
     for slug, c in avg.items():
         entry = {"towns": c["towns"], "all": c["all"]}
@@ -146,14 +152,17 @@ def main():
                 continue
             less = sum(1 for o in ranked.values() if o[k] < c[k])
             equal = sum(1 for o in ranked.values() if o[k] == c[k])
-            percentile = (less + equal / 2) / n  # 同数の駅は真ん中の位置にそろえる
-            entry[k] = {"n": c[k], "rank": less + 1, "ties": equal, "grade": GRADES[min(4, int(percentile * 5))]}
+            ratio = c[k] / medians[k]
+            grade = GRADES[sum(1 for t in RATIO_STEPS if ratio >= t)]
+            entry[k] = {"n": c[k], "rank": less + 1, "ties": equal, "ratio": round(ratio, 2), "grade": grade}
         result[slug] = entry
 
     data = {
         "years": years,
         "radiusM": RADIUS_M,
         "stationCount": n,
+        "medians": medians,
+        "ratioSteps": RATIO_STEPS,
         "stations": result,
     }
     out = ROOT / "public/assets/safety-data.js"
