@@ -31,6 +31,7 @@ CATEGORIES = {
     "street": ["凶悪犯強盗", "粗暴犯暴行", "粗暴犯傷害", "非侵入窃盗ひったくり"],
     "bike": ["非侵入窃盗自転車盗"],
 }
+RATIO_STEPS = [0.5, 0.8, 1.25, 2.0]  # 中央値の0.5倍・0.8倍・1.25倍・2倍を境にA〜E
 GRADES = "ABCDE"
 KAN = "〇一二三四五六七八九"
 
@@ -92,10 +93,16 @@ def main():
     geo_csv = sys.argv[1]
     year_files = sorted((int(a.split("=")[0]), a.split("=")[1]) for a in sys.argv[2:])
 
-    geo, cities = {}, set()
+    geo, cities, outside = {}, set(), []
     with open(geo_csv, encoding="utf-8") as f:
         for r in csv.DictReader(f):
-            if r["都道府県名"] != "東京都" or not r["緯度"] or not r["経度"]:
+            if not r["緯度"] or not r["経度"]:
+                continue
+            if r["都道府県名"] in ("神奈川県", "埼玉県", "千葉県"):
+                # 都県境の判定用。東京の外の町丁は、警視庁のデータに件数がない
+                outside.append((float(r["緯度"]), float(r["経度"]), r["都道府県名"] + r["市区町村名"]))
+                continue
+            if r["都道府県名"] != "東京都":
                 continue
             cities.add(r["市区町村名"])
             geo.setdefault(normalize(r["市区町村名"] + r["大字町丁目名"]), (float(r["緯度"]), float(r["経度"])))
@@ -116,36 +123,58 @@ def main():
             if year == years[-1]:  # 町丁の数は年によって少し違うので、最新年のものを使う
                 t["towns"] = len(inside)
 
-    n = len(stations)
+    # 半径800mの一部が他県にかかる駅は、その部分の件数がなく少なく出るため、順位づけから外す
+    partial = {}
+    for st in stations:
+        places = sorted({name for lat, lng, name in outside if haversine(st["lat"], st["lng"], lat, lng) <= RADIUS_M})
+        if places:
+            partial[st["slug"]] = places
+
     avg = {}
     for slug, t in totals.items():
         avg[slug] = {k: round(v / len(years), 1) for k, v in t.items() if k != "towns"}
         avg[slug]["towns"] = t["towns"]
+    ranked = {slug: c for slug, c in avg.items() if slug not in partial}
+    n = len(ranked)
+    # ランクは東京の掲載駅の中央値に対する倍率で決める（固定のしきい値。順位ではなく件数の水準）
+    medians = {}
+    for k in CATEGORIES:
+        vals = sorted(o[k] for o in ranked.values())
+        medians[k] = round((vals[n // 2 - 1] + vals[n // 2]) / 2 if n % 2 == 0 else vals[n // 2], 1)
     result = {}
     for slug, c in avg.items():
         entry = {"towns": c["towns"], "all": c["all"]}
+        if slug in partial:
+            entry["partial"] = partial[slug]
         for k in CATEGORIES:
-            less = sum(1 for o in avg.values() if o[k] < c[k])
-            equal = sum(1 for o in avg.values() if o[k] == c[k])
-            percentile = (less + equal / 2) / n  # 同数の駅は真ん中の位置にそろえる
-            entry[k] = {"n": c[k], "rank": less + 1, "ties": equal, "grade": GRADES[min(4, int(percentile * 5))]}
+            if slug in partial:
+                entry[k] = {"n": c[k]}
+                continue
+            less = sum(1 for o in ranked.values() if o[k] < c[k])
+            equal = sum(1 for o in ranked.values() if o[k] == c[k])
+            ratio = c[k] / medians[k]
+            grade = GRADES[sum(1 for t in RATIO_STEPS if ratio >= t)]
+            entry[k] = {"n": c[k], "rank": less + 1, "ties": equal, "ratio": round(ratio, 2), "grade": grade}
         result[slug] = entry
 
     data = {
         "years": years,
         "radiusM": RADIUS_M,
         "stationCount": n,
-        "pilot": ["kitasenju", "ikebukuro", "yukigayaotsuka"],
+        "medians": medians,
+        "ratioSteps": RATIO_STEPS,
         "stations": result,
     }
     out = ROOT / "public/assets/safety-data.js"
     out.write_text("export const SAFETY_DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
-    print(f"stations={n} years={years}")
-    for slug in data["pilot"]:
+    print(f"ranked={n} partial={partial} years={years}")
+    for slug in ["kitasenju", "ikebukuro", "yukigayaotsuka"]:
         print(slug, json.dumps(result[slug], ensure_ascii=False))
     for k in CATEGORIES:
         dist = {}
         for e in result.values():
+            if "grade" not in e[k]:
+                continue
             dist.setdefault(e[k]["grade"], []).append(e[k]["n"])
         print(k, {g: (min(v), max(v), len(v)) for g, v in sorted(dist.items())})
 

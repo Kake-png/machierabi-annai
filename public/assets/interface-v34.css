@@ -952,3 +952,7 @@ small.note-source, .life-note small.note-source, .station-facts small.note-sourc
 
 /* 駅名ラベルも点と同じく、枠の中央（=駅の位置）に固定する。ブラウザによって、枠の中で下にずれて描かれるのを防ぐ。 */
 .atlas-label-icon .station-map-label { position: absolute !important; left: 50% !important; top: 50% !important; margin: 0 !important; transform: translate(-50%, -50%) !important; }
+
+/* 治安の数字：都県境にかかる駅（ランクなし）の表示 */
+.safety-grade.is-none { color: var(--muted); font-size: 22px; }
+.safety-border { margin: 0 0 12px; padding: 10px 12px; border: 1px dashed var(--rule); border-radius: 8px; font-size: 14px; line-height: 1.7; }
